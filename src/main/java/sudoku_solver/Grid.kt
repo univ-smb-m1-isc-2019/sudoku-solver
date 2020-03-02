@@ -1,8 +1,10 @@
 package sudoku_solver
 
-class Grid(private val grid: Array<Array<Case>>) {
+class Grid(grid: Array<Array<Int>>) {
+    private val gridState = grid.map { it -> it.map { Case(it) } }
+
     fun isCompleted(): Boolean {
-        for(line in grid) {
+        for(line in gridState) {
             for(case in line) {
                 if (case.isNotSet()) return false
             }
