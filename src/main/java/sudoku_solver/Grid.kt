@@ -1,6 +1,6 @@
 package sudoku_solver
 
-class Grid(private val grid: Array<Array<Int>>) {
+class Grid(private val grid: Array<Array<Case>>) {
     fun isCompleted(): Boolean {
         return false
     }
