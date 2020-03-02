@@ -9,4 +9,10 @@ class SudokuSolverTest {
         val notCompletedGrid = Grid(Array(9) {Array(9) {0} })
         assertFalse { notCompletedGrid.isCompleted() }
     }
+
+    @Test
+    fun anInvalidGridShouldAlwaysBeConsideredAsInvalid() {
+        val invalidGrid = Grid(Array(9) {Array(9) {1} })
+        assertFalse { invalidGrid.isValid() }
+    }
 }
