@@ -5,9 +5,8 @@ class Grid(grid: Array<Array<Int>>) {
 
     fun isCompleted(): Boolean {
         for(line in gridState) {
-            for(case in line) {
+            for(case in line)
                 if (case.isNotSet()) return false
-            }
         }
         return true
     }
@@ -17,9 +16,8 @@ class Grid(grid: Array<Array<Int>>) {
     }
 
     private fun linesAreValid(): Boolean {
-        for (actualLine in gridState) {
+        for (actualLine in gridState)
             if(!isValid(actualLine)) return false
-        }
         return true
     }
 
@@ -27,9 +25,8 @@ class Grid(grid: Array<Array<Int>>) {
         val column: ArrayList<Case> = ArrayList()
 
         for (columnIndex in gridState.indices) {
-            for (lineIndex in gridState.indices) {
+            for (lineIndex in gridState.indices)
                 column.add(gridState[lineIndex][columnIndex])
-            }
             if (!isValid(column)) return false
             column.clear()
         }
