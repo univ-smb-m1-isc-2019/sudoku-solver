@@ -3,7 +3,7 @@ package sudoku_solver
 data class Square(var value: Int) {
     var state = when (value) {
         0 -> SquareNotSet(this);
-        else -> SquareSet(this)
+        else -> SquareFixed(this)
     }
 
     fun isNotSet(): Boolean {
