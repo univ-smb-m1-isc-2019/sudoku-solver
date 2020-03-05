@@ -1,7 +1,7 @@
 package sudoku_solver
 
 class Grid(grid: Array<Array<Int>>) {
-    private val gridState = grid.map { it -> it.map { Case(it) } }
+    private val gridState = grid.map { it -> it.map { Square(it) } }
 
     fun isCompleted(): Boolean {
         for(line in gridState) {
@@ -10,9 +10,9 @@ class Grid(grid: Array<Array<Int>>) {
         return true
     }
 
-    private fun lineIsNotCompleted(line: List<Case>): Boolean {
-        for (case in line)
-            if (case.isNotSet()) return true
+    private fun lineIsNotCompleted(line: List<Square>): Boolean {
+        for (square in line)
+            if (square.isNotSet()) return true
         return false
     }
 
@@ -27,7 +27,7 @@ class Grid(grid: Array<Array<Int>>) {
     }
 
     private fun columnsAreValid(): Boolean {
-        val column: ArrayList<Case> = ArrayList()
+        val column: ArrayList<Square> = ArrayList()
 
         for (columnIndex in gridState.indices) {
             for (lineIndex in gridState.indices)
@@ -39,7 +39,7 @@ class Grid(grid: Array<Array<Int>>) {
     }
 
     private fun squaresAreValid(): Boolean {
-        val square: ArrayList<Case> = ArrayList()
+        val square: ArrayList<Square> = ArrayList()
 
         for (x in gridState.indices step 3) {
             for (y in gridState[x].indices step 3) {
@@ -53,18 +53,18 @@ class Grid(grid: Array<Array<Int>>) {
         return true
     }
 
-    private fun isValid(listCases: List<Case>): Boolean {
-        val buffer: ArrayList<Case> = ArrayList()
+    private fun isValid(listSquares: List<Square>): Boolean {
+        val buffer: ArrayList<Square> = ArrayList()
 
-        for (case in listCases) {
-            if (buffer.contains(case)) return false
-            if (case.value != 0) buffer.add(case)
+        for (square in listSquares) {
+            if (buffer.contains(square)) return false
+            if (square.value != 0) buffer.add(square)
         }
         return true
     }
 
     fun set(column: Int, line : Int, newValue: Int) {
-        val caseToChange = gridState[column][line];
-        caseToChange.set(newValue)
+        val squareToChange = gridState[column][line];
+        squareToChange.set(newValue)
     }
 }
