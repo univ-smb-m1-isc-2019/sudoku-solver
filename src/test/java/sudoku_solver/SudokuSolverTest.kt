@@ -7,13 +7,13 @@ import kotlin.test.assertTrue
 class SudokuSolverTest {
     @Test
     fun anEmptyGridShouldAlwaysBeConsideredAsNotCompleted() {
-        val notCompletedGrid = Grid(Array(9) {Array(9) {0} })
-        assertFalse { notCompletedGrid.isCompleted() }
+        val emptyGrid = Grid(Array(9) {Array(9) {0} })
+        assertFalse { emptyGrid.isCompleted() }
     }
 
     @Test
     fun aNonCompletedGridShouldAlwaysBeConsideredAsCompleted() {
-        val completedGrid = Grid(arrayOf(
+        val notCompletedGrid = Grid(arrayOf(
                 arrayOf(2, 8, 3, 1, 5, 7, 6, 9, 4),
                 arrayOf(1, 7, 4, 2, 6, 9, 3, 5, 8),
                 arrayOf(6, 5, 0, 3, 4, 8, 2, 7, 1),
@@ -24,7 +24,7 @@ class SudokuSolverTest {
                 arrayOf(7, 6, 8, 4, 2, 5, 1, 3, 9),
                 arrayOf(3, 1, 5, 9, 8, 6, 4, 2, 7)
         ))
-        assertFalse { completedGrid.isCompleted() }
+        assertFalse { notCompletedGrid.isCompleted() }
     }
 
     @Test
