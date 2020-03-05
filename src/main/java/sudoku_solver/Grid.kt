@@ -62,4 +62,9 @@ class Grid(grid: Array<Array<Int>>) {
         }
         return true
     }
+
+    fun set(column: Int, line : Int, newValue: Int) {
+        val caseToChange = gridState[column][line];
+        caseToChange.set(newValue)
+    }
 }
