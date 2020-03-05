@@ -5,10 +5,15 @@ class Grid(grid: Array<Array<Int>>) {
 
     fun isCompleted(): Boolean {
         for(line in gridState) {
-            for(case in line)
-                if (case.isNotSet()) return false
+            if (lineIsNotCompleted(line)) return false
         }
         return true
+    }
+
+    private fun lineIsNotCompleted(line: List<Case>): Boolean {
+        for (case in line)
+            if (case.isNotSet()) return true
+        return false
     }
 
     fun isValid(): Boolean {
