@@ -1,7 +1,7 @@
 package sudoku_solver
 
 class Grid(grid: Array<Array<Int>>) {
-    private val gridState = grid.map { it -> it.map { Square(it) } }
+    private val gridState = GridTranscriber.translate(grid)
 
     fun isCompleted(): Boolean {
         for(line in gridState) {
