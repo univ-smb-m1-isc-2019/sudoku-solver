@@ -97,6 +97,7 @@ class SudokuSolverTest {
         assertTrue { validGrid.isValid() }
     }
 
+    @Test
     fun anAlmostCompletedGridShouldPassToCompletedAfterItsLastCaseIsFilled() {
         val almostCompletedGrid = Grid(arrayOf(
                 arrayOf(2, 8, 3, 1, 5, 7, 6, 9, 4),
