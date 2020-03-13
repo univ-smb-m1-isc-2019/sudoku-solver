@@ -1,6 +1,5 @@
 package me.sudoku;
 
-import java.util.Arrays;
 
 public class Solver {
     Board board;
@@ -8,8 +7,26 @@ public class Solver {
         board = new Board(initBoard);
     }
     public void solve(){
+        reducePossibleValues();
         board.printBoard();
     }
 
-    
+    public void reducePossibleValues(){
+        for (int i = 0; i<board.length; i++){
+            for (int j = 0; j<board.length; j++){
+                Cell c = board.board[i][j];
+                if (!c.isResolved()){
+                    reduceFromLine(c);
+                }
+            }
+        }
+    }
+    public void reduceFromLine(Cell c){
+        for (int i = 0; i<board.length; i++) {
+            int value = board.board[c.getLine()][i].getValue();
+            if (c.getPossibleValues().contains(value)){
+                c.removePossibleValue(value);
+            }
+        }
+    }
 }

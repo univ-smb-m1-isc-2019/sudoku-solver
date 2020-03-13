@@ -10,7 +10,7 @@ public class Cell {
     private ArrayList<Integer> possibleValues = new ArrayList<>();
     public Cell(int value, int line, int col){
         this.value = value;
-        for (int i = 0; i < 9; i++) {
+        for (int i = 1; i < 10; i++) {
             possibleValues.add(i);
         }
         this.line = line;
@@ -24,7 +24,9 @@ public class Cell {
     public ArrayList<Integer> getPossibleValues() {
         return possibleValues;
     }
-
+    public void removePossibleValue(int v){
+        possibleValues.remove(Integer.valueOf(v));
+    }
     public int getCol() {
         return col;
     }

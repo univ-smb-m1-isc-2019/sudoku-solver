@@ -1,6 +1,8 @@
 import me.sudoku.Cell;
 import me.sudoku.Solver;
 import org.junit.Test;
+import static org.assertj.core.api.Java6Assertions.assertThat;
+import static org.junit.Assert.*;
 
 public class SudokuTest {
     int[][] board = {
@@ -15,12 +17,10 @@ public class SudokuTest {
             { 0, 9, 0, 0, 0, 0, 4, 0, 0 }
     };
     @Test
-    public void cells_resolved_should_not_be_unresolved(){
+    public void possibleValues_should_decrease_by_line(){
         Solver solver = new Solver(board);
-        solver.solve();
-        for (int i = 0; i<board.length; i++){
-            for (int j = 0; j<board.length; j++){
-            }
-        }
+        Cell c = new Cell(board[0][1], 0, 1);
+        solver.reduceFromLine(c);
+        assertFalse(c.getPossibleValues().contains(8));
     }
 }
