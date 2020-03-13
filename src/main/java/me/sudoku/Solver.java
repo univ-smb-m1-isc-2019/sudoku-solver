@@ -7,7 +7,7 @@ public class Solver {
         board = new Board(initBoard);
     }
     public void solve(){
-        //reducePossibleValues();
+       //reducePossibleValues();
         board.printBoard();
     }
 
@@ -42,5 +42,16 @@ public class Solver {
         }
         return false;
     }
-
+    public boolean numberIsInArea(int line, int col, int number){
+        int l = line - line % 3;
+        int c = col - col % 3;
+        for (int i = l; i < l + 3; i++){
+            for (int j = c; j < c + 3; j++){
+                if (board.board[i][j].getValue() == number){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

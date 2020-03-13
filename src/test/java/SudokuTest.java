@@ -34,4 +34,17 @@ public class SudokuTest {
             assertTrue(solver.numberIsInCol(1, 5));
         }
     }
+    @Test
+    public void number_is_in_area(){
+        Solver solver = new Solver(board);
+        for (int i = 0; i<100; i++){
+            assertTrue(solver.numberIsInArea(1, 1, 8));
+            assertTrue(solver.numberIsInArea(1, 1, 3));
+            assertTrue(solver.numberIsInArea(1, 1, 7));
+            assertTrue(solver.numberIsInArea(8, 8, 8));
+            assertTrue(solver.numberIsInArea(8, 8, 6));
+            assertTrue(solver.numberIsInArea(8, 8, 1));
+            assertTrue(solver.numberIsInArea(8, 8, 4));
+        }
+    }
 }
