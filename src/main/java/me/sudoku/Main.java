@@ -13,7 +13,7 @@ public class Main {
                 { 0, 0, 8, 5, 0, 0, 0, 1, 0 },
                 { 0, 9, 0, 0, 0, 0, 4, 0, 0 }
         };
-        Solver solver = new Solver();
-        solver.solve(board);
+        Solver solver = new Solver(board);
+        solver.solve();
     }
 }

@@ -3,10 +3,13 @@ package me.sudoku;
 import java.util.Arrays;
 
 public class Solver {
-    void solve(int[][] initBoard){
-        Board board = new Board(initBoard);
+    Board board;
+    public Solver(int[][] initBoard){
+        board = new Board(initBoard);
+    }
+    public void solve(){
         board.printBoard();
     }
 
-
+    
 }
