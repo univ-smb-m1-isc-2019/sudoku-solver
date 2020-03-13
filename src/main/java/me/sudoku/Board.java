@@ -1,5 +1,7 @@
 package me.sudoku;
 
+import java.util.ArrayList;
+
 public class Board {
     Cell[][] board;
     int length;

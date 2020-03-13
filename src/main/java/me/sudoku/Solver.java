@@ -7,35 +7,40 @@ public class Solver {
         board = new Board(initBoard);
     }
     public void solve(){
-        reducePossibleValues();
+        //reducePossibleValues();
         board.printBoard();
     }
 
-    public void reducePossibleValues(){
+    /*public void reducePossibleValues(){
         for (int i = 0; i<board.length; i++){
             for (int j = 0; j<board.length; j++){
                 Cell c = board.board[i][j];
                 if (!c.isResolved()){
                     reduceFromLine(c);
                     reduceFromCol(c);
+                    if (c.getPossibleValues().size() == 1){
+                        c.setValue(c.getPossibleValues().get(0));
+                        c.resolved();
+                    }
                 }
             }
         }
-    }
-    public void reduceFromLine(Cell c){
+    }*/
+    public boolean numberIsInLine(int line, int number){
         for (int i = 0; i<board.length; i++) {
-            int value = board.board[c.getLine()][i].getValue();
-            if (c.getPossibleValues().contains(value)){
-                c.removePossibleValue(value);
+            if (board.board[line][i].getValue() == number){
+                return true;
             }
         }
+        return false;
     }
-    public void reduceFromCol(Cell c){
+    public boolean numberIsInCol(int col, int number){
         for (int i = 0; i<board.length; i++) {
-            int value = board.board[i][c.getCol()].getValue();
-            if (c.getPossibleValues().contains(value)){
-                c.removePossibleValue(value);
+            if (board.board[i][col].getValue() == number){
+                return true;
             }
         }
+        return false;
     }
+
 }

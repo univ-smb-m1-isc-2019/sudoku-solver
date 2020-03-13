@@ -17,31 +17,21 @@ public class SudokuTest {
             { 0, 9, 0, 0, 0, 0, 4, 0, 0 }
     };
     @Test
-    public void possibleValues_should_decrease_by_line(){
+    public void number_is_in_line(){
         Solver solver = new Solver(board);
-        Cell c = new Cell(board[0][1], 0, 1);
-        Cell c1 = new Cell(board[2][0], 2, 0);
         for (int i = 0; i<100; i++){
-            solver.reduceFromLine(c);
-            assertFalse(c.getPossibleValues().contains(8));
-            solver.reduceFromLine(c1);
-            assertFalse(c1.getPossibleValues().contains(7));
-            assertFalse(c1.getPossibleValues().contains(9));
-            assertFalse(c1.getPossibleValues().contains(2));
+            assertTrue(solver.numberIsInLine(0, 8));
+            assertTrue(solver.numberIsInLine(1, 3));
+            assertTrue(solver.numberIsInLine(1, 6));
         }
     }
     @Test
-    public void possibleValues_should_decrease_by_col(){
+    public void number_is_in_col(){
         Solver solver = new Solver(board);
-        Cell c = new Cell(board[0][1], 0, 1);
-        Cell c1 = new Cell(board[2][0], 2, 0);
         for (int i = 0; i<100; i++){
-            solver.reduceFromCol(c);
-            assertFalse(c.getPossibleValues().contains(7));
-            assertFalse(c.getPossibleValues().contains(5));
-            assertFalse(c.getPossibleValues().contains(9));
-            solver.reduceFromCol(c1);
-            assertFalse(c1.getPossibleValues().contains(8));
+            assertTrue(solver.numberIsInCol(0, 8));
+            assertTrue(solver.numberIsInCol(1, 7));
+            assertTrue(solver.numberIsInCol(1, 5));
         }
     }
 }

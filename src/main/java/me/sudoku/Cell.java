@@ -38,4 +38,12 @@ public class Cell {
     public boolean isResolved() {
         return resolved;
     }
+
+    public void resolved() {
+        resolved = true;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
 }
