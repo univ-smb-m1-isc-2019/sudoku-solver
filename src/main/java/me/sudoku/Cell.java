@@ -8,4 +8,7 @@ public class Cell {
         this.value = value;
         resolved = value != 0;
     }
+    public int getValue(){
+        return value;
+    }
 }
