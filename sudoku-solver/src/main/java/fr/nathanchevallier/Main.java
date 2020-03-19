@@ -29,7 +29,7 @@ public class Main
         System.out.println(sudoku.SudokuGrid[0][0].areaLine(sudoku.SudokuGrid));
         System.out.println(sudoku.SudokuGrid[0][0].areaColumn(sudoku.SudokuGrid));
         System.out.println(sudoku.SudokuGrid[0][0].areaRegion(sudoku.SudokuGrid));
-        
+
     }
 
 }

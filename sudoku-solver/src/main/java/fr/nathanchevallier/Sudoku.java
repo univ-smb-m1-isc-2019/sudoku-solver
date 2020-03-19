@@ -22,6 +22,19 @@ public class Sudoku {
                 }
             }
         }
+        return true;
+    }
+
+    public boolean isResolvedCorrectly() {
+        for(int i=0; i < this.SudokuGrid.length; i++){
+            for(int j=0; j < this.SudokuGrid[i].length; j++){
+                if(!(this.SudokuGrid[i][j].valid)){
+                    return false;
+                }
+            }
+        }
+        if(!(this.isValid()))
+            return false;
 
         return true;
     }
