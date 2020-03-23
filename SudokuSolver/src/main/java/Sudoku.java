@@ -2,47 +2,73 @@ public class Sudoku {
     private boolean resolu = false;
 
     public Sudoku(int[][] board) {
-        afficherGrille(board);
+        afficherSudoku(board);
         resoudre(board, 0, 0);
     }
 
-    public void resoudre(int[][] g, int a, int b) {
-        if (b == 9) {
-            b = 0;
-            a++;
+    public void resoudre(int[][] board, int line, int col) {
+        if (col == 9) {
+            col = 0;
+            line++;
         }
-        if (a == 9 && b == 0) {
-            if (test_grille(g)) {
+
+        if (line == 9 && col == 0) {
+            if (testSudoku(board)) {
                 resolu = true;
-                afficherGrille(g);
+                afficherSudoku(board);
             }
         }
-        //
+
         else {
 
+            if (board[line][col] == 0) {
 
-            if (g[a][b] == 0) {
             }
+
             else {
-                resoudre(g, a, b + 1);
+                resoudre(board, line, col + 1);
             }
         }
     }
-    
-    public void afficherGrille(int[][] g) {
+
+    private boolean testSudoku(int[][] board) {
+        for (int i = 0; i < 9; i++) {
+            if (calculLigne(board, i) != 45) return false;
+            if (calculColonne(board, i) != 45) return false;
+        }
+        return true;
+    }
+
+    public int calculLigne(int[][] board, int i) {
+        int res = 0;
+        for (int j = 0; j < 9; j++) {
+            res += board[i][j];
+        }
+        return res;
+    }
+    public int calculColonne(int[][] board, int j) {
+        int res = 0;
+        for (int i = 0; i < 9; i++) {
+            res += board[i][j];
+        }
+        return res;
+    }
+
+
+    public void afficherSudoku(int[][] board) {
         if (resolu == false) {
             System.out.println("Sudoku à résoudre:");
         } else {
             System.out.println("Sudoku résolu:");
         }
 
-        for (int i = 0; i < g.length; i++) {
+        for (int i = 0; i < board.length; i++) {
             if (i % 3 == 0)
                 System.out.println(" -------------------------");
-            for (int j = 0; j < g[i].length; j++) {
+            for (int j = 0; j < board[i].length; j++) {
                 if (j % 3 == 0) System.out.print("| ");
-                if (g[i][j] != 0) {
-                    System.out.print(g[i][j] + " ");
+                if (board[i][j] != 0) {
+                    System.out.print(board[i][j] + " ");
                 } else {
                     System.out.print("  ");
                 }
