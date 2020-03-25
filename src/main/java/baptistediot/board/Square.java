@@ -1,11 +1,11 @@
 package baptistediot.board;
 
-import baptistediot.Sudoku;
+import java.util.ArrayList;
 
 public class Square {
-    public Cell[] square;
+    public ArrayList<Cell> square;
 
     public Square(){
-        this.square = new Cell[Sudoku.SQUARE_SIZE];
+        this.square = new ArrayList<>();
     }
 }

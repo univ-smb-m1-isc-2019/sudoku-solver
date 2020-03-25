@@ -1,11 +1,11 @@
 package baptistediot.board;
 
-import baptistediot.Sudoku;
+import java.util.ArrayList;
 
 public class Row {
-    public Cell[] row;
+    public ArrayList<Cell> row;
 
     public Row(){
-        this.row = new Cell[Sudoku.ROW_SIZE];
+        this.row = new ArrayList<>();
     }
 }
