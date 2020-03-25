@@ -1,5 +1,7 @@
 package baptistediot;
 
+import baptistediot.board.Board;
+
 public class Sudoku {
     public static final int ROW_SIZE = 9;
     public static final int COLUMN_SIZE = 9;

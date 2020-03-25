@@ -1,4 +1,4 @@
-package baptistediot;
+package baptistediot.board;
 
 public class Board {
     public Cell[][] board;

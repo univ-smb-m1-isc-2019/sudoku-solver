@@ -1,4 +1,4 @@
-package baptistediot;
+package baptistediot.board;
 
 public class Cell {
     public int value;
@@ -6,5 +6,5 @@ public class Cell {
     public Cell(int value){
         this.value = value;
     }
-    
+
 }

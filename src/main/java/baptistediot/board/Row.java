@@ -1,4 +1,6 @@
-package baptistediot;
+package baptistediot.board;
+
+import baptistediot.Sudoku;
 
 public class Row {
     public Cell[] row;
