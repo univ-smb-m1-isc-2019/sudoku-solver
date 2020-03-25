@@ -10,4 +10,8 @@ public class Sudoku {
     public Sudoku(int[][] board){
         this.sudoku = new Board(board);
     }
+
+    public void solve(){
+
+    }
 }
