@@ -1,9 +1,9 @@
 package baptistediot;
 
 public class Sudoku {
-    public Board board;
+    public Board sudoku;
 
     public Sudoku(int[][] board){
-        this.board = new Board(board);
+        this.sudoku = new Board(board);
     }
 }
