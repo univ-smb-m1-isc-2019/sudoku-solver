@@ -8,4 +8,8 @@ public class Square {
     public Square(){
         this.square = new ArrayList<>();
     }
+
+    public void add(Cell cell){
+        square.add(cell);
+    }
 }
