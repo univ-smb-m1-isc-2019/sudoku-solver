@@ -11,4 +11,8 @@ public class Cell {
         return String.valueOf(value);
     }
 
+    public int getValue(){
+        return value;
+    }
+
 }
