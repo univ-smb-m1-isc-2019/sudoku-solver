@@ -16,4 +16,8 @@ public class Sudoku {
     public void solve(){
 
     }
+
+    public String toString(){
+        return sudoku.toString();
+    }
 }

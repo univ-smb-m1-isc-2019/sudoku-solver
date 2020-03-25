@@ -18,6 +18,8 @@ public class Board {
     }
 
     private void buildBoard(int[][] board){
+        this.board = new Cell[Sudoku.ROW_SIZE][Sudoku.COLUMN_SIZE];
+
         for(int row = 0; row < Sudoku.ROW_SIZE; ++row){
             for(int column = 0; column < Sudoku.COLUMN_SIZE; ++column){
                 Cell cell = new Cell(board[row][column]);
@@ -59,5 +61,19 @@ public class Board {
 
     private int getSquareNumber(int row, int column){
         return (row / 3) * 3 + (column / 3);
+    }
+
+    public String toString(){
+        StringBuilder s = new StringBuilder();
+
+        for(int row = 0; row < Sudoku.ROW_SIZE; ++row) {
+            for (int column = 0; column < Sudoku.COLUMN_SIZE; ++column) {
+                s.append(board[row][column]);
+                s.append("  ");
+            }
+            s.append("\n");
+        }
+
+        return s.toString();
     }
 }

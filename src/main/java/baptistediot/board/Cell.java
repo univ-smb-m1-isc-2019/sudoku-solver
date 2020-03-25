@@ -7,4 +7,8 @@ public class Cell {
         this.value = value;
     }
 
+    public String toString(){
+        return String.valueOf(value);
+    }
+
 }
