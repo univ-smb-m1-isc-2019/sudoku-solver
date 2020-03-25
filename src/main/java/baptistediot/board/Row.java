@@ -3,8 +3,8 @@ package baptistediot.board;
 import java.util.ArrayList;
 
 public class Row {
-    public ArrayList<Cell> row;
-    public ArrayList<Integer> possibilities;
+    private ArrayList<Cell> row;
+    private ArrayList<Integer> possibilities;
 
     public Row() {
         this.row = new ArrayList<>();

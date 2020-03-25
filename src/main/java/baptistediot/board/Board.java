@@ -3,10 +3,10 @@ package baptistediot.board;
 import baptistediot.Sudoku;
 
 public class Board {
-    public Cell[][] board;
-    public Row[] rows;
-    public Column[] columns;
-    public Square[] squares;
+    private Cell[][] board;
+    private Row[] rows;
+    private Column[] columns;
+    private Square[] squares;
 
 
     public Board(int[][] board) {

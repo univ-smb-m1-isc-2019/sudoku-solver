@@ -3,8 +3,8 @@ package baptistediot.board;
 import java.util.ArrayList;
 
 public class Column {
-    public ArrayList<Cell> column;
-    public ArrayList<Integer> possibilities;
+    private ArrayList<Cell> column;
+    private ArrayList<Integer> possibilities;
 
     public Column() {
         this.column = new ArrayList<>();

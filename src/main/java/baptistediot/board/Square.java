@@ -3,8 +3,8 @@ package baptistediot.board;
 import java.util.ArrayList;
 
 public class Square {
-    public ArrayList<Cell> square;
-    public ArrayList<Integer> possibilities;
+    private ArrayList<Cell> square;
+    private ArrayList<Integer> possibilities;
 
     public Square(){
         this.square = new ArrayList<>();
