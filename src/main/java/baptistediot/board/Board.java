@@ -18,7 +18,19 @@ public class Board {
     }
 
     private void buildBoard(int[][] board){
+        for(int row = 0; row < Sudoku.ROW_SIZE; ++row){
+            for(int column = 0; column < Sudoku.COLUMN_SIZE; ++column){
+                Cell cell = new Cell(board[row][column]);
 
+                this.board[row][column] = cell;
+
+                this.rows[row].add(cell);
+                this.columns[column].add(cell);
+
+                int squareNumber = getSquareNumber(row, column);
+                this.squares[squareNumber].add(cell);
+            }
+        }
     }
 
     private void createEmptyRows(){
@@ -43,5 +55,9 @@ public class Board {
         for(int square = 0; square < Sudoku.SQUARE_SIZE; ++square){
             squares[square] = new Square();
         }
+    }
+
+    private int getSquareNumber(int row, int column){
+        return (row / 3) * 3 + (column / 3);
     }
 }

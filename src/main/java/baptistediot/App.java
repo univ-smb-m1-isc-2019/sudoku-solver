@@ -1,9 +1,5 @@
 package baptistediot;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static int[][] board = {
