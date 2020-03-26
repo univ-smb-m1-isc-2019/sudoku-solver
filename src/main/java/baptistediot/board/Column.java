@@ -4,29 +4,38 @@ import java.util.ArrayList;
 
 public class Column {
     private ArrayList<Cell> column;
-    private ArrayList<Integer> possibilities;
 
     public Column() {
         this.column = new ArrayList<>();
-        initPossibilities();
     }
 
     public void add(Cell cell) {
         column.add(cell);
-        possibilities.remove(Integer.valueOf(cell.getValue()));
     }
 
-    private void initPossibilities(){
-        this.possibilities = new ArrayList<>();
+    public ArrayList<Integer> getPossibilities(){
+        ArrayList<Integer> possibilities = initPossibilities();
 
-        this.possibilities.add(1);
-        this.possibilities.add(2);
-        this.possibilities.add(3);
-        this.possibilities.add(4);
-        this.possibilities.add(5);
-        this.possibilities.add(6);
-        this.possibilities.add(7);
-        this.possibilities.add(8);
-        this.possibilities.add(9);
+        for(Cell cell: column){
+            possibilities.remove(Integer.valueOf(cell.getValue()));
+        }
+
+        return possibilities;
+    }
+
+    private ArrayList<Integer> initPossibilities(){
+        ArrayList<Integer> possibilities = new ArrayList<>();
+
+        possibilities.add(1);
+        possibilities.add(2);
+        possibilities.add(3);
+        possibilities.add(4);
+        possibilities.add(5);
+        possibilities.add(6);
+        possibilities.add(7);
+        possibilities.add(8);
+        possibilities.add(9);
+
+        return possibilities;
     }
 }
