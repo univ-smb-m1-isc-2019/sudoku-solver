@@ -13,14 +13,14 @@ public class Row {
         row.add(cell);
     }
 
-    public ArrayList<Integer> getPossibilities(){
+    public Integer[] getPossibilities(){
         ArrayList<Integer> possibilities = initPossibilities();
 
         for(Cell cell: row){
             possibilities.remove(Integer.valueOf(cell.getValue()));
         }
 
-        return possibilities;
+        return (Integer[]) possibilities.toArray();
     }
 
     private ArrayList<Integer> initPossibilities(){
