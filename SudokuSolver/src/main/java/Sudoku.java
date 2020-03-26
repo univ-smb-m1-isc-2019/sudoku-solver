@@ -85,6 +85,20 @@ public class Sudoku {
         return res;
     }
 
+
+    public int calculBloc(int[][] grille, int x, int y) {
+        int i, j;
+        int v = x / 3 * 3;
+        int h = y / 3 * 3;
+        int res = 0;
+        for (i = v; i < v + 3; i++) {
+            for (j = h; j < h + 3; j++) {
+                res += grille[i][j];
+            }
+        }
+        return res;
+    }
+
     public void afficherSudoku(int[][] board) {
         if (resolu == false) {
             System.out.println("Sudoku à résoudre:");
