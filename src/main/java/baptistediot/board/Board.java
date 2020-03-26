@@ -63,16 +63,20 @@ public class Board {
         return (row / 3) * 3 + (column / 3);
     }
 
-    public Column getColumns(int index) {
+    public Column getColumn(int index) {
         return columns[index];
     }
 
-    public Row getRows(int index) {
+    public Row getRow(int index) {
         return rows[index];
     }
 
-    public Square getSquares(int row, int column) {
+    public Square getSquare(int row, int column) {
         return squares[getSquareNumber(row, column)];
+    }
+
+    public Square getSquare(int index){
+        return squares[index];
     }
 
     public Cell getCell(int row, int column){
