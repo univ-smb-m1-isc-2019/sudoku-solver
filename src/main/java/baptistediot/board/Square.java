@@ -38,4 +38,8 @@ public class Square {
 
         return possibilities;
     }
+
+    public ArrayList<Cell> getSquare() {
+        return square;
+    }
 }

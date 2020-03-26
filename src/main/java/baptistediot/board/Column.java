@@ -38,4 +38,8 @@ public class Column {
 
         return possibilities;
     }
+
+    public ArrayList<Cell> getColumn() {
+        return column;
+    }
 }

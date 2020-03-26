@@ -38,4 +38,8 @@ public class Row {
 
         return possibilities;
     }
+
+    public ArrayList<Cell> getRow() {
+        return row;
+    }
 }
