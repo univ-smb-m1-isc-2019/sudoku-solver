@@ -20,7 +20,7 @@ public class Column {
             possibilities.remove(Integer.valueOf(cell.getValue()));
         }
 
-        return (Integer[]) possibilities.toArray();
+        return possibilities.toArray(new Integer[0]);
     }
 
     private ArrayList<Integer> initPossibilities(){
