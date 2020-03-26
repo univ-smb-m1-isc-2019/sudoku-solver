@@ -11,9 +11,9 @@ import java.util.stream.Stream;
 public class CellSolver {
 
     public static Integer[] getPossibilities(Board board, int row, int column){
-        Row r = board.getRows(row);
-        Column c = board.getColumns(column);
-        Square s = board.getSquares(row, column);
+        Row r = board.getRow(row);
+        Column c = board.getColumn(column);
+        Square s = board.getSquare(row, column);
 
         Integer[] rowPossibilities = r.getPossibilities();
         Integer[] columnPossibilities = c.getPossibilities();
