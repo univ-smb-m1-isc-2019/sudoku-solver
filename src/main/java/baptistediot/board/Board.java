@@ -63,6 +63,22 @@ public class Board {
         return (row / 3) * 3 + (column / 3);
     }
 
+    public Column getColumns(int index) {
+        return columns[index];
+    }
+
+    public Row getRows(int index) {
+        return rows[index];
+    }
+
+    public Square getSquares(int row, int column) {
+        return squares[getSquareNumber(row, column)];
+    }
+
+    public Cell getCell(int row, int column){
+        return board[row][column];
+    }
+
     public String toString(){
         StringBuilder s = new StringBuilder();
 
