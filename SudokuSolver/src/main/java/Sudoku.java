@@ -17,8 +17,20 @@ public class Sudoku {
                 afficherSudoku(board);
             }
         } else {
+            boolean nums[];
             if (board[line][col] == 0) {
-
+                nums = numerosPossibles(board, line, col);
+                if (nums[0]) {
+                    for (int k = 1; k < 10; k++) {
+                        if (nums[k]) {
+                            board[line][col] = k;
+                            if (calculLigne(board, line) <= 45 && calculColonne(board, col) <= 45 && calculBloc(board, line, col) <= 45) {
+                                resoudre(board, line, col + 1);
+                            }
+                        }
+                    }
+                    board[line][col] = 0;
+                }
             } else {
                 resoudre(board, line, col + 1);
             }
@@ -33,7 +45,6 @@ public class Sudoku {
             t[i] = true;
         }
 
-
         for (i = 0; i < 9; i++) {
             // met a faux dans le tableau t, à la case qui correspond à la valeur de g[i][y] si le chiffre est sur la colonne
             if (g[i][y] != 0) {
@@ -46,7 +57,6 @@ public class Sudoku {
                 t[g[x][i]] = false;
             }
         }
-
         // met a faux dans le tableau t, à la case qui correspond à la valeur de g[i][y] si le chiffre est présent dans le bloc
         int v = (x / 3) * 3;
         int h = (y / 3) * 3;
