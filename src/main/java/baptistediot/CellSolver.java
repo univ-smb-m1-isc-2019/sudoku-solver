@@ -1,9 +1,6 @@
 package baptistediot;
 
-import baptistediot.board.Board;
-import baptistediot.board.Column;
-import baptistediot.board.Row;
-import baptistediot.board.Square;
+import baptistediot.board.*;
 
 import java.util.Arrays;
 import java.util.stream.Stream;
@@ -11,9 +8,9 @@ import java.util.stream.Stream;
 public class CellSolver {
 
     public static Integer[] getPossibilities(Board board, int row, int column){
-        Row r = board.getRow(row);
-        Column c = board.getColumn(column);
-        Square s = board.getSquare(row, column);
+        CellGroup r = board.getRow(row);
+        CellGroup c = board.getColumn(column);
+        CellGroup s = board.getSquare(row, column);
 
         Integer[] rowPossibilities = r.getPossibilities();
         Integer[] columnPossibilities = c.getPossibilities();

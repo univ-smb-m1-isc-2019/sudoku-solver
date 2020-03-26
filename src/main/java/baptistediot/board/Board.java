@@ -4,9 +4,9 @@ import baptistediot.Sudoku;
 
 public class Board {
     private Cell[][] board;
-    private Row[] rows;
-    private Column[] columns;
-    private Square[] squares;
+    private CellGroup[] rows;
+    private CellGroup[] columns;
+    private CellGroup[] squares;
 
 
     public Board(int[][] board) {
@@ -36,26 +36,26 @@ public class Board {
     }
 
     private void createEmptyRows(){
-        this.rows = new Row[Sudoku.ROW_SIZE];
+        this.rows = new CellGroup[Sudoku.ROW_SIZE];
 
         for(int row = 0; row < Sudoku.ROW_SIZE; ++row){
-            rows[row] = new Row();
+            rows[row] = new CellGroup();
         }
     }
 
     private void createEmptyColumns(){
-        this.columns = new Column[Sudoku.COLUMN_SIZE];
+        this.columns = new CellGroup[Sudoku.COLUMN_SIZE];
 
         for(int column = 0; column < Sudoku.COLUMN_SIZE; ++column){
-            columns[column] = new Column();
+            columns[column] = new CellGroup();
         }
     }
 
     private void createEmptySquare(){
-        this.squares = new Square[Sudoku.SQUARE_SIZE];
+        this.squares = new CellGroup[Sudoku.SQUARE_SIZE];
 
         for(int square = 0; square < Sudoku.SQUARE_SIZE; ++square){
-            squares[square] = new Square();
+            squares[square] = new CellGroup();
         }
     }
 
@@ -63,19 +63,19 @@ public class Board {
         return (row / 3) * 3 + (column / 3);
     }
 
-    public Column getColumn(int index) {
+    public CellGroup getColumn(int index) {
         return columns[index];
     }
 
-    public Row getRow(int index) {
+    public CellGroup getRow(int index) {
         return rows[index];
     }
 
-    public Square getSquare(int row, int column) {
+    public CellGroup getSquare(int row, int column) {
         return squares[getSquareNumber(row, column)];
     }
 
-    public Square getSquare(int index){
+    public CellGroup getSquare(int index){
         return squares[index];
     }
 

@@ -1,9 +1,6 @@
 package baptistediot;
 
-import baptistediot.board.Cell;
-import baptistediot.board.Column;
-import baptistediot.board.Row;
-import baptistediot.board.Square;
+import baptistediot.board.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -24,9 +21,9 @@ public class SudokuTest {
         Integer[] solution = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
         for(int column = 0; column < Sudoku.COLUMN_SIZE; column++){
-            Column c = sudoku.getBoard().getColumn(column);
+            CellGroup c = sudoku.getBoard().getColumn(column);
 
-            ArrayList<Cell> cells = c.getColumn();
+            ArrayList<Cell> cells = c.getCellGroup();
 
             Integer[] valueCells = getAllValueNineCells(cells);
             Arrays.sort(valueCells);
@@ -45,9 +42,9 @@ public class SudokuTest {
         Integer[] solution = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
         for(int row = 0; row < Sudoku.ROW_SIZE; row++){
-            Row r = sudoku.getBoard().getRow(row);
+            CellGroup r = sudoku.getBoard().getRow(row);
 
-            ArrayList<Cell> cells = r.getRow();
+            ArrayList<Cell> cells = r.getCellGroup();
 
             Integer[] valueCells = getAllValueNineCells(cells);
             Arrays.sort(valueCells);
@@ -66,9 +63,9 @@ public class SudokuTest {
         Integer[] solution = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
         for(int square = 0; square < Sudoku.SQUARE_SIZE; square++){
-            Square s = sudoku.getBoard().getSquare(square);
+            CellGroup s = sudoku.getBoard().getSquare(square);
 
-            ArrayList<Cell> cells = s.getSquare();
+            ArrayList<Cell> cells = s.getCellGroup();
 
             Integer[] valueCells = getAllValueNineCells(cells);
             Arrays.sort(valueCells);

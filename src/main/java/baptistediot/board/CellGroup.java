@@ -2,21 +2,21 @@ package baptistediot.board;
 
 import java.util.ArrayList;
 
-public class Row {
-    private ArrayList<Cell> row;
+public class CellGroup {
+    private ArrayList<Cell> cellGroup;
 
-    public Row() {
-        this.row = new ArrayList<>();
+    public CellGroup() {
+        this.cellGroup = new ArrayList<>();
     }
 
     public void add(Cell cell) {
-        row.add(cell);
+        cellGroup.add(cell);
     }
 
     public Integer[] getPossibilities(){
         ArrayList<Integer> possibilities = initPossibilities();
 
-        for(Cell cell: row){
+        for(Cell cell: cellGroup){
             possibilities.remove(Integer.valueOf(cell.getValue()));
         }
 
@@ -39,7 +39,7 @@ public class Row {
         return possibilities;
     }
 
-    public ArrayList<Cell> getRow() {
-        return row;
+    public ArrayList<Cell> getCellGroup() {
+        return cellGroup;
     }
 }
