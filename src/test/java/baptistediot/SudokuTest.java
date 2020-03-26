@@ -2,6 +2,7 @@ package baptistediot;
 
 import baptistediot.board.Cell;
 import baptistediot.board.Column;
+import baptistediot.board.Row;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -33,6 +34,31 @@ public class SudokuTest {
         }
     }
 
+    @Test
+    public void rowShouldHaveEveryNumberFromOneToNineOnce() {
+        int[][] board = App.board;
+        Sudoku sudoku = new Sudoku(board);
+
+        sudoku.solve();
+
+        Integer[] solution = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+        for(int row = 0; row < Sudoku.ROW_SIZE; row++){
+            Row r = sudoku.getBoard().getRows(row);
+
+            ArrayList<Cell> cells = r.getRow();
+
+            Integer[] valueCells = getAllValueNineCells(cells);
+            Arrays.sort(valueCells);
+
+            assertThat(valueCells).isEqualTo(solution);
+        }
+    }
+
+    @Test
+    public void squareShouldHaveEveryNumberFromOneToNineOnce() {
+    }
+
     private Integer[] getAllValueNineCells(ArrayList<Cell> cells){
         Integer[] res = new Integer[9];
 
@@ -42,14 +68,5 @@ public class SudokuTest {
 
         return res;
     }
-
-    @Test
-    public void rowShouldHaveEveryNumberFromOneToNineOnce() {
-    }
-
-    @Test
-    public void squareShouldHaveEveryNumberFromOneToNineOnce() {
-    }
-
 
 }
