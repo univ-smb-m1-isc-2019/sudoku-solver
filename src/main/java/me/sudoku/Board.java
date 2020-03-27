@@ -1,6 +1,5 @@
 package me.sudoku;
 
-import java.util.ArrayList;
 
 public class Board {
     Cell[][] board;
@@ -10,13 +9,11 @@ public class Board {
         this.board = new Cell[board.length][board.length];
         for (int i = 0; i<board.length; i++){
             for (int j = 0; j<board.length; j++){
-                this.board[i][j] = new Cell(board[i][j], i, j);
+                this.board[i][j] = new Cell(board[i][j]);
             }
         }
     }
     void printBoard(){
-        System.out.print("\n");
-        System.out.print("\n");
         for (int i = 0; i<board.length; i++){
             for (int j = 0; j<board.length; j++){
                 String val = board[i][j].getValue() == 0 ? " " : Integer.toString(board[i][j].getValue());

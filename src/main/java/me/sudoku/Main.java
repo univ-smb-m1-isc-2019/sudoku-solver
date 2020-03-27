@@ -15,6 +15,8 @@ public class Main {
         };
         Solver solver = new Solver(board);
         solver.board.printBoard();
+        System.out.print("\n");
+        System.out.print("\n");
         if (solver.solve()){
             solver.board.printBoard();
         } else {
