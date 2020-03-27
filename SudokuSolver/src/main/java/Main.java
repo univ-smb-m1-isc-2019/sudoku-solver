@@ -12,6 +12,8 @@ public class Main {
     };
 
     public static void main(String[] args) {
-        new Sudoku(board);
+        Sudoku s = new Sudoku(board);
+        s.afficherSudoku();
+        s.resoudre(0,0);
     }
 }
