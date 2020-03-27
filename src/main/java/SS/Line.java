@@ -4,22 +4,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Line extends Container {
-    public Line(ArrayList<Case> List){
-        this.list = List;
+    public Line(){
+        this.list =  new ArrayList<Case>();
     }
-    public Line(Integer[] line){
+    public Line(ArrayList<Case> line){
         ArrayList<Case> finalLine = new ArrayList<Case>();
-        Arrays.stream(line).forEach(j -> {
-            finalLine.add(new Case(j));
+        line.stream().forEach(j -> {
+            finalLine.add(j);
         });
         this.list = finalLine;
     }
 
-    public Line(int[] line) {
-        ArrayList<Case> finalLine = new ArrayList<Case>();
-        Arrays.stream(line).forEach(j -> {
-            finalLine.add(new Case(j));
-        });
-        this.list = finalLine;
-    }
 }
