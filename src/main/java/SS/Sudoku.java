@@ -12,7 +12,7 @@ public class Sudoku {
         this.lineList = new ArrayList<Line>();
         //chargement line
         Arrays.stream(board).forEach(i -> {
-
+            lineList.add(new Line(i));
         });
         //chargement column
     }

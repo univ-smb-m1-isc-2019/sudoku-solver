@@ -14,4 +14,12 @@ public class Line extends Container {
         });
         this.list = finalLine;
     }
+
+    public Line(int[] line) {
+        ArrayList<Case> finalLine = new ArrayList<Case>();
+        Arrays.stream(line).forEach(j -> {
+            finalLine.add(new Case(j));
+        });
+        this.list = finalLine;
+    }
 }
