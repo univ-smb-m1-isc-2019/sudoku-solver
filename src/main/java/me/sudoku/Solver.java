@@ -6,26 +6,29 @@ public class Solver {
     public Solver(int[][] initBoard){
         board = new Board(initBoard);
     }
-    public void solve(){
-       //reducePossibleValues();
-        board.printBoard();
-    }
-
-    /*public void reducePossibleValues(){
-        for (int i = 0; i<board.length; i++){
-            for (int j = 0; j<board.length; j++){
-                Cell c = board.board[i][j];
-                if (!c.isResolved()){
-                    reduceFromLine(c);
-                    reduceFromCol(c);
-                    if (c.getPossibleValues().size() == 1){
-                        c.setValue(c.getPossibleValues().get(0));
-                        c.resolved();
+    public boolean solve(){
+        for (int i = 0; i<board.length; i++) {
+            for (int j = 0; j < board.length; j++) {
+                if (board.board[i][j].getValue() == 0) {
+                    for (int num = 1; num <= board.length; num++) {
+                        if (!numberIsInLine(i, num)
+                                &&  !numberIsInCol(j, num)
+                                &&  !numberIsInArea(i, j, num)) {
+                            board.board[i][j].setValue(num);
+                            if (solve()) {
+                                return true;
+                            } else {
+                                board.board[i][j].setValue(0);
+                            }
+                        }
                     }
+                    return false;
                 }
             }
         }
-    }*/
+        return true;
+    }
+
     public boolean numberIsInLine(int line, int number){
         for (int i = 0; i<board.length; i++) {
             if (board.board[line][i].getValue() == number){

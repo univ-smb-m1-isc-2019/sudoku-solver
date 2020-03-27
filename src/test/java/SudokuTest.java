@@ -47,4 +47,11 @@ public class SudokuTest {
             assertTrue(solver.numberIsInArea(8, 8, 4));
         }
     }
+    @Test
+    public void solve_should_return_true(){
+        Solver solver = new Solver(board);
+        for (int i = 0; i<100; i++){
+            assertTrue(solver.solve());
+        }
+    }
 }

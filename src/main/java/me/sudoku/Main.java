@@ -14,6 +14,12 @@ public class Main {
                 { 0, 9, 0, 0, 0, 0, 4, 0, 0 }
         };
         Solver solver = new Solver(board);
-        solver.solve();
+        solver.board.printBoard();
+        if (solver.solve()){
+            solver.board.printBoard();
+        } else {
+            System.out.println("Sudoku unsolvable");
+        }
+
     }
 }

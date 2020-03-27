@@ -15,9 +15,12 @@ public class Board {
         }
     }
     void printBoard(){
+        System.out.print("\n");
+        System.out.print("\n");
         for (int i = 0; i<board.length; i++){
             for (int j = 0; j<board.length; j++){
-                System.out.print(board[i][j].getValue() + " ");
+                String val = board[i][j].getValue() == 0 ? " " : Integer.toString(board[i][j].getValue());
+                System.out.print(val + " ");
                 if (j == 2 || j == 5)
                     System.out.print("| ");
             }
