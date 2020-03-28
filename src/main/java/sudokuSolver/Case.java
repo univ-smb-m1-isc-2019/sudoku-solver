@@ -3,11 +3,15 @@ package sudokuSolver;
 public class Case {
     private int numeroLigne;
     private int numeroColonne;
+    private int valeur;
+
+
 
     public Case(int l, int c)
     {
         setNumeroColonne(c);
         setNumeroLigne(l);
+        setValeur(0);
     }
 
     public int getNumeroLigne() {
@@ -25,4 +29,12 @@ public class Case {
     public void setNumeroColonne(int numeroColonne) {
         this.numeroColonne = numeroColonne;
     }
+    public int getValeur() {
+        return valeur;
+    }
+
+    public void setValeur(int valeur) {
+        this.valeur = valeur;
+    }
+
 }
