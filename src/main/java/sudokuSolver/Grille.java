@@ -134,9 +134,17 @@ public class Grille {
                 actuelle = at(i,j);
                 if(actuelle.estLibre())
                 {
-                    miseAJourLigne(actuelle);
-                    miseAJourColonne(actuelle);
-                    miseAJourCarre(actuelle);
+                    if(actuelle.encorePossible()) {
+                        miseAJourLigne(actuelle);
+                        miseAJourColonne(actuelle);
+                        miseAJourCarre(actuelle);
+                    }
+                    else
+                    {
+                        System.out.println("Erreur, la case sur a ligne "+actuelle.getNumeroLigne()+" et la colonne "+actuelle.getNumeroColonne() +" n'a plus de possibilitees");
+                        System.exit(1);
+
+                    }
                 }
             }
         }
@@ -146,6 +154,18 @@ public class Grille {
     }
 
     private void miseAJourColonne(Case actuelle) {
+        Case courante;
+        for(int i = 0; i < nbColonnes(); i++)
+        {
+            courante = grille[i][actuelle.getNumeroColonne()];
+            if(!courante.estLibre())//Si la case contient un numero
+            {
+                if(actuelle.estPossible(courante.getValeur()))//Si ce numero est encore dans le liste des cases possible
+                {
+                    actuelle.retirePossible(courante.getValeur());//on le retire
+                }
+            }
+        }
     }
 
     private void miseAJourLigne(Case actuelle) {
