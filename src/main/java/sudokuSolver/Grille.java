@@ -29,6 +29,7 @@ public class Grille {
             for(int j = 0; j < c; j++)
             {
                 grille[i][j] = new Case(i,j);
+
             }
         }
     }
@@ -74,6 +75,27 @@ public class Grille {
         grille[8][4].setValeur(8);
         grille[8][7].setValeur(7);
         grille[8][8].setValeur(9);
+    }
+
+    public int nbLignes()
+    {
+        return grille.length;
+    }
+
+    public int nbColonnes()
+    {
+        if(nbLignes() < 1)
+        {
+            return 0;
+        }else
+        {
+            return grille[0].length;
+        }
+    }
+
+    public Case at(int l,int c)
+    {
+        return grille[l][c];
     }
 
 }

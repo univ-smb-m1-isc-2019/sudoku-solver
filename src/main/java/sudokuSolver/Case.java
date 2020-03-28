@@ -37,4 +37,9 @@ public class Case {
         this.valeur = valeur;
     }
 
+    public boolean numeroValide()
+    {
+        return getValeur() >= 0 && getValeur() <= 9;
+    }
+
 }
