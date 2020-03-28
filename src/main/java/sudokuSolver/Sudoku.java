@@ -139,12 +139,6 @@ public class Sudoku {
         }
     }
 
-    public void setGrille(int l)
-            //Creer la grille de taille l
-    {
-        grille = new Case[l][l];
-    }
-
     public void initGrille(int l)
             //Initialise une grille avec une taille l et des cases de base
     {
@@ -153,33 +147,9 @@ public class Sudoku {
         {
             for(int j = 0; j < l; j++)
             {
-                grille[i][j] = new Case(i,j);
+                grille[i][j] = new Case(i,j,l);
 
             }
-        }
-    }
-
-    public Case at(int l,int c)
-            //Recupere la case a la ligne let la colonne c
-    {
-        return grille[l][c];
-    }
-
-    public int nbLignes()
-            //Retourne le nombre de lignes de la grille
-    {
-        return grille.length;
-    }
-
-    public int nbColonnes()
-    //Retourne le nombre de colonnes de la grille
-    {
-        if(nbLignes() < 1)
-        {
-            return 0;
-        }else
-        {
-            return grille[0].length;
         }
     }
 
@@ -286,4 +256,35 @@ public class Sudoku {
         grille[8][8].setValeur(9);
     }
 
+    /*Getters et Setters*/
+
+    public Case at(int l,int c)
+    //Recupere la case a la ligne let la colonne c
+    {
+        return grille[l][c];
+    }
+
+    public int nbLignes()
+    //Retourne le nombre de lignes de la grille
+    {
+        return grille.length;
+    }
+
+    public int nbColonnes()
+    //Retourne le nombre de colonnes de la grille
+    {
+        if(nbLignes() < 1)
+        {
+            return 0;
+        }else
+        {
+            return grille[0].length;
+        }
+    }
+
+    public void setGrille(int l)
+    //Creer la grille de taille l
+    {
+        grille = new Case[l][l];
+    }
 }
