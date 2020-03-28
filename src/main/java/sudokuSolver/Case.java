@@ -109,4 +109,10 @@ public class Case {
         return possible.size() == max;
     }
 
+    public boolean estLibre()
+    {
+        return getValeur() == 0;
+    }
+
+
 }

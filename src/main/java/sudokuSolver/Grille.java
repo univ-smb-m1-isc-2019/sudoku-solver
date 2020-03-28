@@ -124,4 +124,31 @@ public class Grille {
 
     }
 
+    private void miseAJourPossible()
+    {
+        Case actuelle;
+        for(int i = 0; i < nbLignes(); i++)
+        {
+            for(int j = 0; j < nbColonnes(); j++)
+            {
+                actuelle = at(i,j);
+                if(actuelle.estLibre())
+                {
+                    miseAJourLigne(actuelle);
+                    miseAJourColonne(actuelle);
+                    miseAJourCarre(actuelle);
+                }
+            }
+        }
+    }
+
+    private void miseAJourCarre(Case actuelle) {
+    }
+
+    private void miseAJourColonne(Case actuelle) {
+    }
+
+    private void miseAJourLigne(Case actuelle) {
+    }
+
 }
