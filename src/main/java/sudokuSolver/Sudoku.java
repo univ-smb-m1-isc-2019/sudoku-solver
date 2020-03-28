@@ -287,4 +287,76 @@ public class Sudoku {
     {
         grille = new Case[l][l];
     }
+
+
+    /*Fonction de tests*/
+
+    public boolean bonNumero(Case actuelle)
+    {
+        boolean ok1, ok2, ok3;
+        ok1 = uniqueDansLaLigne(actuelle);
+        ok2 = uniqueDansLaColonne(actuelle);
+        ok3 = uniqueDansLaCarre(actuelle);
+
+        return ok1 && ok2 && ok3;
+    }
+
+    private boolean uniqueDansLaCarre(Case actuelle)
+    {
+        Pair<Integer,Integer> hautGauche = rechercheHautGauche(actuelle);//On cherche les coordonnees de la case la plus en haut a gauche du carre auquel appartient la case actuelle
+        Case courante;
+        for(int i = 0; i < TAILLE_CARRE; i++)
+        {
+            for(int j = 0; j < TAILLE_CARRE; j++)
+            {
+                //On fait autant d'iteration qu'il y a de cases dans le carre
+                courante = grille[hautGauche.getKey() + i][hautGauche.getValue() + j];
+                //On recupere la case courante en ajoutant le numero de coord de la case la plus en haut a gauche avec le numero de la case ou on se trouve dans le carre
+                if((hautGauche.getKey() + i) != actuelle.getNumeroLigne()
+                    && (hautGauche.getValue() + j) != actuelle.getNumeroColonne())
+                {
+                    if(courante.getValeur() == actuelle.getValeur())
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    private boolean uniqueDansLaColonne(Case actuelle)
+    {
+        Case courante;
+        for(int i = 0; i < nbLignes(); i++)
+        {
+            courante = grille[i][actuelle.getNumeroColonne()];
+            if(actuelle.getNumeroLigne() != i)
+            {
+                if(courante.getValeur() == actuelle.getValeur())
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private boolean uniqueDansLaLigne(Case actuelle)
+    {
+        Case courante;
+        for(int i = 0; i < nbColonnes(); i++)
+        {
+            courante = grille[actuelle.getNumeroLigne()][i];
+            if(actuelle.getNumeroColonne() != i)
+            {
+                if(courante.getValeur() == actuelle.getValeur())
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
 }
