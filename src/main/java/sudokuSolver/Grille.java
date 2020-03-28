@@ -1,5 +1,7 @@
 package sudokuSolver;
 
+import javafx.util.Pair;
+
 import java.util.ArrayList;
 
 public class Grille {
@@ -151,6 +153,32 @@ public class Grille {
     }
 
     private void miseAJourCarre(Case actuelle) {
+
+        Pair<Integer,Integer> hautGauche = rechercheHautGauche(actuelle);
+        Case courante;
+        for(int i = 0; i < 3; i++)
+        {
+            for(int j = 0; j < 3; j++)
+            {
+                courante = grille[hautGauche.getKey() + i][hautGauche.getValue() + j];
+                if(!courante.estLibre())//Si la case contient un numero
+                {
+                    if(actuelle.estPossible(courante.getValeur()))//Si ce numero est encore dans le liste des cases possible
+                    {
+                        actuelle.retirePossible(courante.getValeur());//on le retire
+                    }
+                }
+            }
+        }
+
+    }
+
+    private Pair<Integer, Integer> rechercheHautGauche(Case actuelle)
+    {
+        int ligneDansCarre = actuelle.getNumeroLigne() % 3;
+        int colonneDansCarre = actuelle.getNumeroColonne() % 3;
+        return new Pair<Integer, Integer>(actuelle.getNumeroLigne() - ligneDansCarre, actuelle.getNumeroColonne() - colonneDansCarre);
+
     }
 
     private void miseAJourColonne(Case actuelle) {
