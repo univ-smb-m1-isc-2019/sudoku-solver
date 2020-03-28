@@ -10,14 +10,21 @@ public class Sudoku {
     public Sudoku(int[][] board){
         //initialisation
         initMatrice();
-        initLine(9);
-        initColumn(9);
+        initLine(board.length);
+        initColumn(board[0].length);
+        initSquare(9);
         //chargement matrice
         for(int i = 0; i < board.length; i++){
             for(int j = 0; j < board[i].length; j++){
                 this.matrice.add(new Case(board[i][j], j, i));
             }
         }
+        //chargement ligne et colonne
+        this.matrice.stream().forEach(elt->{
+            this.lineList.get(elt.getLineID()).list.add(elt);
+            this.columnList.get(elt.getColumnID()).list.add(elt);
+            this.squareList.get(elt.getSquareID()).list.add(elt);
+        });
 
     }
     public void initMatrice(){
@@ -26,7 +33,7 @@ public class Sudoku {
     public void initLine(int nb){
         this.lineList = new ArrayList<Line>();
         for(int i = 0; i < nb; i++){
-            this.lineList.add(new Line());
+            this.lineList.add(new Line(i));
         }
     }
     public void addLine(Line line){
@@ -35,7 +42,7 @@ public class Sudoku {
     public void initColumn(int nb){
         this.columnList = new ArrayList<Column>();
         for(int i = 0; i < nb; i++){
-            this.columnList.add(new Column());
+            this.columnList.add(new Column(i));
         }
     }
     public void addColumn(Column column){
@@ -52,9 +59,8 @@ public class Sudoku {
 
     public void printMatrice(){
         this.matrice.stream().forEach(i->{
-            System.out.println("value = "+i.value);
-            System.out.println("x = "+i.x);
-            System.out.println("y = "+i.y);
+            i.printCase();
+
         });
     }
 }

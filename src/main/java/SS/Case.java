@@ -2,9 +2,6 @@ package main.java.SS;
 
 public class Case {
     public int value;
-    public Line line;
-    public Column column;
-    public Square square;
     public int x;
     public int y;
     public Case(int value){
@@ -15,10 +12,21 @@ public class Case {
         this.x = x;
         this.y = y;
     }
-    public void addLine(Line line){
-        this.line = line;
+    public int getLineID(){
+        return this.y;
     }
-    public void addColumn(Column column){
-        this.column = column;
+    public int getColumnID(){
+        return this.x;
+    }
+    public int getSquareID(){
+        return (this.y/3)*3+(this.x/3);
+    }
+    public void printCase(){
+        System.out.println("value = "+this.value);
+        System.out.println("x = "+this.x);
+        System.out.println("y = "+this.y);
+        System.out.println("column = "+this.getColumnID());
+        System.out.println("line = "+this.getLineID());
+        System.out.println("square = "+this.getSquareID());
     }
 }

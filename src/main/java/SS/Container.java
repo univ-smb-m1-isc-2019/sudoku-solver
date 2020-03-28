@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public abstract class Container {
     public ArrayList<Case> list;
+    public int id;
     public Container(){
         this.list = new ArrayList<Case>();
     }
@@ -30,10 +31,5 @@ public abstract class Container {
         this.list.stream().forEach(i -> {
             System.out.println(i.value);
         });
-    }
-    public void print2(){
-        for(int i = 0; i < this.list.size(); i++){
-            System.out.println(this.list.get(i).value);
-        }
     }
 }

@@ -14,7 +14,9 @@ public class Main {
                 {0, 9, 0, 0, 0, 0, 4, 0, 0}
         };
         Sudoku sudoku = new Sudoku(board);
-        sudoku.printMatrice();
+        sudoku.matrice.get(41).printCase();
+
+
 
     }
 
