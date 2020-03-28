@@ -39,6 +39,7 @@ public class Case {
 
     public void setValeur(int valeur) {
         this.valeur = valeur;
+        setPossible(new ArrayList<Integer>());
     }
 
     public boolean numeroValide()
@@ -67,4 +68,38 @@ public class Case {
         possible.add(8);
         possible.add(9);
     }
+
+    public boolean encorePossible()
+    {
+        return possible.size() == 0;
+    }
+
+    public void retirePossible(int nb)
+    {
+        int i = 0;
+        boolean stop = false;
+        while(i < possible.size() && !stop)
+        {
+            if(possible.get(i) == nb)
+            {
+                possible.remove(i);
+                stop = true;
+            }
+            i++;
+        }
+    }
+
+    public boolean estPossible(int nb)
+    {
+        int i = 0;
+        while(i < possible.size())
+        {
+            if(possible.get(i) == nb)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
