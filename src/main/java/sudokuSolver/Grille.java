@@ -149,6 +149,18 @@ public class Grille {
     }
 
     private void miseAJourLigne(Case actuelle) {
+        Case courante;
+        for(int i = 0; i < nbColonnes(); i++)
+        {
+            courante = grille[actuelle.getNumeroLigne()][i];
+            if(!courante.estLibre())//Si la case contient un numero
+            {
+                if(actuelle.estPossible(courante.getValeur()))//Si ce numero est encore dans le liste des cases possible
+                {
+                    actuelle.retirePossible(courante.getValeur());//on le retire
+                }
+            }
+        }
     }
 
 }
