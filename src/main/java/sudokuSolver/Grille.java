@@ -44,7 +44,7 @@ public class Grille {
         grille[1][0].setValeur(6);
         grille[1][3].setValeur(1);
         grille[1][4].setValeur(9);
-        grille[1][5].setValeur(3);
+        grille[1][5].setValeur(5);
         /*Ligne numaro 2*/
         grille[2][1].setValeur(9);
         grille[2][2].setValeur(8);
@@ -96,6 +96,29 @@ public class Grille {
     public Case at(int l,int c)
     {
         return grille[l][c];
+    }
+
+    public void affichage()
+    {
+        StringBuilder str = new StringBuilder("      ");
+        for(int i = 0; i < nbColonnes(); i++)
+        {
+            str.append(" ").append(i).append(" ");
+        }
+        str.append("\n");
+        System.out.println(str.toString());
+
+        str = new StringBuilder("");
+        for(int i = 0; i < nbLignes(); i++)
+        {
+            str.append(" ").append(i).append("    ");
+            for(int j = 0; j< nbColonnes(); j++)
+            {
+                str.append("|").append(grille[i][j].getValeur()).append("|");
+            }
+            System.out.println(str.toString());
+            str = new StringBuilder("");
+        }
     }
 
 }

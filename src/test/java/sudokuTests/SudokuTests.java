@@ -17,7 +17,7 @@ public class SudokuTests {
                 assertTrue(grille.at(i,j).numeroValide());
             }
         }
-
+        grille.affichage();
         grille.initGrilleJeu1();
         for(int i = 0; i < grille.nbLignes(); i++)
         {
@@ -26,6 +26,7 @@ public class SudokuTests {
                 assertTrue(grille.at(i,j).numeroValide());
             }
         }
+        grille.affichage();
 
     }
 
