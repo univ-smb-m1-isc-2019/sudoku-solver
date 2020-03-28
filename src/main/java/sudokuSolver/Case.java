@@ -42,10 +42,7 @@ public class Case {
         setPossible(new ArrayList<Integer>());
     }
 
-    public boolean numeroValide()
-    {
-        return getValeur() >= 0 && getValeur() <= 9;
-    }
+
 
     public ArrayList<Integer> getPossible() {
         return possible;
@@ -71,7 +68,7 @@ public class Case {
 
     public boolean encorePossible()
     {
-        return possible.size() == 0;
+        return possible.size() != 0;
     }
 
     public void retirePossible(int nb)
@@ -100,6 +97,16 @@ public class Case {
             }
         }
         return false;
+    }
+
+    public boolean numeroValide()
+    {
+        return getValeur() >= 0 && getValeur() <= 9;
+    }
+
+    public boolean possibleValide(int max)
+    {
+        return possible.size() == max;
     }
 
 }

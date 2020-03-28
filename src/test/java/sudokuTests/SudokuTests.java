@@ -30,4 +30,19 @@ public class SudokuTests {
 
     }
 
+    @Test
+    public void chaque_cases_d_une_grille_vide_a_9_possibilitees()
+    {
+        Grille grille = new Grille();
+        grille.initGrille(9,9);
+
+        for(int i = 0; i < grille.nbLignes(); i++)
+        {
+            for(int j = 0; j < grille.nbColonnes(); j++)
+            {
+                assertTrue(grille.at(i,j).possibleValide(9));
+                assertTrue(grille.at(i,j).encorePossible());
+            }
+        }
+    }
 }
