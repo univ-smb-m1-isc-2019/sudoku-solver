@@ -19,12 +19,22 @@ public class Sudoku {
                 this.matrice.add(new Case(board[i][j], j, i));
             }
         }
-        //chargement ligne et colonne
+        //chargement ligne, colonne et carré
         this.matrice.stream().forEach(elt->{
             this.lineList.get(elt.getLineID()).list.add(elt);
             this.columnList.get(elt.getColumnID()).list.add(elt);
             this.squareList.get(elt.getSquareID()).list.add(elt);
         });
+        //traitement tour
+        boolean fini = false;
+        while(!fini){
+            matrice.stream().forEach(elt->{
+                AvailablePossibilities availablePossibilities = this.lineList.get(elt.getLineID()).getAvailablePossibililites();
+                availablePossibilities = this.columnList.get(elt.getColumnID()).getAvailablePossibililites(availablePossibilities);
+                elt.availablePossibilities = this.squareList.get(elt.getSquareID()).getAvailablePossibililites(availablePossibilities);
+            });
+            fini = true;
+        }
 
     }
     public void initMatrice(){
@@ -49,8 +59,9 @@ public class Sudoku {
         this.columnList.add(column);
     }
     public void initSquare(int nb){
+        this.squareList = new ArrayList<Square>();
         for(int i = 0; i < nb; i++){
-            //this.squareList.add(new Line());
+            this.squareList.add(new Square());
         }
     }
     public void addSquare(Square square){

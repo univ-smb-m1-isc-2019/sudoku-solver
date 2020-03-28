@@ -4,6 +4,7 @@ public class Case {
     public int value;
     public int x;
     public int y;
+    public AvailablePossibilities availablePossibilities;
     public Case(int value){
         this.value = value;
     }
@@ -29,4 +30,5 @@ public class Case {
         System.out.println("line = "+this.getLineID());
         System.out.println("square = "+this.getSquareID());
     }
+
 }

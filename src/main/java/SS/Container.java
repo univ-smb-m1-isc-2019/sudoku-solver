@@ -11,21 +11,22 @@ public abstract class Container {
     public Container(ArrayList<Case> List){
         this.list = List;
     }
-    public ArrayList<Integer> getAvailable(){
-        ArrayList<Integer> startList =  getAllNumbers();
-        this.list.stream().forEach(i -> {
-            if (startList.contains(i.value) && startList.get(i.value) != 0) {
-                startList.set(i.value, 0);
+    public AvailablePossibilities getAvailablePossibililites(){
+        AvailablePossibilities availablePossibilities = new AvailablePossibilities();
+            this.list.stream().forEach(elt ->{
+                if(elt.value != 0){
+                    availablePossibilities.list[elt.value-1]=false;
+                }
+            });
+        return availablePossibilities;
+    }
+    public AvailablePossibilities getAvailablePossibililites(AvailablePossibilities availablePossibilities){
+        this.list.stream().forEach(elt ->{
+            if(elt.value != 0){
+                availablePossibilities.list[elt.value-1]=false;
             }
         });
-        return startList;
-    }
-    public static ArrayList<Integer> getAllNumbers(){
-        ArrayList<Integer> numberList = new ArrayList<Integer>();
-        for(int i = 1; i < 11; i++){
-            numberList.add(i);
-        }
-        return numberList;
+        return availablePossibilities;
     }
     public void print(){
         this.list.stream().forEach(i -> {

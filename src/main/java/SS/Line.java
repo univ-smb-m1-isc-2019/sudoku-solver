@@ -1,7 +1,6 @@
 package main.java.SS;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Line extends Container {
     public Line(){

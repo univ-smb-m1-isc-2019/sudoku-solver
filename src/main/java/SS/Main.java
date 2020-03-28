@@ -15,7 +15,7 @@ public class Main {
         };
         Sudoku sudoku = new Sudoku(board);
         sudoku.matrice.get(41).printCase();
-
+        AvailablePossibilities availablePossibilities = new AvailablePossibilities();
 
 
     }
