@@ -212,4 +212,35 @@ public class Grille {
         }
     }
 
+    public void resoudre()
+    {
+        while(!resolu())
+        {
+            miseAJourPossible();
+
+        }
+    }
+
+    private boolean resolu()
+    {
+        for(int i = 0; i < nbLignes(); i++)
+        {
+            for(int j = 0; j < nbColonnes(); j++)
+            {
+                if(at(i,j).estLibre())
+                {
+                    if(!at(i,j).encorePossible())
+                    {
+                        System.out.println("Erreur, une case libre n'a plus de possibilitées!");
+                        System.exit(1);
+                    }else
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
 }
