@@ -20,37 +20,37 @@ public class Sudoku {
     {
         boolean erreur;//Booleen qui indique si il y a eu une erreur dans le processus de resolution
         affichage();//On affiche la grille de base
-        miseAJourPossible();//On met a jour une premiere fois la liste des possibilitees des cases
+        miseAJourPossible();//On met a jour une premiere fois la liste des possibilites des cases
         while(!resolu())//Tant que le sudoku n'est pas resolu
         {
-            erreur = miseAJourCase();//On met a jour une case qui a une seule possibilitee
+            erreur = miseAJourCase();//On met a jour une case qui a une seule possibilite
             if(erreur)//Si il y a eu une erreur ou sort du programme
             {
                 System.out.println("Erreur, il n'y a pas de case avec une seule possibilitées.");
                 System.exit(1);
             }
-            miseAJourPossible();//Sinon on met a jour la liste des possibilitees des cases
+            miseAJourPossible();//Sinon on met a jour la liste des possibilites des cases
 
         }
         affichage();//On affiche la grille de fin
     }
 
     private boolean miseAJourCase()
-            //Modifie la valeur de la premiere case qui n'a qu'une possibilitee
+            //Modifie la valeur de la premiere case qui n'a qu'une possibilite
     {
         for (int i = 0; i < nbLignes(); i++)
         {
             for (int j = 0; j < nbColonnes(); j++)
             {
                 //On regarde sur toutes les cases
-                if(at(i,j).getPossible().size() == 1)//Quand on en trouve une qui n'a qu'une possibilitee
+                if(at(i,j).getPossible().size() == 1)//Quand on en trouve une qui n'a qu'une possibilite
                 {
-                    at(i,j).setValeur(at(i,j).getPossible().get(0));//On modifie sa valeur avec sa possibilitee
+                    at(i,j).setValeur(at(i,j).getPossible().get(0));//On modifie sa valeur avec sa possibilite
                     return false;//On retourne qu'il n'y a pas d'erreur
                 }
             }
         }
-        return true;//Si aucune case n'avait qu'une possibilitee, on retoure qu'il y a une erreur.
+        return true;//Si aucune case n'avait qu'une possibilite, on retoure qu'il y a une erreur.
     }
     public void miseAJourPossible()
             //Met a jour les valeurs possible pour chaque case
@@ -64,14 +64,14 @@ public class Sudoku {
                 actuelle = at(i,j);
                 if(actuelle.estLibre())//Si la case n'a pas de numero
                 {
-                    if(actuelle.encorePossible()) {//Si sa liste des possibilitees n'est pas vide
-                        miseAJourLigne(actuelle);//On met a jour les possibilitees en fonction de la ligne de la case actuelle
-                        miseAJourColonne(actuelle);//On met a jour les possibilitees en fonction de la colonne de la case actuelle
-                        miseAJourCarre(actuelle);//On met a jour les possibilitees en fonction du carre de la case actuelle
+                    if(actuelle.encorePossible()) {//Si sa liste des possibilites n'est pas vide
+                        miseAJourLigne(actuelle);//On met a jour les possibilites en fonction de la ligne de la case actuelle
+                        miseAJourColonne(actuelle);//On met a jour les possibilites en fonction de la colonne de la case actuelle
+                        miseAJourCarre(actuelle);//On met a jour les possibilites en fonction du carre de la case actuelle
                     }
                     else//Si sa liste est vide, c'est qu'il y a une erreur, on sort du programme
                     {
-                        System.out.println("Erreur, la case sur a ligne "+actuelle.getNumeroLigne()+" et la colonne "+actuelle.getNumeroColonne() +" n'a plus de possibilitees");
+                        System.out.println("Erreur, la case sur a ligne "+actuelle.getNumeroLigne()+" et la colonne "+actuelle.getNumeroColonne() +" n'a plus de possibilites");
                         System.exit(1);
 
                     }
@@ -80,7 +80,7 @@ public class Sudoku {
         }
     }
     private void miseAJourCarre(Case actuelle)
-    //Met a jour les possibilitees selon le carre auquel appartient la case
+    //Met a jour les possibilites selon le carre auquel appartient la case
     {
 
         Pair<Integer,Integer> hautGauche = rechercheHautGauche(actuelle);//On cherche les coordonnees de la case la plus en haut a gauche du carre auquel appartient la case actuelle
@@ -105,7 +105,7 @@ public class Sudoku {
     }
 
     private void miseAJourColonne(Case actuelle)
-            //Met a jour les possibilitees selon la colonne auquel appartient la case
+            //Met a jour les possibilites selon la colonne auquel appartient la case
     {
         Case courante;
         for(int i = 0; i < nbLignes(); i++)
@@ -123,7 +123,7 @@ public class Sudoku {
     }
 
     private void miseAJourLigne(Case actuelle)
-    //Met a jour les possibilitees selon la colonne auquel appartient la case
+    //Met a jour les possibilites selon la colonne auquel appartient la case
     {
         Case courante;
         for(int i = 0; i < nbColonnes(); i++)
@@ -172,7 +172,7 @@ public class Sudoku {
                 //On parcour toutes les cases
                 if(at(i,j).estLibre())//Si une case est libre
                 {
-                    if(!at(i,j).encorePossible())//si elle n'a plus de possibilitees il y a eu une erreur donc on sort
+                    if(!at(i,j).encorePossible())//si elle n'a plus de possibilites il y a eu une erreur donc on sort
                     {
                         System.out.println("Erreur, une case libre n'a plus de possibilitées!");
                         System.exit(1);
@@ -254,6 +254,46 @@ public class Sudoku {
         grille[8][4].setValeur(8);
         grille[8][7].setValeur(7);
         grille[8][8].setValeur(9);
+    }
+
+    public void initGrilleJeu2()
+        /*Initialisation de la grille avec un jeu trouvé sur internet.
+        * La grille manque de details puisqu'on ne tombe pas sur une case avec une seul possibilite*/
+    {
+        /*Ligne numero 0*/
+        grille[0][1].setValeur(2);
+        grille[0][2].setValeur(4);
+        grille[0][5].setValeur(5);
+        /*Ligne numero 1*/
+        grille[1][3].setValeur(1);
+        /*Ligne numero 2*/
+        grille[2][1].setValeur(9);
+        grille[2][5].setValeur(7);
+        grille[2][6].setValeur(2);
+        grille[2][7].setValeur(3);
+        /*Ligne numero 3*/
+        grille[3][4].setValeur(4);
+        /*Ligne numero 4*/
+        grille[4][1].setValeur(5);
+        grille[4][3].setValeur(3);
+        grille[4][4].setValeur(9);
+        grille[4][7].setValeur(2);
+        grille[4][8].setValeur(7);
+        /*Ligne numero 5*/
+        grille[5][0].setValeur(9);
+        grille[5][3].setValeur(6);
+        grille[5][5].setValeur(2);
+        /*Ligne numero 6*/
+        grille[6][3].setValeur(5);
+        grille[6][7].setValeur(8);
+        /*Ligne numero 7*/
+        grille[7][0].setValeur(6);
+        grille[7][4].setValeur(7);
+        /*Ligne numero 8*/
+        grille[8][0].setValeur(7);
+        grille[8][1].setValeur(1);
+        grille[8][7].setValeur(9);
+        grille[8][8].setValeur(3);
     }
 
     /*Getters et Setters*/

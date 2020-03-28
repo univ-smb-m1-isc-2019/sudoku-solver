@@ -33,7 +33,7 @@ public class SudokuTests {
     }
 
     @Test
-    public void chaque_cases_d_une_grille_vide_a_9_possibilitees()
+    public void chaque_cases_d_une_grille_vide_a_9_possibilites()
     {
         Sudoku grille = new Sudoku(9);
 
@@ -48,9 +48,8 @@ public class SudokuTests {
         }
     }
 
-
     @Test
-    public void une_case_avec_un_chiffre_n_a_plus_de_possibilitees()
+    public void une_case_avec_un_chiffre_n_a_plus_de_possibilites()
     {
         Sudoku grille = new Sudoku(9);
         grille.initGrilleJeu1();
@@ -74,7 +73,7 @@ public class SudokuTests {
     }
 
     @Test
-    public void une_case_sans_chiffre_a_des_possibilitees()
+    public void une_case_sans_chiffre_a_des_possibilites()
     {
         Sudoku grille = new Sudoku(9);
         grille.initGrilleJeu1();
@@ -97,7 +96,7 @@ public class SudokuTests {
     }
 
     @Test
-    public void les_cases_d_une_grille_resolu_n_ont_plus_de_possibilitees()
+    public void les_cases_d_une_grille_resolu_n_ont_plus_de_possibilites()
     {
         Sudoku grille = new Sudoku(9);
         grille.initGrilleJeu1();

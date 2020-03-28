@@ -23,20 +23,20 @@ public class Case {
             //On initialise la listes des possibles de la cases
     {
         setPossible(new ArrayList<Integer>());
-        for(int i = 1; i <= max; i++)//au debut on ajoutes toutes les possibilitees
+        for(int i = 1; i <= max; i++)//au debut on ajoutes toutes les possibilites
         {
             possible.add(i);
         }
     }
 
     public boolean encorePossible()
-            //Verifie qu'il y a encore des possibilitees pour la case
+            //Verifie qu'il y a encore des possibilites pour la case
     {
         return possible.size() != 0;
     }
 
     public void retirePossible(int nb)
-            //On retire une possibilitee
+            //On retire une possibilite
     {
         int i = 0;
         boolean stop = false;
@@ -52,7 +52,7 @@ public class Case {
     }
 
     public boolean estPossible(int nb)
-            //Verifie qu'un chiffre fait parti des possibilitees
+            //Verifie qu'un chiffre fait parti des possibilites
     {
         int i = 0;
         while(i < possible.size())
