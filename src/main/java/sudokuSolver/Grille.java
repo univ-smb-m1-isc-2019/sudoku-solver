@@ -126,8 +126,9 @@ public class Grille {
 
     }
 
-    private void miseAJourPossible()
+    public void miseAJourPossible()
     {
+        System.out.println("Mise à jour...");
         Case actuelle;
         for(int i = 0; i < nbLignes(); i++)
         {
@@ -152,7 +153,7 @@ public class Grille {
         }
     }
 
-    private void miseAJourCarre(Case actuelle) {
+    private void miseAJourCarre(Case actuelle) { ;
 
         Pair<Integer,Integer> hautGauche = rechercheHautGauche(actuelle);
         Case courante;

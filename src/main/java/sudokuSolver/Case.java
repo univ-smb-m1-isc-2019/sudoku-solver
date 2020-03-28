@@ -95,6 +95,7 @@ public class Case {
             {
                 return true;
             }
+            i++;
         }
         return false;
     }

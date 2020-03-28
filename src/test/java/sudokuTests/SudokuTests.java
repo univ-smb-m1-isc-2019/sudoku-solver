@@ -72,4 +72,26 @@ public class SudokuTests {
         }
     }
 
+    @Test
+    public void une_case_sans_chiffre_a_des_possibilitees()
+    {
+        Grille grille = new Grille();
+        grille.initGrille(9,9);
+        grille.initGrilleJeu1();
+        grille.miseAJourPossible();
+
+        for(int i = 0; i < grille.nbLignes(); i++)
+        {
+            for(int j = 0; j < grille.nbColonnes(); j++)
+            {
+                if(grille.at(i,j).getValeur() == 0) {
+                    assertTrue(grille.at(i, j).encorePossible());
+                }else
+                {
+                    assertFalse(grille.at(i, j).encorePossible());
+                }
+            }
+        }
+    }
+
 }

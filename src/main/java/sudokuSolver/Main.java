@@ -7,6 +7,7 @@ public class Main {
         Grille grille = new Grille();
         grille.initGrille(9,9);
         grille.initGrilleJeu1();
+
     }
 
 }
