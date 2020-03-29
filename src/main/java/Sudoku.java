@@ -4,7 +4,7 @@ public class Sudoku {
     public static final int EMPTY=0;//Empty cell
     public static final int SIZE=9;//the size of our Sudoku grids
 
-
+    //creates the board
     public Sudoku(int[][] board) {
         this.board = new int[SIZE][SIZE];
 
@@ -13,6 +13,16 @@ public class Sudoku {
                 this.board[i][j] = board[i][j];
             }
         }
+    }
+
+
+    // we check if a possible number is already in a row
+    private boolean isInRow(int row, int number) {
+        for (int i = 0; i < SIZE; i++)
+            if (board[row][i] == number)
+                return true;
+
+        return false;
     }
 
 
