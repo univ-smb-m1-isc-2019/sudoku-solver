@@ -18,7 +18,7 @@ public class Main {
 
         // we try resolution
         if (sudo.solve()) {
-            System.out.println("Sudoku Grid solved ");
+            System.out.println("Sudoku gird solved");
             sudo.displayGid();
         } else {
             System.out.println("Unsolvable");

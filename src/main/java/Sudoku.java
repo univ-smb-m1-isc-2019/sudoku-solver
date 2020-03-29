@@ -17,7 +17,7 @@ public class Sudoku {
 
 
     // we check if a possible number is already in a row
-    private boolean isInRow(int row, int number) {
+    public boolean isInRow(int row, int number) {
         for (int i = 0; i < GRID_SIZE; i++)
             if (board[row][i] == number)
                 return true;
@@ -26,7 +26,7 @@ public class Sudoku {
     }
 
     // we check if a possible number is already in a column
-    private boolean isInColumn(int col, int number) {
+    public boolean isInColumn(int col, int number) {
         for (int i = 0; i < GRID_SIZE; i++)
             if (board[i][col] == number)
                 return true;
@@ -35,7 +35,7 @@ public class Sudoku {
     }
 
     // we check if a possible number is in its 3x3 square
-    private boolean isInSquare(int row, int column, int number) {
+    public boolean isInSquare(int row, int column, int number) {
         int r = row - row % 3;
         int c = column - column % 3;
 
@@ -48,7 +48,7 @@ public class Sudoku {
     }
 
     // combined method to check if a number possible to a row,column position is ok
-    private boolean numberOk(int row, int col, int number) {
+    public boolean numberOk(int row, int col, int number) {
         return !isInRow(row, number)  &&  !isInColumn(col, number)  &&  !isInSquare(row, col, number);
     }
 
