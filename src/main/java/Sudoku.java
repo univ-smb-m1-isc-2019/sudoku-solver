@@ -34,8 +34,8 @@ public class Sudoku {
         return false;
     }
 
-    // we check if a possible number is in its 3x3 box
-    private boolean isInBox(int row, int column, int number) {
+    // we check if a possible number is in its 3x3 square
+    private boolean isInSquare(int row, int column, int number) {
         int r = row - row % 3;
         int c = column - column % 3;
 
@@ -49,7 +49,7 @@ public class Sudoku {
 
     // combined method to check if a number possible to a row,column position is ok
     private boolean numberOk(int row, int col, int number) {
-        return !isInRow(row, number)  &&  !isInColumn(col, number)  &&  !isInBox(row, col, number);
+        return !isInRow(row, number)  &&  !isInColumn(col, number)  &&  !isInSquare(row, col, number);
     }
 
     // Solve method
@@ -79,5 +79,20 @@ public class Sudoku {
 
         return true; // when the sudoku is solved we return true
     }
+
+    //displays the input grid
+    public void displayGid() {
+        for (int i = 0; i < GRID_SIZE; i++) {
+            for (int j = 0; j < GRID_SIZE; j++) {
+                System.out.print(" " + board[i][j]);
+            }
+
+            System.out.println();
+        }
+
+        System.out.println();
+    }
+
+
 
 }
