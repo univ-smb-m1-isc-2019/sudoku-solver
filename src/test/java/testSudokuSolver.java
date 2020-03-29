@@ -39,18 +39,9 @@ int[][] solvedBoard= {
 
     }
 
-   @Test
-    public void allPossibleNumbersAreNotInRow() {
-        Sudoku sudo = new Sudoku(unsolvedBoard);
-        boolean bool=true;
 
-        for (int i = 0; i < 9; i++) {
-            for (int j=0;j<9;j++)
-               {bool=sudo.isInRow(i, unsolvedBoard[i][j]);
-                   System.out.print(bool); }
-        }
-
-    }
+   
+}
 
 
 
