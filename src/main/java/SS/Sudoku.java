@@ -67,33 +67,53 @@ public class Sudoku {
         int nbtour = 0;
         int sauvegarde = 0;
         int sauvegardeNb = 10;
-        int nbModif = 0;
-        boolean impossible = false;
-        final boolean[] updated = {true};
-        while(nbtour < 1){
+        boolean updated = false;
+        Backtracker backtracker = new Backtracker();
+        System.out.println(this.solved());
+        while(!this.solved()){
+            System.out.println("tours : "+nbtour);
             for(int i = 0; i < matrice.size(); i++){
                 matrice.get(i).availablePossibilities = getAvailablePosibilities(i);
-                if(matrice.get(i).availablePossibilities.getAvailablePossibilitiesNB() == 1){
+                if(matrice.get(i).value == 0 && matrice.get(i).availablePossibilities.getAvailablePossibilitiesNB() == 1){
+                    matrice.get(i).availablePossibilities.printPossibilities();
                     matrice.get(i).value = matrice.get(i).availablePossibilities.getPossibility();
-                    nbModif++;
-                }else if(matrice.get(i).availablePossibilities.getAvailablePossibilitiesNB() < sauvegardeNb){
+                    updated = true;
+                    System.out.println("modification 1 case = "+i);
+                    matrice.get(i).printCase();
+                }else if(matrice.get(i).value == 0 && matrice.get(i).availablePossibilities.getAvailablePossibilitiesNB() < sauvegardeNb && matrice.get(i).availablePossibilities.getAvailablePossibilitiesNB() != 0){
                     sauvegarde = i;
                     sauvegardeNb = matrice.get(i).availablePossibilities.getAvailablePossibilitiesNB();
                 }
             }
-            if(nbModif == 0 && sauvegarde != 0){
-                for(int i = 0; i < sauvegardeNb; i++){
-
-                }
-
-                System.out.println("ok");
+            if(!updated && sauvegarde != 0){
+                System.out.println("modification 2 case = "+sauvegarde);
+                System.out.println("nombre de possibilité = "+this.matrice.get(sauvegarde).availablePossibilities.getAvailablePossibilitiesNB());
+                System.out.println("création backtrack n = "+(backtracker.getSize()+1));
+                matrice.get(sauvegarde).availablePossibilities.printPossibilities();
+                backtracker.add(new BacktrackerItem(this, 1, this.matrice.get(sauvegarde).availablePossibilities.getAvailablePossibilitiesNB(), sauvegarde));
+                this.matrice.get(sauvegarde).value = this.matrice.get(sauvegarde).availablePossibilities.getPossibility(1);
+                matrice.get(sauvegarde).printCase();
+                updated = true;
+            }
+            if(!updated){
+                System.out.println("Aucun avancement possible");
+                BacktrackerItem current = backtracker.getLastAvailable();
+                System.out.println("utilisation backtrack n = "+(backtracker.list.indexOf(current)+1));
+                this.copyMatrice(current.sudoku);
+                this.build();
+                current.use();
+                this.matrice.get(current.idCase).availablePossibilities = this.getAvailablePosibilities(current.idCase);
+                System.out.println("current "+current.current);
+                matrice.get(current.idCase).value = matrice.get(current.idCase).availablePossibilities.getPossibility(current.current);
             }
             sauvegardeNb = 10;
             sauvegarde = 0;
-            nbModif = 0;
+            updated = false;
             nbtour++;
+            //a delete
+            this.printSudoku();
         }
-        this.printSudoku();
+
         System.out.println(nbtour);
         return this.solved();
     }
@@ -108,6 +128,12 @@ public class Sudoku {
             if(elt.value == 0) rtr = false;
         }
         return rtr;
+    }
+    public void copyMatrice(Sudoku sudoku){
+        this.initMatrice();
+        sudoku.matrice.stream().forEach(elt->{
+            this.matrice.add(new Case(elt.value, elt.x, elt.y));
+        });
     }
     public void initMatrice(){
         this.matrice = new ArrayList<Case>();

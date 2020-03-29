@@ -36,25 +36,25 @@ public class AvailablePossibilities {
     }
     public int getPossibility(){
         int i =0;
-        if(getAvailablePossibilitiesNB() > 1){
+        if(getAvailablePossibilitiesNB() == 1){
             while(!this.list[i]){
                 i++;
             }
         }
-        System.out.print("result = "+i+1);
+
         return i+1;
     }
     public int getPossibility(int nb){
         int i =0;
-        if(getAvailablePossibilitiesNB() > 1){
-            while(!this.list[i] || nb-1 > 0){
-                if(this.list[i]){
+        this.printPossibilities();
+        if(getAvailablePossibilitiesNB() > 1) {
+            while (!this.list[i] || nb - 1 > 0) {
+                if (this.list[i]) {
                     nb--;
                 }
                 i++;
             }
-        }
-        System.out.print("result = "+i+1);
+        }else i = getPossibility();
         return i+1;
     }
 
