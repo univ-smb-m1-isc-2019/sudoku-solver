@@ -47,4 +47,10 @@ public class Sudoku {
         return false;
     }
 
+    // combined method to check if a number possible to a row,col position is ok
+    private boolean isOk(int row, int col, int number) {
+        return !isInRow(row, number)  &&  !isInCol(col, number)  &&  !isInBox(row, col, number);
+    }
+
+
 }
