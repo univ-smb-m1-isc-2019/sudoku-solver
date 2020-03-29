@@ -36,6 +36,18 @@ int[][] solvedBoard= {
             }
 
     }
+
+    @Test
+    public void allPossibleNumbersAreInColumn() {
+        Sudoku sudo = new Sudoku(solvedBoard);
+        sudo.solve();
+        for (int i = 1; i < 9; i++) {
+            for (int j=i;j<9;j++)
+                assertTrue(sudo.isInColumn(i,j));
+        }
+
+    }
+
 }
 
 
