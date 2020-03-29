@@ -14,12 +14,12 @@ public class Main {
 
    Sudoku sudo=new Sudoku(BOARD);
         System.out.println("Sudoku grid to solve");
-        sudo.displayGid();
+        sudo.displayGrid();
 
         // we try resolution
         if (sudo.solve()) {
             System.out.println("Sudoku gird solved");
-            sudo.displayGid();
+            sudo.displayGrid();
         } else {
             System.out.println("Unsolvable");
         }

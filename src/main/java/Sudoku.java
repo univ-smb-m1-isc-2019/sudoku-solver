@@ -87,7 +87,7 @@ public class Sudoku {
     }
 
     //displays the input grid
-    public void displayGid() {
+    public void displayGrid() {
         for (int i = 0; i < GRID_SIZE; i++) {
             for (int j = 0; j < GRID_SIZE; j++) {
                 System.out.print(" " + board[i][j]);
