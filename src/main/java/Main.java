@@ -13,6 +13,15 @@ public class Main {
     };
 
    Sudoku sudo=new Sudoku(BOARD);
+        System.out.println("Sudoku grid to solve");
+        sudo.displayGid();
 
+        // we try resolution
+        if (sudo.solve()) {
+            System.out.println("Sudoku Grid solved ");
+            sudo.displayGid();
+        } else {
+            System.out.println("Unsolvable");
+        }
 }
 }
