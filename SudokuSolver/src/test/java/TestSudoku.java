@@ -19,18 +19,29 @@ public class TestSudoku {
     @Test
     public void PossedeTousLesChiffresParLigne() {
         Sudoku sudok = new Sudoku(board);
-        sudok.resoudre(0,0);
-        for (int i =0; i <9; i++){
-            assertTrue(sudok.PossedeTousLesChiffresParLigne(i));
+        sudok.resoudre(0, 0);
+        for (int i = 0; i < 9; i++) {
+            assertTrue(sudok.possedeTousLesChiffresParLigne(i));
         }
     }
 
     @Test
     public void PossedeTousLesChiffresParColonne() {
         Sudoku sudok = new Sudoku(board);
-        sudok.resoudre(0,0);
-        for (int y =0; y <9; y++){
-            assertTrue(sudok.PossedeTousLesChiffresParColonne(y));
+        sudok.resoudre(0, 0);
+        for (int y = 0; y < 9; y++) {
+            assertTrue(sudok.possedeTousLesChiffresParColonne(y));
+        }
+    }
+
+    @Test
+    public void PossedeTousLesChiffresParBloc() {
+        Sudoku sudok = new Sudoku(board);
+        sudok.resoudre(0, 0);
+        for (int x = 0; x < 9; x++) {
+            for (int y = 0; y < 9; y++) {
+                assertTrue(sudok.possedeTousLesChiffresParBloc(x, y));
+            }
         }
     }
 

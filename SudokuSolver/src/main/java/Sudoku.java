@@ -152,7 +152,7 @@ public class Sudoku {
     }
 
     //////Fonction pour les tests/////
-    public boolean PossedeTousLesChiffresParLigne(int x) {
+    public boolean possedeTousLesChiffresParLigne(int x) {
         boolean[] t = new boolean[10];
         t[0] = true;
         for (int i = 1; i < 10; i++) {
@@ -168,7 +168,7 @@ public class Sudoku {
     }
 
 
-    public boolean PossedeTousLesChiffresParColonne(int y) {
+    public boolean possedeTousLesChiffresParColonne(int y) {
         boolean[] t = new boolean[10];
         t[0] = true;
         for (int i = 1; i < 10; i++) {
@@ -176,6 +176,27 @@ public class Sudoku {
         }
         for (int x = 0; x < 9; x++) {
             t[this.sudoku_sauv[x][y].getValeur()] = true;
+        }
+        for (int z = 1; z < 10; z++) {
+            if (t[z] == false) return false;
+
+        }
+        return true;
+    }
+
+    public boolean possedeTousLesChiffresParBloc(int x, int y) {
+        boolean[] t = new boolean[10];
+        t[0] = true;
+        for (int i = 1; i < 10; i++) {
+            t[i] = false;
+        }
+        int i, j;
+        int v = x / 3 * 3;
+        int h = y / 3 * 3;
+        for (i = v; i < v + 3; i++) {
+            for (j = h; j < h + 3; j++) {
+                t[this.sudoku_sauv[i][j].getValeur()] = true;
+            }
         }
         for (int z = 1; z < 10; z++) {
             if (t[z] == false) return false;
