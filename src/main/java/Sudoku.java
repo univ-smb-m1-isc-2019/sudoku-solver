@@ -25,5 +25,13 @@ public class Sudoku {
         return false;
     }
 
+    // we check if a possible number is already in a column
+    private boolean isInCol(int col, int number) {
+        for (int i = 0; i < SIZE; i++)
+            if (board[i][col] == number)
+                return true;
+
+        return false;
+    }
 
 }
