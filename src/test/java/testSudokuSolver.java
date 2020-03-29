@@ -49,6 +49,16 @@ int[][] solvedBoard= {
         }
     }
 
+    @Test
+    public void allPossibleNumbersAreInSquare() {
+        Sudoku sudo = new Sudoku(solvedBoard);
+
+        for (int i = 0; i < 9; i++) {
+            for (int j=0;j<9;j++)
+                assertTrue(sudo.isInSquare(i,j,solvedBoard[i][j]));
+        }
+
+    }
 
 
 
