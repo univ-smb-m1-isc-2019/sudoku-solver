@@ -13,6 +13,12 @@ public class Case {
         this.x = x;
         this.y = y;
     }
+    public Case(int value, int x, int y, boolean bool){
+        this.value = value;
+        this.x = x;
+        this.y = y;
+        this.availablePossibilities = new AvailablePossibilities(false);
+    }
     public int getLineID(){
         return this.y;
     }
@@ -29,6 +35,8 @@ public class Case {
         System.out.println("column = "+this.getColumnID());
         System.out.println("line = "+this.getLineID());
         System.out.println("square = "+this.getSquareID());
+        this.availablePossibilities.printPossibilities();
+
     }
 
 }

@@ -14,9 +14,8 @@ public class Main {
                 {0, 9, 0, 0, 0, 0, 4, 0, 0}
         };
         Sudoku sudoku = new Sudoku(board);
-        sudoku.matrice.get(41).printCase();
-        AvailablePossibilities availablePossibilities = new AvailablePossibilities();
-
+        sudoku.solve2();
+        //sudoku.printSudoku();
 
     }
 
