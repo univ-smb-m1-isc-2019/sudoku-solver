@@ -20,8 +20,17 @@ public class TestSudoku {
     public void PossedeTousLesChiffresParLigne() {
         Sudoku sudok = new Sudoku(board);
         sudok.resoudre(0,0);
-        for (int i =0; i <3; i++){
+        for (int i =0; i <9; i++){
             assertTrue(sudok.PossedeTousLesChiffresParLigne(i));
+        }
+    }
+
+    @Test
+    public void PossedeTousLesChiffresParColonne() {
+        Sudoku sudok = new Sudoku(board);
+        sudok.resoudre(0,0);
+        for (int y =0; y <9; y++){
+            assertTrue(sudok.PossedeTousLesChiffresParColonne(y));
         }
     }
 

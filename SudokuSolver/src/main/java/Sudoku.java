@@ -162,9 +162,25 @@ public class Sudoku {
             t[this.sudoku_sauv[x][y].getValeur()] = true;
         }
         for (int z = 1; z < 10; z++) {
-            if (t[z] = false) return false;
+            if (t[z] == false) return false;
         }
         return true;
     }
 
+
+    public boolean PossedeTousLesChiffresParColonne(int y) {
+        boolean[] t = new boolean[10];
+        t[0] = true;
+        for (int i = 1; i < 10; i++) {
+            t[i] = false;
+        }
+        for (int x = 0; x < 9; x++) {
+            t[this.sudoku_sauv[x][y].getValeur()] = true;
+        }
+        for (int z = 1; z < 10; z++) {
+            if (t[z] == false) return false;
+            System.out.println(t[z]);
+        }
+        return true;
+    }
 }
