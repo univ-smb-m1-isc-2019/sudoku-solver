@@ -60,6 +60,13 @@ int[][] solvedBoard= {
 
     }
 
+    @Test
+    public void solvingUnsolvedBoard() {
+        Sudoku sudo = new Sudoku(unsolvedBoard);
+        assertTrue(sudo.solve());
+    }
+
+
 
 
 }
