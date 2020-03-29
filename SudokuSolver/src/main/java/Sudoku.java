@@ -200,8 +200,17 @@ public class Sudoku {
         }
         for (int z = 1; z < 10; z++) {
             if (t[z] == false) return false;
-            System.out.println(t[z]);
         }
         return true;
     }
+
+    public boolean resolutionCorrecte() {
+        for (int i = 0; i < 9; i++) {
+            if (calculLigne(this.sudoku_sauv, i) != 45) return false;
+            if (calculColonne(this.sudoku_sauv, i) != 45) return false;
+        }
+        return true;
+    }
+
+
 }
