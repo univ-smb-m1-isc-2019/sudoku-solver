@@ -1,3 +1,5 @@
+import java.sql.Struct;
+
 public class Sudoku {
 
     private int[][] board;
@@ -15,20 +17,24 @@ public class Sudoku {
         }
     }
 
-
+    public boolean numberIsOk(int number){
+        if(number!=0 && number<=9)
+            return true;
+        return false;
+    }
     // we check if a possible number is already in a row
     public boolean isInRow(int row, int number) {
         for (int i = 0; i < GRID_SIZE; i++)
-            if (board[row][i] == number)
+            if (board[row][i] == number && numberIsOk(number))
                 return true;
 
         return false;
     }
 
     // we check if a possible number is already in a column
-    public boolean isInColumn(int col, int number) {
+    public boolean isInColumn(int column, int number) {
         for (int i = 0; i < GRID_SIZE; i++)
-            if (board[i][col] == number)
+            if (board[i][column] == number && numberIsOk(number))
                 return true;
 
         return false;
@@ -41,7 +47,7 @@ public class Sudoku {
 
         for (int i = r; i < r + 3; i++)
             for (int j = c; j < c + 3; j++)
-                if (board[i][j] == number)
+                if (board[i][j] == number && numberIsOk(number))
                     return true;
 
         return false;
@@ -55,14 +61,14 @@ public class Sudoku {
     // Solve method
     public boolean solve() {
         for (int row = 0; row < GRID_SIZE; row++) {
-            for (int column = 0; column < GRID_SIZE; column++) {
-                //search for a free cell
-                if (board[row][column] == FREE) {
-                    // try all possible numbers
-                    for (int number = 1; number <= GRID_SIZE; number++) {
-                        if (numberOk(row, column, number)) {
-                            //if the number is ok. we add it to the board
-                            board[row][column] = number;
+                                for (int column = 0; column < GRID_SIZE; column++) {
+                                    //search for a free cell
+                                    if (board[row][column] == FREE) {
+                                        // try all possible numbers
+                                        for (int number = 1; number <= GRID_SIZE; number++) {
+                                            if (numberOk(row, column, number)) {
+                                                //if the number is ok. we add it to the board
+                                                board[row][column] = number;
 
                             if (solve()) { // we solve recursively
                                 return true;
