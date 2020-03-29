@@ -15,5 +15,6 @@ public class Main {
         Sudoku s = new Sudoku(board);
         s.afficherSudoku();
         s.resoudre(0,0);
+        s.afficherSudoku();
     }
 }

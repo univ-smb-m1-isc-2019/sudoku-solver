@@ -1,3 +1,8 @@
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 public class TestSudoku {
     int[][] board = {
             {8, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -10,6 +15,16 @@ public class TestSudoku {
             {0, 0, 8, 5, 0, 0, 0, 1, 0},
             {0, 9, 0, 0, 0, 0, 4, 0, 0}
     };
+
+    @Test
+    public void PossedeTousLesChiffresParLigne() {
+        Sudoku sudok = new Sudoku(board);
+        sudok.resoudre(0,0);
+        for (int i =0; i <3; i++){
+            assertTrue(sudok.PossedeTousLesChiffresParLigne(i));
+        }
+    }
+
 
 }
 

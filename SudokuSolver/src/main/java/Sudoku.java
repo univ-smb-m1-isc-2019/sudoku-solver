@@ -1,18 +1,20 @@
 public class Sudoku {
     private boolean resolu = false;
-    Case[][] board;
-    int length;
+    protected Case[][] board;
+    protected Case[][] sudoku_sauv;
 
     public Sudoku(int[][] sudok) {
-        length = sudok.length;
         this.board = new Case[sudok.length][sudok.length];
+        this.sudoku_sauv = new Case[sudok.length][sudok.length];
         for (int i = 0; i < sudok.length; i++) {
             for (int j = 0; j < sudok.length; j++) {
                 this.board[i][j] = new Case(sudok[i][j]);
+                this.sudoku_sauv[i][j] = new Case(sudok[i][j]);
             }
         }
 
     }
+
 
     public void resoudre(int line, int col) {
         if (col == 9) {
@@ -22,25 +24,30 @@ public class Sudoku {
         if (line == 9 && col == 0) {
             if (sudokuFini()) {
                 resolu = true;
-                afficherSudoku();
-            }
-            else{
+                for (int i = 0; i < this.board.length; i++) {
+                    for (int j = 0; j < this.board.length; j++) {
+                        if (this.board[i][j].getValeur() != 0) {
+                            this.sudoku_sauv[i][j].setValeur(this.board[i][j].getValeur());
+                        }
+                    }
+                }
+            } else {
                 System.out.println("Sudoku pas résolu!");
             }
         } else {
             boolean nums[];
-            if (board[line][col].getValeur() == 0) {
-                nums = numerosPossibles(board, line, col);
+            if (this.board[line][col].getValeur() == 0) {
+                nums = numerosPossibles(this.board, line, col);
                 if (nums[0]) {
                     for (int k = 1; k < 10; k++) {
                         if (nums[k]) {
-                            board[line][col].setValeur(k);
-                            if (calculLigne(board, line) <= 45 && calculColonne(board, col) <= 45 && calculBloc(board, line, col) <= 45) {
+                            this.board[line][col].setValeur(k);
+                            if (calculLigne(this.board, line) <= 45 && calculColonne(this.board, col) <= 45 && calculBloc(this.board, line, col) <= 45) {
                                 resoudre(line, col + 1);
                             }
                         }
                     }
-                    board[line][col].setValeur(0);
+                    this.board[line][col].setValeur(0);
                 }
             } else {
                 resoudre(line, col + 1);
@@ -48,7 +55,7 @@ public class Sudoku {
         }
     }
 
-    public boolean[] numerosPossibles(Case[][] g, int x, int y) {
+    public boolean[] numerosPossibles(Case[][] c, int x, int y) {
         boolean[] t = new boolean[10];
         int i, j;
 
@@ -58,14 +65,14 @@ public class Sudoku {
 
         for (i = 0; i < 9; i++) {
             // met a faux dans le tableau t, à la case qui correspond à la valeur de g[i][y] si le chiffre est sur la colonne
-            if (g[i][y].getValeur() != 0) {
+            if (c[i][y].getValeur() != 0) {
                 if (!t[0]) t[0] = true;
-                t[g[i][y].getValeur()] = false;
+                t[c[i][y].getValeur()] = false;
             }
             //met a faux dans le tableau t, à la case qui correspond à la valeur de g[i][y] si le chiffre est sur la ligne
-            if (g[x][i].getValeur() != 0) {
+            if (c[x][i].getValeur() != 0) {
                 if (!t[0]) t[0] = true;
-                t[g[x][i].getValeur()] = false;
+                t[c[x][i].getValeur()] = false;
             }
         }
         // met a faux dans le tableau t, à la case qui correspond à la valeur de g[i][y] si le chiffre est présent dans le bloc
@@ -73,9 +80,9 @@ public class Sudoku {
         int h = (y / 3) * 3;
         for (i = v; i < v + 3; i++) {
             for (j = h; j < h + 3; j++) {
-                if (g[i][j].getValeur() != 0) {
+                if (c[i][j].getValeur() != 0) {
                     if (!t[0]) t[0] = true;
-                    t[g[i][j].getValeur()] = false;
+                    t[c[i][j].getValeur()] = false;
                 }
             }
         }
@@ -84,8 +91,8 @@ public class Sudoku {
 
     public boolean sudokuFini() {
         for (int i = 0; i < 9; i++) {
-            if (calculLigne(board, i) != 45) return false;
-            if (calculColonne(board, i) != 45) return false;
+            if (calculLigne(this.board, i) != 45) return false;
+            if (calculColonne(this.board, i) != 45) return false;
         }
         return true;
     }
@@ -99,7 +106,6 @@ public class Sudoku {
     }
 
 
-
     public int calculColonne(Case[][] board, int j) {
         int res = 0;
         for (int i = 0; i < 9; i++) {
@@ -109,16 +115,14 @@ public class Sudoku {
     }
 
 
-
-
-    public int calculBloc(Case[][] grille, int x, int y) {
+    public int calculBloc(Case[][] board, int x, int y) {
         int i, j;
         int v = x / 3 * 3;
         int h = y / 3 * 3;
         int res = 0;
         for (i = v; i < v + 3; i++) {
             for (j = h; j < h + 3; j++) {
-                res += grille[i][j].getValeur();
+                res += board[i][j].getValeur();
             }
         }
         return res;
@@ -130,13 +134,13 @@ public class Sudoku {
         } else {
             System.out.println("Sudoku résolu:");
         }
-        for (int i = 0; i < board.length; i++) {
+        for (int i = 0; i < this.sudoku_sauv.length; i++) {
             if (i % 3 == 0)
                 System.out.println(" -------------------------");
-            for (int j = 0; j < board[i].length; j++) {
+            for (int j = 0; j < this.sudoku_sauv.length; j++) {
                 if (j % 3 == 0) System.out.print("| ");
-                if (board[i][j].getValeur() != 0) {
-                    System.out.print(board[i][j].getValeur() + " ");
+                if (this.sudoku_sauv[i][j].getValeur() != 0) {
+                    System.out.print(this.sudoku_sauv[i][j].getValeur() + " ");
                 } else {
                     System.out.print("  ");
                 }
@@ -147,12 +151,20 @@ public class Sudoku {
         System.out.println(" -------------------------");
     }
 
-    public boolean numberIsInLine(int line, int number){
-        for (int i = 0; i<board.length; i++) {
-            if (this.board[line][i].getValeur() == number){
-                return true;
-            }
+    //////Fonction pour les tests/////
+    public boolean PossedeTousLesChiffresParLigne(int x) {
+        boolean[] t = new boolean[10];
+        t[0] = true;
+        for (int i = 1; i < 10; i++) {
+            t[i] = false;
         }
-        return false;
+        for (int y = 0; y < 9; y++) {
+            t[this.sudoku_sauv[x][y].getValeur()] = true;
+        }
+        for (int z = 1; z < 10; z++) {
+            if (t[z] = false) return false;
+        }
+        return true;
     }
+
 }
