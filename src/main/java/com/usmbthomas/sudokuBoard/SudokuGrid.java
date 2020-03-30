@@ -13,6 +13,10 @@ public class SudokuGrid {
         }
     }
 
+    public int getCellValue(int row, int column){
+        return this.grid[row][column].getNumber();
+    }
+
     public String toString(){
         StringBuilder sBuilder = new StringBuilder();
 

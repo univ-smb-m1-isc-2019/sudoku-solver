@@ -1,17 +1,19 @@
 package com.usmbthomas.sudokuBoard;
 
+import static com.usmbthomas.sudokuBoard.SudokuGrid.GRID_SIZE;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
 public class SubGrid {
-    private Cell[] subGridCells = new Cell[SudokuGrid.GRID_SIZE];
+    private Cell[] subGridCells = new Cell[GRID_SIZE];
 
     public SubGrid() {
         initSubGrid();
     }
 
     private void initSubGrid() {
-        for (int i = 0; i < SudokuGrid.GRID_SIZE; ++i) {
+        for (int i = 0; i < GRID_SIZE; ++i) {
             Cell cell = new Cell();
             this.subGridCells[i] = cell;
         }
