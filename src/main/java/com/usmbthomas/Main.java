@@ -25,6 +25,11 @@ public class Main
         SudokuGrid sudokuGrid = new SudokuGrid(board);
         System.out.println(sudokuGrid);
 
+        System.out.println(sudokuGrid.getRows(1));
+        System.out.println(sudokuGrid.getColumns(1));
+        System.out.println(sudokuGrid.getSquares(2));
+
+
 /*        SubGrid sub = new SubGrid();
         sub.updateCell(1, 1);
         sub.updateCell(2, 2);

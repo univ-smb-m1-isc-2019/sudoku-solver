@@ -32,7 +32,7 @@ public class SubGrid {
         subGridCells[cellIndex].setNumber(cellValue);
     }
 
-/*    public String toString(){
+    public String toString(){
         StringBuilder sBuilder = new StringBuilder();
 
         for(int row = 0; row < SudokuGrid.GRID_SIZE; ++row) {
@@ -40,6 +40,6 @@ public class SubGrid {
             sBuilder.append("  ");
         }
         return sBuilder.toString();
-    }*/
+    }
 
 }

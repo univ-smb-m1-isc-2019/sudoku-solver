@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef5814dd-12f1-43aa-a143-01045285e5ab" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Kaddath.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/usmbthomas/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usmbthomas/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/usmbthomas/sudokuBoard/SubGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usmbthomas/sudokuBoard/SubGrid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/usmbthomas/sudokuBoard/SudokuGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/usmbthomas/sudokuBoard/SudokuGrid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/usmbthomas/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/usmbthomas/SudokuSolverTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/usmbthomas/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/usmbthomas/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/usmbthomas/sudokuBoard/SubGrid.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/usmbthomas/sudokuBoard/SubGrid.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/usmbthomas/sudokuBoard/SudokuGrid.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/usmbthomas/sudokuBoard/SudokuGrid.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +47,7 @@
       <recent name="com.usmbthomas.sudokuBoard" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SudokuSolverTest">
+  <component name="RunManager" selected="Application.Sudoku Solver">
     <configuration name="Sudoku Solver" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.usmbthomas.Main" />
       <module name="sudoku-solver" />
@@ -100,7 +101,7 @@
       <workItem from="1585067905635" duration="1453000" />
       <workItem from="1585389099182" duration="9074000" />
       <workItem from="1585503887742" duration="2168000" />
-      <workItem from="1585554155456" duration="11838000" />
+      <workItem from="1585554155456" duration="23573000" />
     </task>
     <servers />
   </component>
@@ -124,25 +125,29 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="523" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1585395824561" />
-    <state width="1493" height="209" key="GridCell.Tab.0.bottom" timestamp="1585572876476">
+    <state width="1493" height="410" key="GridCell.Tab.0.bottom" timestamp="1585588818021">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="209" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585572876476" />
-    <state width="1493" height="209" key="GridCell.Tab.0.center" timestamp="1585572876475">
+    <state width="1493" height="410" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585588818021" />
+    <state width="1493" height="410" key="GridCell.Tab.0.center" timestamp="1585588818021">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="209" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585572876475" />
-    <state width="1493" height="209" key="GridCell.Tab.0.left" timestamp="1585572876475">
+    <state width="1493" height="410" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585588818021" />
+    <state width="1493" height="410" key="GridCell.Tab.0.left" timestamp="1585588818021">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="209" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585572876475" />
-    <state width="1493" height="209" key="GridCell.Tab.0.right" timestamp="1585572876476">
+    <state width="1493" height="410" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585588818021" />
+    <state width="1493" height="410" key="GridCell.Tab.0.right" timestamp="1585588818021">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="209" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585572876476" />
+    <state width="1493" height="410" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585588818021" />
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1585554166738">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1585554166738" />
+    <state x="127" y="34" key="refactoring.ChangeSignatureDialog" timestamp="1585586848035">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="127" y="34" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1585586848035" />
   </component>
 </project>
