@@ -3,7 +3,7 @@ package myPackage;
 import java.util.ArrayList;
 
 public class Solver {
-    private static final int  VALUE_NOT_FIND = 999;
+    public static final int  VALUE_NOT_OK= 999;
     private Cell[][] boardSudoku;
     private ArrayList<Square> arrayWithSquares;
     private ColonLineOperations clOperations;
@@ -49,6 +49,31 @@ public class Solver {
         return false;
     }
 
+    public int[] moveBackMethod(int colon, int line, Square squareForSolve){
+        int []dataArray = new int[2];
+
+        if(line != squareForSolve.line && colon == squareForSolve.colon){
+            line--;
+            colon+=2;
+        }
+
+        else if(colon > squareForSolve.colon){
+            colon--;
+        }
+
+        else if(line == squareForSolve.line && colon == squareForSolve.colon){
+            line = VALUE_NOT_OK;
+            colon = VALUE_NOT_OK;
+        }
+
+        dataArray[0] = colon;
+        dataArray[1] = line;
+
+        return dataArray;
+
+
+    }
+
     public boolean findSetCellValue(int colon, int line, Square squareForSolve ){
         boolean find = false;
 
@@ -74,7 +99,7 @@ public class Solver {
                 if (valuesPossibleActual.get(i) == boardSudoku[colon][line].getValue())
                     return i;
             }
-            return VALUE_NOT_FIND;
+            return VALUE_NOT_OK;
         }
         return 0;
     }
@@ -85,7 +110,7 @@ public class Solver {
             if(valuesPossibleActual.get(i) > boardSudoku[colon][line].getValue())
                 return i;
         }
-        return VALUE_NOT_FIND;
+        return VALUE_NOT_OK;
     }
 
 }

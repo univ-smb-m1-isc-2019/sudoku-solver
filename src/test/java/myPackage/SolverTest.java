@@ -1,8 +1,7 @@
 package myPackage;
-
-
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
+import org.testng.annotations.BeforeTest;
 
 class SolverTest {
 
@@ -18,20 +17,23 @@ class SolverTest {
             { 0, 9, 0, 0, 0, 0, 4, 0, 0 }
     };
 
-    Board mySdkBoard = new Board();
+    Board mySdkBoard;
     Solver solverTest;
+    Square newSquare;
 
+    @BeforeTest
     public void init(){
+        mySdkBoard = new Board();
         mySdkBoard.createBoard(board);
         solverTest = new Solver(mySdkBoard.getCellBoard());
+        newSquare = new Square(0,0);
     }
 
     @Test
     void findCellValue() {
         init();
-        Square newSquare = new Square(0,0);
-        newSquare.createSquareValuePossible(mySdkBoard.getCellBoard());
 
+        newSquare.createSquareValuePossible(mySdkBoard.getCellBoard());
         boolean result = solverTest.findSetCellValue(0,1,newSquare);
         int actualCellValue = mySdkBoard.getCellBoard()[0][1].getValue();
         int exceptCellValue = 1;
@@ -55,4 +57,33 @@ class SolverTest {
         Assert.assertEquals(actualCellValue,exceptCellValue);
 
     }
+
+    @Test
+    void moveBackMethodTest1(){
+        init();
+
+        int [] arrayExcept = {0,2};
+        int [] arrayActual = solverTest.moveBackMethod(1, 2, newSquare);
+        Assert.assertArrayEquals(arrayExcept, arrayActual);
+    }
+
+    @Test
+    void moveBackMethodTest2(){
+        init();
+
+        int [] arrayExcept = {2,1};
+        int [] arrayActual = solverTest.moveBackMethod(0, 2, newSquare);
+        Assert.assertArrayEquals(arrayExcept, arrayActual);
+    }
+
+    @Test
+    void moveBackMethodTest3(){
+        init();
+
+        int [] arrayExcept = {Solver.VALUE_NOT_OK,Solver.VALUE_NOT_OK};
+        int [] arrayActual = solverTest.moveBackMethod(0, 0, newSquare);
+        Assert.assertArrayEquals(arrayExcept, arrayActual);
+    }
+
+
 }
