@@ -1,9 +1,13 @@
 package usmb.info806.sudoku;
 
+
 import java.util.ArrayList;
 
 public class Sudoku {
     public ArrayList<Cell> cellList;
+    public ArrayList<Line> lineList;
+    public ArrayList<Column> columnsList;
+    public ArrayList<Square> squareList;
 
     public Sudoku(int[][] board){
         cellList = new ArrayList<Cell>();
