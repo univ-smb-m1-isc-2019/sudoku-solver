@@ -1,8 +1,6 @@
 package com.usmbthomas;
-import com.usmbthomas.sudokuBoard.SubGrid;
 import com.usmbthomas.sudokuBoard.SudokuGrid;
-
-import java.util.ArrayList;
+import com.usmbthomas.sudokuSolver.Sudoku;
 
 public class Main
 {
@@ -23,20 +21,9 @@ public class Main
         SudokuGrid sudokuGrid = new SudokuGrid(board);
         System.out.println(sudokuGrid);
 
-        System.out.println(sudokuGrid.getRow(1));
-        System.out.println(sudokuGrid.getColumn(1));
-        System.out.println(sudokuGrid.getSquare(8, 8));
-
-
-/*        SubGrid sub = new SubGrid();
-        sub.updateCell(1, 1);
-        sub.updateCell(2, 2);
-        sub.updateCell(4, 3);
-        ArrayList<Integer> num = new ArrayList<>(sub.availableNumbers());
-        System.out.println(sub);
-        System.out.println(num);*/
-
-
+        Sudoku sudoku = new Sudoku(board);
+        sudoku.solve();
+        System.out.println(sudoku);
 
     }
 }
