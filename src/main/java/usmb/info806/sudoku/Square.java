@@ -1,4 +1,4 @@
 package usmb.info806.sudoku;
 
-public class Square {
+public class Square extends CellContainer {
 }

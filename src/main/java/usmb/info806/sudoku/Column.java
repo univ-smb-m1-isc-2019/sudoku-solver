@@ -1,4 +1,4 @@
 package usmb.info806.sudoku;
 
-public class Column {
+public class Column extends CellContainer {
 }
