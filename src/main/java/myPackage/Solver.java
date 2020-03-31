@@ -118,7 +118,6 @@ public class Solver {
                 int valueForTest = squareForSolve.getValuesPossibleActual().get(index);
                 if(clOperations.colonTest(boardSudoku, colon, line,valueForTest ) && clOperations.lineTest(boardSudoku, colon, line, valueForTest)) {
                     boardSudoku[colon][line].setValue(valueForTest);
-                    squareForSolve.updateSquareValue(squareForSolve.getValuesPossibleActual(),valueForTest);
                     find = true;
                 }
                 index++;

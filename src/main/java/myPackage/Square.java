@@ -52,6 +52,16 @@ public class Square {
         valuesPossibleActual = valuesPossibleAll;
     }
 
+    public boolean checkSquare(Cell[][] cellBoard, Square squareForTest, int val){
+        for(int i = squareForTest.line ; i < line + 3; i++ ){
+            for(int j = squareForTest.colon; j < colon + 3; j++){
+                if(cellBoard[line][colon].getValue() == val)
+                    return false;
+            }
+        }
+        return true;
+    }
+
 
     @Override
     public String toString() {

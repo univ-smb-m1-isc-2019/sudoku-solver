@@ -3,6 +3,7 @@ package myPackage;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
+import org.testng.annotations.BeforeTest;
 
 import java.util.ArrayList;
 
@@ -21,11 +22,12 @@ class SquareTest {
             { 0, 0, 8, 5, 0, 0, 0, 1, 0 },
             { 0, 9, 0, 0, 0, 0, 4, 0, 0 }
     };
-    Board mySdkBoard = new Board();
+    Board mySdkBoard;
     Square sq;
 
-    @Before
+    @BeforeTest
     void init(){
+        mySdkBoard = new Board();
         mySdkBoard.createBoard(board);
         sq = new Square(0,0);
     }
@@ -46,5 +48,11 @@ class SquareTest {
 
         Assert.assertArrayEquals(new ArrayList[]{exceptArray}, new ArrayList[]{actualArray});
         Assert.assertArrayEquals(new ArrayList[]{exceptArray}, new ArrayList[]{actualArray2});
+    }
+
+    @Test
+    void checkSquareTest(){
+        init();
+        Assert.assertFalse(sq.checkSquare(mySdkBoard.getCellBoard(), sq, 8));
     }
 }
