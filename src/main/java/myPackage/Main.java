@@ -20,5 +20,10 @@ public class Main{
         Solver ms = new Solver(mySdkBoard.getCellBoard());
         ms.createArrayWithSquares();
         ms.displayArrayWithSquares();
+
+        ms.squareSolve(0,false, 0, 0);
+        mySdkBoard.displayBoard();
+
+
     }
 }

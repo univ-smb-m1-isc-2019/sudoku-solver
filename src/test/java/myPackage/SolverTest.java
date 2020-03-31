@@ -112,5 +112,12 @@ class SolverTest {
         Assert.assertArrayEquals(arrayExcept, arrayActual);
     }
 
+    @Test
+    void squareSolve(){
+       /* init();
+        solverTest.squareSolve(0, 0, 0);
+        solverTest.displayArrayWithSquares();*/
+    }
+
 
 }

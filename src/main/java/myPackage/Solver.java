@@ -34,10 +34,8 @@ public class Solver {
 
     private void solver(){}
 
-    /*        for (int i = squareForSolve.colon; i < squareForSolve.colon+3; i++){
-            for (int j = squareForSolve.line; j < squareForSolve.line+3; j++){*/
 
-    private boolean squareSolve(int squareIndex, int colon, int line){
+    public boolean squareSolve(int squareIndex, boolean moveBack, int colon, int line){
         Square squareForSolve = arrayWithSquares.get(squareIndex);
 
         if(colon ==VALUE_NOT_OK && line == VALUE_NOT_OK)
@@ -51,19 +49,17 @@ public class Solver {
 
         }else{
 
-            boolean moveBack = !findSetCellValue(colon, line, squareForSolve);
+            moveBack = !findSetCellValue(colon, line, squareForSolve);
 
             if(moveBack){
                 int dataArray[] = moveBackMethod(colon, line, squareForSolve);
-                squareSolve(squareIndex, dataArray[0], dataArray[1]);
+                squareSolve(squareIndex, moveBack, dataArray[0], dataArray[1]);
             }else{
                 int dataArray[] = moveAhead(colon, line, squareForSolve);
-                squareSolve(squareIndex, dataArray[0], dataArray[1]);
+                squareSolve(squareIndex, moveBack, dataArray[0], dataArray[1]);
             }
-
         }
-
-return false;
+        return false;
     }
 
     public int[] moveAhead(int colon, int line, Square squareForSolve){
