@@ -15,7 +15,7 @@ public class Solver {
         }
     }
 
-    private boolean estDansLigne(int ligne, int numero) {
+    public boolean estDansLigne(int ligne, int numero) {
         for (int i = 0; i < TAILLE; i++) {
             if (grille[ligne][i] == numero)
                 return true;
@@ -23,7 +23,7 @@ public class Solver {
         return false;
     }
 
-    private boolean estDansColonne(int colonne, int numero) {
+    public boolean estDansColonne(int colonne, int numero) {
         for (int i = 0; i < TAILLE; i++) {
             if (grille[i][colonne] == numero)
                 return true;
@@ -31,7 +31,7 @@ public class Solver {
         return false;
     }
 
-    private boolean estDansBoite(int ligne, int colonne, int numero) {
+    public boolean estDansBoite(int ligne, int colonne, int numero) {
         int l = ligne - ligne % 3;
         int c = colonne - colonne % 3;
 
@@ -45,7 +45,7 @@ public class Solver {
         return false;
     }
 
-    private boolean confirmation(int ligne, int colonne, int numero) {
+    public boolean confirmation(int ligne, int colonne, int numero) {
         return !estDansLigne(ligne, numero) && !estDansColonne(colonne, numero) && !estDansBoite(ligne, colonne, numero);
     }
 
@@ -79,6 +79,10 @@ public class Solver {
             }
             System.out.println();
         }
+    }
+
+    public int getTaille(){
+        return TAILLE;
     }
 }
 
