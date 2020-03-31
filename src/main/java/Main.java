@@ -24,7 +24,7 @@ public class Main {
                 {5, 4, 6, 2, 1, 7, 9, 3, 8},
                 {3, 8, 1, 9, 6, 4, 5, 7, 2}
         };
-
+        /* =========== cas 1 =========== */
         Solver s1 = new Solver(board_1);
         s1.affichage();
 
@@ -33,9 +33,11 @@ public class Main {
         } else {
             System.out.println(">>> pas resoluble <<<");
         }
+        /* ============================= */
 
         System.out.println();
 
+        /* =========== cas 2 =========== */
         Solver s2 = new Solver(board_2);
         s2.affichage();
 
@@ -44,7 +46,6 @@ public class Main {
         } else {
             System.out.println(">>> pas resoluble <<<");
         }
+        /* ============================= */
     }
-
-
 }

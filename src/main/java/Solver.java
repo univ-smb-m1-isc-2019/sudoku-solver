@@ -64,7 +64,6 @@ public class Solver {
                             }
                         }
                     }
-
                     return false;
                 }
             }
@@ -81,7 +80,7 @@ public class Solver {
         }
     }
 
-    public int getTaille(){
+    public int getTaille() {
         return TAILLE;
     }
 }

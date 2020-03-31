@@ -1,5 +1,6 @@
 import org.junit.Test;
 
+import static junit.framework.Assert.assertFalse;
 import static junit.framework.TestCase.assertTrue;
 
 public class testSolver {
@@ -29,7 +30,7 @@ public class testSolver {
     };
 
     @Test
-    public void ToutesLesNumerosSontDansLigne() {
+    public void TousLesNumerosSontDansLigne() {
         Solver s = new Solver(resoluble);
         for (int i = 0; i < s.getTaille(); i++) {
             for (int j = 0; j < s.getTaille(); j++) {
@@ -40,12 +41,34 @@ public class testSolver {
     }
 
     @Test
-    public void TouteLesNumerosSontDansColonne() {
+    public void TousLesNumerosSontDansColonne() {
         Solver s = new Solver(resoluble);
         for (int i = 0; i < s.getTaille(); i++) {
             for (int j = 0; j < s.getTaille(); j++) {
                 assertTrue(s.estDansColonne(j, resoluble[i][j]));
             }
         }
+    }
+
+    @Test
+    public void TousLesNumeroSontDansBoite(){
+        Solver s = new Solver(resoluble);
+        for(int i = 0; i < s.getTaille(); i++){
+            for(int j = 0; j < s.getTaille(); j++){
+                assertTrue(s.estDansBoite(i,j,resoluble[i][j]));
+            }
+        }
+    }
+
+    @Test
+    public void PasResolubleDoitEtreFalse(){
+        Solver s = new Solver(pasResoluble);
+        assertFalse(s.resoudre());
+    }
+
+    @Test
+    public void ResolubleDoitEtreTrue(){
+        Solver s = new Solver(resoluble);
+        assertTrue(s.resoudre());
     }
 }
