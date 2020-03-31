@@ -12,5 +12,17 @@ public class Main {
                 {0, 0, 8, 5, 0, 0, 0, 1, 0},
                 {0, 9, 0, 0, 0, 0, 4, 0, 0}
         };
+
+        Solver s = new Solver(board);
+        s.affichage();
+
+        if(s.resoudre()){
+            System.out.println(">>> resoluble <<<");
+            s.affichage();
+        }else{
+            System.out.println(">>> pas resoluble <<<");
+        }
     }
+
+
 }

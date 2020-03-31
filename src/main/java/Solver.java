@@ -49,5 +49,36 @@ public class Solver {
         return !estDansLigne(ligne, numero) && !estDansColonne(colonne, numero) && !estDansBoite(ligne, colonne, numero);
     }
 
+    public boolean resoudre(){
+        for(int ligne = 0; ligne < TAILLE; ligne++){
+            for(int colonne = 0; colonne < TAILLE; colonne++){
+                if(grille[ligne][colonne] == VIDE){
+                    for(int numero = 1; numero < TAILLE; numero++){
+                        if(confirmation(ligne,colonne,numero)){
+                            grille[ligne][colonne] = numero;
+
+                            if(resoudre()){
+                                return true;
+                            }else{
+                                grille[ligne][colonne] = VIDE;
+                            }
+                        }
+                    }
+
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public void affichage() {
+        for (int i = 0; i < TAILLE; i++) {
+            for (int j = 0; j < TAILLE; j++) {
+                System.out.print(" " + grille[i][j]);
+            }
+            System.out.println();
+        }
+    }
 }
 
