@@ -24,20 +24,20 @@ public class Solver {
     }
 
     private boolean estDansColonne(int colonne, int numero) {
-        for(int i = 0; i < TAILLE; i++){
-            if(grille[i][colonne] == numero)
+        for (int i = 0; i < TAILLE; i++) {
+            if (grille[i][colonne] == numero)
                 return true;
         }
         return false;
     }
 
-    private boolean estDansBoite(int ligne, int colonne, int numero){
+    private boolean estDansBoite(int ligne, int colonne, int numero) {
         int l = ligne - ligne % 3;
         int c = colonne - colonne % 3;
 
-        for(int i = l; i < l + 3; i++){
-            for(int j = c; j < c + 3; j++){
-                if(grille[i][j] == numero){
+        for (int i = l; i < l + 3; i++) {
+            for (int j = c; j < c + 3; j++) {
+                if (grille[i][j] == numero) {
                     return true;
                 }
             }
@@ -45,21 +45,21 @@ public class Solver {
         return false;
     }
 
-    private boolean confirmation(int ligne, int colonne, int numero){
+    private boolean confirmation(int ligne, int colonne, int numero) {
         return !estDansLigne(ligne, numero) && !estDansColonne(colonne, numero) && !estDansBoite(ligne, colonne, numero);
     }
 
-    public boolean resoudre(){
-        for(int ligne = 0; ligne < TAILLE; ligne++){
-            for(int colonne = 0; colonne < TAILLE; colonne++){
-                if(grille[ligne][colonne] == VIDE){
-                    for(int numero = 1; numero < TAILLE; numero++){
-                        if(confirmation(ligne,colonne,numero)){
+    public boolean resoudre() {
+        for (int ligne = 0; ligne < TAILLE; ligne++) {
+            for (int colonne = 0; colonne < TAILLE; colonne++) {
+                if (grille[ligne][colonne] == VIDE) {
+                    for (int numero = 1; numero < TAILLE; numero++) {
+                        if (confirmation(ligne, colonne, numero)) {
                             grille[ligne][colonne] = numero;
 
-                            if(resoudre()){
+                            if (resoudre()) {
                                 return true;
-                            }else{
+                            } else {
                                 grille[ligne][colonne] = VIDE;
                             }
                         }
