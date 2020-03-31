@@ -85,5 +85,32 @@ class SolverTest {
         Assert.assertArrayEquals(arrayExcept, arrayActual);
     }
 
+    @Test
+    void moveAhead(){
+        init();
+
+        int [] arrayExcept = {0,1};
+        int [] arrayActual = solverTest.moveAhead(2, 0, newSquare);
+        Assert.assertArrayEquals(arrayExcept, arrayActual);
+    }
+
+    @Test
+    void moveAhead2(){
+        init();
+
+        int [] arrayExcept = {2,1};
+        int [] arrayActual = solverTest.moveAhead(1, 1, newSquare);
+        Assert.assertArrayEquals(arrayExcept, arrayActual);
+    }
+
+    @Test
+    void moveAhead3(){
+        init();
+
+        int [] arrayExcept = {Solver.VALUE_OK,Solver.VALUE_OK};
+        int [] arrayActual = solverTest.moveAhead(2, 2, newSquare);
+        Assert.assertArrayEquals(arrayExcept, arrayActual);
+    }
+
 
 }

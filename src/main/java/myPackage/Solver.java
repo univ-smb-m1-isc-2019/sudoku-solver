@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class Solver {
     public static final int  VALUE_NOT_OK= 999;
+    public static final int  VALUE_OK= 777;
+
     private Cell[][] boardSudoku;
     private ArrayList<Square> arrayWithSquares;
     private ColonLineOperations clOperations;
@@ -35,18 +37,56 @@ public class Solver {
     /*        for (int i = squareForSolve.colon; i < squareForSolve.colon+3; i++){
             for (int j = squareForSolve.line; j < squareForSolve.line+3; j++){*/
 
-    private boolean squareSolve(int squareIndex, int i, int j){
+    private boolean squareSolve(int squareIndex, int colon, int line){
         Square squareForSolve = arrayWithSquares.get(squareIndex);
-        boolean moveBack = false;
-        if(boardSudoku[i][j].isEditable()){
-            moveBack = !findSetCellValue(i,j,squareForSolve);
+
+        if(colon ==VALUE_NOT_OK && line == VALUE_NOT_OK)
+            return false;
+
+        if(colon ==VALUE_OK && line == VALUE_OK)
+            return true;
+
+        else if(colon == squareForSolve.colon + 2 && line == squareForSolve.line + 2 ){
+            return findSetCellValue(colon, line, squareForSolve);
+
+        }else{
+
+            boolean moveBack = !findSetCellValue(colon, line, squareForSolve);
+
+            if(moveBack){
+                int dataArray[] = moveBackMethod(colon, line, squareForSolve);
+                squareSolve(squareIndex, dataArray[0], dataArray[1]);
+            }else{
+                int dataArray[] = moveAhead(colon, line, squareForSolve);
+                squareSolve(squareIndex, dataArray[0], dataArray[1]);
+            }
+
         }
-        if(moveBack){
-            squareSolve(squareIndex,i+1,j+1);
-        }else {
-            squareSolve(squareIndex,i+1,j+1);
+
+return false;
+    }
+
+    public int[] moveAhead(int colon, int line, Square squareForSolve){
+        int []dataArray = new int[2];
+
+        if(line != squareForSolve.line + 2 && colon == squareForSolve.colon + 2 ){
+            line++;
+            colon = squareForSolve.colon;
         }
-        return false;
+
+        else if(colon < squareForSolve.colon + 2){
+            colon++;
+        }
+
+        else if(line == squareForSolve.line + 2 && colon == squareForSolve.colon + 2){
+            line = VALUE_OK;
+            colon = VALUE_OK;
+        }
+
+        dataArray[0] = colon;
+        dataArray[1] = line;
+
+        return dataArray;
     }
 
     public int[] moveBackMethod(int colon, int line, Square squareForSolve){
@@ -70,8 +110,6 @@ public class Solver {
         dataArray[1] = line;
 
         return dataArray;
-
-
     }
 
     public boolean findSetCellValue(int colon, int line, Square squareForSolve ){
