@@ -23,6 +23,9 @@ public class Cell {
         return "[" + number + ']';
     }
 
+    public boolean isEmpty() {
+        return number == 0;
+    }
 }
 
 

@@ -20,14 +20,12 @@ public class Main
 
     public static void main( String[] args )
     {
-
-
         SudokuGrid sudokuGrid = new SudokuGrid(board);
         System.out.println(sudokuGrid);
 
-        System.out.println(sudokuGrid.getRows(1));
-        System.out.println(sudokuGrid.getColumns(1));
-        System.out.println(sudokuGrid.getSquares(2));
+        System.out.println(sudokuGrid.getRow(1));
+        System.out.println(sudokuGrid.getColumn(1));
+        System.out.println(sudokuGrid.getSquare(8, 8));
 
 
 /*        SubGrid sub = new SubGrid();

@@ -12,20 +12,31 @@ public class SubGrid {
         initSubGrid();
     }
 
+    public SubGrid(ArrayList<Cell> squares) {
+        initSubGrid(squares);
+    }
+
     private void initSubGrid() {
         for (int i = 0; i < GRID_SIZE; ++i) {
             Cell cell = new Cell();
             this.subGridCells[i] = cell;
         }
-   }
+    }
 
-    public ArrayList<Integer> availableNumbers(){
+    private void initSubGrid(ArrayList<Cell> squares) {
+        for (int i = 0; i < GRID_SIZE; ++i) {
+            Cell cell = new Cell(squares.get(i).getNumber());
+            this.subGridCells[i] = cell;
+        }
+    }
+
+    public Integer[] availableNumbers(){
         ArrayList<Integer> numbersAvailable = new ArrayList<>(
                 Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
 
         for(Cell cell: subGridCells){ numbersAvailable.remove(Integer.valueOf(cell.getNumber())); }
 
-        return numbersAvailable;
+        return numbersAvailable.toArray(new Integer[0]);
     }
 
     public void updateCell(int cellIndex, int cellValue){
