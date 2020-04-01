@@ -54,5 +54,7 @@ class SquareTest {
     void checkSquareTest(){
         init();
         Assert.assertFalse(sq.checkSquare(mySdkBoard.getCellBoard(), sq, 8));
+        Assert.assertTrue(sq.checkSquare(mySdkBoard.getCellBoard(), sq, 2));
+
     }
 }

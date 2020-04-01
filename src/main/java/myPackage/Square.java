@@ -8,14 +8,13 @@ public class Square {
 
     public int line;
     public int colon;
+    public boolean testStarted;
 
-    public Square(){
-        initTabTestTemp();
-    }
 
     public Square(int line, int colon){
         this.line = line;
         this.colon = colon;
+        this.testStarted = false;
         initTabTestTemp();
     }
 
@@ -55,7 +54,7 @@ public class Square {
     public boolean checkSquare(Cell[][] cellBoard, Square squareForTest, int val){
         for(int i = squareForTest.line ; i < line + 3; i++ ){
             for(int j = squareForTest.colon; j < colon + 3; j++){
-                if(cellBoard[line][colon].getValue() == val)
+                if(cellBoard[i][j].getValue() == val)
                     return false;
             }
         }

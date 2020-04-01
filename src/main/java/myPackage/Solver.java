@@ -1,19 +1,34 @@
 package myPackage;
 
+import javafx.scene.control.skin.CellSkinBase;
+
 import java.util.ArrayList;
+import java.util.function.Function;
 
 public class Solver {
     public static final int  VALUE_NOT_OK= 999;
     public static final int  VALUE_OK= 777;
-
+    private Board mySdkBoard;
     private Cell[][] boardSudoku;
     private ArrayList<Square> arrayWithSquares;
     private ColonLineOperations clOperations;
 
-    public Solver(Cell[][]  boardSudoku){
-        this.boardSudoku = boardSudoku;
+
+    public Solver(Board mySdkBoard){
+        this.mySdkBoard = mySdkBoard;
+        this.boardSudoku = mySdkBoard.getCellBoard();
         this.arrayWithSquares = new ArrayList<>();
         this.clOperations = new ColonLineOperations();
+    }
+
+
+
+    public void testSolve(){
+        squareSolve(0, 0, 0);
+        mySdkBoard.displayBoard();
+        squareSolve(1, 0, 3);
+        mySdkBoard.displayBoard();
+
     }
 
     public void createArrayWithSquares(){
@@ -32,37 +47,58 @@ public class Solver {
         }
     }
 
-    private void solver(){}
-
-
-    public boolean squareSolve(int squareIndex, boolean moveBack, int colon, int line){
+    public boolean squareSolve(int squareIndex, int line, int colon){
         Square squareForSolve = arrayWithSquares.get(squareIndex);
+        int dataArray[];
+        boolean moveBack;
 
-        if(colon ==VALUE_NOT_OK && line == VALUE_NOT_OK)
+        if(line == VALUE_NOT_OK && colon == VALUE_NOT_OK)
             return false;
+        else{
+            if(line == VALUE_OK && colon == VALUE_OK)
+                return true;
 
-        if(colon ==VALUE_OK && line == VALUE_OK)
-            return true;
+            moveBack = !findSetCellValue(line, colon, squareForSolve);
 
-        else if(colon == squareForSolve.colon + 2 && line == squareForSolve.line + 2 ){
-            return findSetCellValue(colon, line, squareForSolve);
+            if(moveBack)
+                dataArray = jumpBackNotEditableCase(line, colon, squareForSolve);
+            else
+                dataArray = jumpAheadNotEditableCase(line, colon, squareForSolve);
 
-        }else{
+            squareSolve(squareIndex, dataArray[0], dataArray[1]);
 
-            moveBack = !findSetCellValue(colon, line, squareForSolve);
 
-            if(moveBack){
-                int dataArray[] = moveBackMethod(colon, line, squareForSolve);
-                squareSolve(squareIndex, moveBack, dataArray[0], dataArray[1]);
-            }else{
-                int dataArray[] = moveAhead(colon, line, squareForSolve);
-                squareSolve(squareIndex, moveBack, dataArray[0], dataArray[1]);
-            }
         }
         return false;
     }
 
-    public int[] moveAhead(int colon, int line, Square squareForSolve){
+    public int[] jumpAheadNotEditableCase(int line, int colon, Square squareForSolve){
+        int dataArray[] = moveAhead(line, colon, squareForSolve);
+
+        if(dataArray[0] != VALUE_OK && dataArray[0] != VALUE_NOT_OK){
+            while(!boardSudoku[dataArray[0]][dataArray[1]].isEditable()){
+                if(boardSudoku[dataArray[0]][dataArray[1]].getValue() == VALUE_OK)
+                    return dataArray;
+                dataArray = jumpAheadNotEditableCase(dataArray[0],dataArray[1],squareForSolve);
+            }
+        }
+        return dataArray;
+    }
+
+    public int[] jumpBackNotEditableCase(int line, int colon, Square squareForSolve){
+        int dataArray[] = moveBackMethod(line, colon, squareForSolve);
+
+        if(dataArray[0] != VALUE_NOT_OK && dataArray[0] != VALUE_NOT_OK) {
+            while (!boardSudoku[dataArray[0]][dataArray[1]].isEditable()) {
+                if (boardSudoku[dataArray[0]][dataArray[1]].getValue() == VALUE_NOT_OK)
+                    return dataArray;
+                dataArray = jumpBackNotEditableCase(dataArray[0], dataArray[1], squareForSolve);
+            }
+        }
+        return dataArray;
+    }
+
+    public int[] moveAhead(int line, int colon, Square squareForSolve){
         int []dataArray = new int[2];
 
         if(line != squareForSolve.line + 2 && colon == squareForSolve.colon + 2 ){
@@ -79,14 +115,16 @@ public class Solver {
             colon = VALUE_OK;
         }
 
-        dataArray[0] = colon;
-        dataArray[1] = line;
+        dataArray[0] = line;
+        dataArray[1] = colon;
 
         return dataArray;
     }
 
-    public int[] moveBackMethod(int colon, int line, Square squareForSolve){
+    public int[] moveBackMethod(int line, int colon, Square squareForSolve){
         int []dataArray = new int[2];
+
+        mySdkBoard.initCellOfBoard(line,colon);
 
         if(line != squareForSolve.line && colon == squareForSolve.colon){
             line--;
@@ -97,39 +135,50 @@ public class Solver {
             colon--;
         }
 
+
         else if(line == squareForSolve.line && colon == squareForSolve.colon){
             line = VALUE_NOT_OK;
             colon = VALUE_NOT_OK;
         }
 
-        dataArray[0] = colon;
-        dataArray[1] = line;
+        dataArray[0] = line;
+        dataArray[1] = colon;
+
+
 
         return dataArray;
     }
 
-    public boolean findSetCellValue(int colon, int line, Square squareForSolve ){
+    public boolean findSetCellValue(int line, int colon, Square squareForSolve ){
         boolean find = false;
 
-        if(boardSudoku[colon][line].isEditable()){
-            int index = getValueForCell(colon,line,squareForSolve.getValuesPossibleActual());
+        if(boardSudoku[line][colon].isEditable()){
+            int index = getValueForCell(line, colon,squareForSolve.getValuesPossibleActual());
 
             while (!find && index < squareForSolve.getValuesPossibleActual().size()){
                 int valueForTest = squareForSolve.getValuesPossibleActual().get(index);
-                if(clOperations.colonTest(boardSudoku, colon, line,valueForTest ) && clOperations.lineTest(boardSudoku, colon, line, valueForTest)) {
-                    boardSudoku[colon][line].setValue(valueForTest);
+                if(
+                        clOperations.colonTest(boardSudoku, line, colon,valueForTest ) &&
+                        clOperations.lineTest(boardSudoku, line, colon, valueForTest) &&
+                        squareForSolve.checkSquare(boardSudoku,squareForSolve, valueForTest))
+                {
+                    boardSudoku[line][colon].setValue(valueForTest);
                     find = true;
                 }
                 index++;
             }
+
+        }else if(!boardSudoku[line][colon].isEditable() && !squareForSolve.testStarted  && colon == squareForSolve.colon && line == squareForSolve.line){
+            squareForSolve.testStarted = true;
+            find = true;
         }
         return find;
     }
 
-    public int getActualIndexOfValue(int colon, int line, ArrayList<Integer> valuesPossibleActual) {
-        if (boardSudoku[colon][line].getValue() != 0) {
+    public int getActualIndexOfValue(int line, int colon, ArrayList<Integer> valuesPossibleActual) {
+        if (boardSudoku[line][colon].getValue() != 0) {
             for (int i = 0; i < valuesPossibleActual.size(); i++) {
-                if (valuesPossibleActual.get(i) == boardSudoku[colon][line].getValue())
+                if (valuesPossibleActual.get(i) == boardSudoku[line][colon].getValue())
                     return i;
             }
             return VALUE_NOT_OK;
@@ -137,13 +186,13 @@ public class Solver {
         return 0;
     }
 
-    public int getValueForCell(int colon, int line, ArrayList<Integer> valuesPossibleActual){
-        int actualIndexOfValue = getActualIndexOfValue(colon, line, valuesPossibleActual);
-        for (int i = actualIndexOfValue; i < valuesPossibleActual.size(); i++) {
-            if(valuesPossibleActual.get(i) > boardSudoku[colon][line].getValue())
+    public int getValueForCell(int line, int colon, ArrayList<Integer> valuesPossibleActual){
+        int actualIndexOfValue = getActualIndexOfValue(line, colon, valuesPossibleActual);
+        for (int i  = actualIndexOfValue; i < valuesPossibleActual.size(); i++) {
+            if(valuesPossibleActual.get(i) > boardSudoku[line][colon].getValue())
                 return i;
         }
-        return VALUE_NOT_OK;
+        return 0;
     }
 
 }

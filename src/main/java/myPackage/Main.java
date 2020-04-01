@@ -17,13 +17,10 @@ public class Main{
         Board mySdkBoard = new Board();
         mySdkBoard.createBoard(board);
 
-        Solver ms = new Solver(mySdkBoard.getCellBoard());
+        Solver ms = new Solver(mySdkBoard);
         ms.createArrayWithSquares();
         ms.displayArrayWithSquares();
 
-        ms.squareSolve(0,false, 0, 0);
-        mySdkBoard.displayBoard();
-
-
+        ms.testSolve();
     }
 }

@@ -20,6 +20,11 @@ public class Board {
         cellBoard[line][colon] = new Cell(val);
     }
 
+    public void initCellOfBoard(int line,int colon){
+        if(cellBoard[line][colon].isEditable())
+            cellBoard[line][colon].setValue(0);
+    }
+
     public void createBoard(int[][] boardSudoku){
 
         for(int line = 0; line < boardSudoku.length; line++){
@@ -32,6 +37,7 @@ public class Board {
 
 
     public void displayBoard() {
+        System.out.println("===================================================");
         for(int line = 0; line < cellBoard.length; line++){
             System.out.print("| ");
             for (int colon = 0; colon < cellBoard.length; colon++){

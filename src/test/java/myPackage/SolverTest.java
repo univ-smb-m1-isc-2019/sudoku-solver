@@ -25,7 +25,7 @@ class SolverTest {
     public void init(){
         mySdkBoard = new Board();
         mySdkBoard.createBoard(board);
-        solverTest = new Solver(mySdkBoard.getCellBoard());
+        solverTest = new Solver(mySdkBoard);
         newSquare = new Square(0,0);
     }
 
@@ -62,7 +62,7 @@ class SolverTest {
     void moveBackMethodTest1(){
         init();
 
-        int [] arrayExcept = {0,2};
+        int [] arrayExcept = {1,1};
         int [] arrayActual = solverTest.moveBackMethod(1, 2, newSquare);
         Assert.assertArrayEquals(arrayExcept, arrayActual);
     }
@@ -71,8 +71,8 @@ class SolverTest {
     void moveBackMethodTest2(){
         init();
 
-        int [] arrayExcept = {2,1};
-        int [] arrayActual = solverTest.moveBackMethod(0, 2, newSquare);
+        int [] arrayExcept = {1,2};
+        int [] arrayActual = solverTest.moveBackMethod(2, 0, newSquare);
         Assert.assertArrayEquals(arrayExcept, arrayActual);
     }
 
@@ -90,7 +90,7 @@ class SolverTest {
         init();
 
         int [] arrayExcept = {0,1};
-        int [] arrayActual = solverTest.moveAhead(2, 0, newSquare);
+        int [] arrayActual = solverTest.moveAhead(0, 0, newSquare);
         Assert.assertArrayEquals(arrayExcept, arrayActual);
     }
 
@@ -98,8 +98,8 @@ class SolverTest {
     void moveAhead2(){
         init();
 
-        int [] arrayExcept = {2,1};
-        int [] arrayActual = solverTest.moveAhead(1, 1, newSquare);
+        int [] arrayExcept = {2,0};
+        int [] arrayActual = solverTest.moveAhead(1, 2, newSquare);
         Assert.assertArrayEquals(arrayExcept, arrayActual);
     }
 
@@ -112,12 +112,11 @@ class SolverTest {
         Assert.assertArrayEquals(arrayExcept, arrayActual);
     }
 
-    @Test
+    /*@Test
     void squareSolve(){
-       /* init();
+        init();
         solverTest.squareSolve(0, 0, 0);
-        solverTest.displayArrayWithSquares();*/
-    }
-
+        solverTest.displayArrayWithSquares();
+    }*/
 
 }
