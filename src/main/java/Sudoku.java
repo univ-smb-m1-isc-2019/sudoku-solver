@@ -78,7 +78,7 @@ public class Sudoku {
                         }
                     }
 
-                    return false; // we return false
+                    return false; 
                 }
             }
         }
