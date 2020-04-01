@@ -52,7 +52,17 @@ public class Sudoku {
             columnsList.get(cell.y).cellList.add(cell);
             squareList.get(cell.getSquareID()).cellList.add(cell);
         }
+    }
 
+    public void solve(){
+        boolean solved = false;
+        //while(!solved){
+            for (Cell cell : cellList){
+                if (cell.value == 0){
+
+                }
+            }
+        //}
     }
 
 

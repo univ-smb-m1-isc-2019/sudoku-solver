@@ -17,5 +17,6 @@ public class SudokuSolver
                 {0, 9, 0, 0, 0, 0, 4, 0, 0}
         };
         Sudoku sudoku = new Sudoku(board);
+        //sudoku.solve();
     }
 }
