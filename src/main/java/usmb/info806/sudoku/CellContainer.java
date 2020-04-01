@@ -13,4 +13,10 @@ public class CellContainer {
         this.cellList = List;
     }
 
+    public void print(){
+        this.cellList.stream().forEach(i -> {
+            System.out.print(i.value);
+        });
+    }
+
 }
