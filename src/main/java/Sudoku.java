@@ -6,6 +6,7 @@ public class Sudoku {
     public static final int FREE=0;//free cell
     public static final int GRID_SIZE=9;//the size of our Sudoku grids
 
+
     //creates the board
     public Sudoku(int[][] board) {
         this.board = new int[GRID_SIZE][GRID_SIZE];
@@ -84,12 +85,12 @@ public class Sudoku {
                         }
                     }
 
-                    return false; // we return false
+                    return false;
                 }
             }
         }
 
-        return true; // when the sudoku is solved we return true
+        return true; // once the sudoku is solved we return true
     }
 
     //displays the input grid
