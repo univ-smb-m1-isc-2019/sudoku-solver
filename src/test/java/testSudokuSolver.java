@@ -1,8 +1,5 @@
-/*
 
 import org.junit.Test;
-
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class testSudokuSolver {
@@ -33,9 +30,11 @@ int[][] solvedBoard= {
     @Test
     public void allPossibleNumbersAreInRow() {
         Sudoku sudo = new Sudoku(solvedBoard);
+        Row row=new Row(0);
         for (int i = 0; i < 9; i++) {
+            row.setRow(i);
             for (int j=0;j<9;j++)
-               assertTrue(sudo.isInRow(i,solvedBoard[i][j]));
+               assertTrue(sudo.isInRow(row,solvedBoard[i][j]));
         }
 
     }
@@ -43,20 +42,24 @@ int[][] solvedBoard= {
     @Test
     public void allPossibleNumbersAreInColumn() {
         Sudoku sudo = new Sudoku(solvedBoard);
-
+        Column column=new Column(0);
         for (int i = 0; i < 9; i++) {
             for (int j=0;j<9;j++)
-                assertTrue(sudo.isInColumn(j,solvedBoard[i][j]));
+               { column.setColumn(j);
+                assertTrue(sudo.isInColumn(column,solvedBoard[i][j]));}
         }
     }
 
     @Test
     public void allPossibleNumbersAreInSquare() {
         Sudoku sudo = new Sudoku(solvedBoard);
-
+        Column column=new Column(0);
+        Row row=new Row(0);
         for (int i = 0; i < 9; i++) {
+            row.setRow(i);
             for (int j=0;j<9;j++)
-                assertTrue(sudo.isInSquare(i,j,solvedBoard[i][j]));
+             {   column.setColumn(j);
+                assertTrue(sudo.isInSquare(row,column,solvedBoard[i][j]));}
         }
 
     }
@@ -80,4 +83,3 @@ int[][] solvedBoard= {
 
 
 
-*/

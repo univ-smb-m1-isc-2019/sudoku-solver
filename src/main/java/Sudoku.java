@@ -17,6 +17,7 @@ public class Sudoku {
         }
     }
 
+    //we check if the number is ok
     public boolean numberIsOk(int number){
         if(number!=0 && number<=9)
             return true;
