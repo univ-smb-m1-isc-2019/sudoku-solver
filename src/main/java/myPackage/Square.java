@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Square {
     private ArrayList<Integer> valuesPossibleAll;
-    private ArrayList<Integer> valuesPossibleActual;
 
     public int line;
     public int colon;
@@ -20,10 +19,6 @@ public class Square {
 
     public ArrayList<Integer> getValuesPossibleAll() {
         return valuesPossibleAll;
-    }
-
-    public ArrayList<Integer> getValuesPossibleActual() {
-        return valuesPossibleActual;
     }
 
     private void initTabTestTemp(){
@@ -48,7 +43,6 @@ public class Square {
                 updateSquareValue(valuesPossibleAll, valOFCell);
             }
         }
-        valuesPossibleActual = valuesPossibleAll;
     }
 
     public boolean checkSquare(Cell[][] cellBoard, Square squareForTest, int val){
@@ -66,7 +60,6 @@ public class Square {
     public String toString() {
         return "\nSquare{" +
                 "\nvaluesPossibleAll= " + valuesPossibleAll +
-                ",\nvaluesPossibleActual= " + valuesPossibleActual +
                 ",\nline= " + line +
                 ",\ncolon= " + colon +
                 "\n";

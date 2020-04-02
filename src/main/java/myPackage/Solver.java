@@ -21,13 +21,11 @@ public class Solver {
         this.clOperations = new ColonLineOperations();
     }
 
-
-
     public void testSolve(){
         squareSolve(0, 0, 0);
         mySdkBoard.displayBoard();
-        squareSolve(1, 0, 3);
-        mySdkBoard.displayBoard();
+        /*squareSolve(1, 0, 3);
+        mySdkBoard.displayBoard();*/
 
     }
 
@@ -153,13 +151,13 @@ public class Solver {
         boolean find = false;
 
         if(boardSudoku[line][colon].isEditable()){
-            int index = getValueForCell(line, colon,squareForSolve.getValuesPossibleActual());
+            int index = getValueForCell(line, colon,squareForSolve.getValuesPossibleAll());
 
-            while (!find && index < squareForSolve.getValuesPossibleActual().size()){
-                int valueForTest = squareForSolve.getValuesPossibleActual().get(index);
+            while (!find && index < squareForSolve.getValuesPossibleAll().size()){
+                int valueForTest = squareForSolve.getValuesPossibleAll().get(index);
                 if(
-                        clOperations.colonTest(boardSudoku, line, colon,valueForTest ) &&
-                        clOperations.lineTest(boardSudoku, line, colon, valueForTest) &&
+                        clOperations.colonTest(boardSudoku, colon,valueForTest ) &&
+                        clOperations.lineTest(boardSudoku, line, valueForTest) &&
                         squareForSolve.checkSquare(boardSudoku,squareForSolve, valueForTest))
                 {
                     boardSudoku[line][colon].setValue(valueForTest);

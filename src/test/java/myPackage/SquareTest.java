@@ -37,7 +37,6 @@ class SquareTest {
         init();
         sq.createSquareValuePossible(mySdkBoard.getCellBoard());
         ArrayList<Integer> actualArray = sq.getValuesPossibleAll();
-        ArrayList<Integer> actualArray2 = sq.getValuesPossibleActual();
         ArrayList<Integer> exceptArray = new ArrayList<>();
         exceptArray.add(1);
         exceptArray.add(2);
@@ -47,7 +46,6 @@ class SquareTest {
         exceptArray.add(9);
 
         Assert.assertArrayEquals(new ArrayList[]{exceptArray}, new ArrayList[]{actualArray});
-        Assert.assertArrayEquals(new ArrayList[]{exceptArray}, new ArrayList[]{actualArray2});
     }
 
     @Test

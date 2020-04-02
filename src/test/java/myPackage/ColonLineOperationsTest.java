@@ -33,12 +33,12 @@ class ColonLineOperationsTest {
     @Test
     void colonTest() {
         init();
-        Assert.assertFalse(ClOpTest.colonTest(mySdkBoard.getCellBoard(),7, 0, 1));
+        Assert.assertFalse(ClOpTest.colonTest(mySdkBoard.getCellBoard(),7, 0));
     }
 
     @Test
     void lineTest() {
         init();
-        Assert.assertFalse(ClOpTest.lineTest(mySdkBoard.getCellBoard(),0, 8, 9));
+        Assert.assertFalse(ClOpTest.lineTest(mySdkBoard.getCellBoard(),0, 8));
     }
 }
