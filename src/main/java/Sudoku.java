@@ -3,7 +3,7 @@
 public class Sudoku {
 
 
-    private int[][] board;
+    public int[][] board;
     public static final int FREE = 0; // free cell
     public static final int GRID_SIZE = 9; //the size of our Sudoku grids
 
@@ -27,7 +27,7 @@ public class Sudoku {
     }
 
     // we check if a possible number is already in a row
-    private boolean isInRow(Row row, int number) {
+    public boolean isInRow(Row row, int number) {
         for (int i = 0; i < GRID_SIZE; i++)
             if (board[row.getRow()][i] == number && numberIsOk(number))
                 return true;
@@ -36,7 +36,7 @@ public class Sudoku {
     }
 
     // we check if a possible number is already in a column
-    private boolean isInCol(Column col, int number) {
+    public boolean isInColumn(Column col, int number) {
         for (int i = 0; i < GRID_SIZE; i++)
             if (board[i][col.getColumn()] == number && numberIsOk(number))
                 return true;
@@ -45,7 +45,7 @@ public class Sudoku {
     }
 
     // we check if a possible number is in its 3x3 box
-    private boolean isInSquare(Row row, Column col, int number) {
+    public boolean isInSquare(Row row, Column col, int number) {
         int r = row.getRow() - row.getRow() % 3;
         int c = col.getColumn() - col.getColumn() % 3;
 
@@ -58,8 +58,8 @@ public class Sudoku {
     }
 
     // combined method to check if a number possible to a row,column position is ok
-    private boolean positionOk(Row row, Column col, int number) {
-        return !isInRow(row, number)  &&  !isInCol(col, number)  &&  !isInSquare(row, col, number);
+    public boolean positionOk(Row row, Column col, int number) {
+        return !isInRow(row, number)  &&  !isInColumn(col, number)  &&  !isInSquare(row, col, number);
     }
 
     // Solve method
