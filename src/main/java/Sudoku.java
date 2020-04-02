@@ -85,7 +85,7 @@ public class Sudoku {
                         }
                     }
 
-                    return false;
+
                 }
             }
         }
