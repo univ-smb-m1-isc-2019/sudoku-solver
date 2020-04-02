@@ -17,11 +17,13 @@ public class Main {
         sudo.displayGrid();
 
         // we try resolution
-        if (sudo.solve()) {
+if (sudo.solve()) {
             System.out.println("Sudoku gird solved");
             sudo.displayGrid();
         } else {
             System.out.println("Unsolvable");
         }
+
+
 }
 }

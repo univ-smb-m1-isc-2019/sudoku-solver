@@ -32,18 +32,18 @@ public class Sudoku {
     }
 
     // we check if a possible number is already in a column
-    public boolean isInColumn(int column, int number) {
+    public boolean isInColumn(Column column, int number) {
         for (int i = 0; i < GRID_SIZE; i++)
-            if (board[i][column] == number && numberIsOk(number))
+            if (board[i][column.getColumn()] == number && numberIsOk(number))
                 return true;
 
         return false;
     }
 
     // we check if a possible number is in its 3x3 square
-    public boolean isInSquare(int row, int column, int number) {
+    public boolean isInSquare(int row, Column column, int number) {
         int r = row - row % 3;
-        int c = column - column % 3;
+        int c = column.getColumn() - column.getColumn() % 3;
 
         for (int i = r; i < r + 3; i++)
             for (int j = c; j < c + 3; j++)
@@ -54,19 +54,23 @@ public class Sudoku {
     }
 
     // combined method to check if a number possible to a row,column position is ok
-    public boolean numberOk(int row, int col, int number) {
+    public boolean numberOk(int row, Column col, int number) {
         return !isInRow(row, number)  &&  !isInColumn(col, number)  &&  !isInSquare(row, col, number);
     }
 
     // Solve method
     public boolean solve() {
+        Column col=new Column(0);
+
         for (int row = 0; row < GRID_SIZE; row++) {
                                 for (int column = 0; column < GRID_SIZE; column++) {
                                     //search for a free cell
-                                    if (board[row][column] == FREE) {
+                                    col.setColumn(column);
+                                    
+                                    if (board[row][col.getColumn()] == FREE) {
                                         // try all possible numbers
                                         for (int number = 1; number <= GRID_SIZE; number++) {
-                                            if (numberOk(row, column, number)) {
+                                            if (numberOk(row, col, number)) {
                                                 //if the number is ok. we add it to the board
                                                 board[row][column] = number;
 
