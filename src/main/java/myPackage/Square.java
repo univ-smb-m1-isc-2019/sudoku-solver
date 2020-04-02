@@ -7,12 +7,17 @@ public class Square {
 
     public int line;
     public int colon;
+    public int lineEnd;
+    public int colonEnd;
+
     public boolean testStarted;
 
 
     public Square(int line, int colon){
         this.line = line;
         this.colon = colon;
+        this.lineEnd = line + 2;
+        this.colonEnd = colon + 2;
         this.testStarted = false;
         initTabTestTemp();
     }
@@ -54,7 +59,6 @@ public class Square {
         }
         return true;
     }
-
 
     @Override
     public String toString() {

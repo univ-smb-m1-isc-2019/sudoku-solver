@@ -14,15 +14,10 @@ public class Main{
                 { 0, 9, 0, 0, 0, 0, 4, 0, 0 }
         };
 
-        ColonLineOperations cl = new ColonLineOperations();
         Board mySdkBoard = new Board();
         mySdkBoard.createBoard(board);
 
-
         Solver ms = new Solver(mySdkBoard);
-        ms.createArrayWithSquares();
-       // ms.displayArrayWithSquares();
-
         ms.testSolve();
     }
 }

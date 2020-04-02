@@ -1,9 +1,5 @@
 package myPackage;
-
-import javafx.scene.control.skin.CellSkinBase;
-
 import java.util.ArrayList;
-import java.util.function.Function;
 
 public class Solver {
     public static final int  VALUE_NOT_OK= 999;
@@ -17,16 +13,9 @@ public class Solver {
     public Solver(Board mySdkBoard){
         this.mySdkBoard = mySdkBoard;
         this.boardSudoku = mySdkBoard.getCellBoard();
-        this.arrayWithSquares = new ArrayList<>();
         this.clOperations = new ColonLineOperations();
-    }
-
-    public void testSolve(){
-        squareSolve(0, 0, 0);
-        mySdkBoard.displayBoard();
-        /*squareSolve(1, 0, 3);
-        mySdkBoard.displayBoard();*/
-
+        this.arrayWithSquares = new ArrayList<>();
+        createArrayWithSquares();
     }
 
     public void createArrayWithSquares(){
@@ -39,6 +28,35 @@ public class Solver {
         }
     }
 
+    public void testSolve(){
+        int indexSquare = 0;
+        int line = 0;
+        int colon = 0;
+        boolean findOk;
+
+        while (indexSquare < 9 && indexSquare >= 0){
+
+            findOk = squareSolve(indexSquare, line, colon);
+            mySdkBoard.displayBoard();
+
+            if(findOk){
+
+                indexSquare++;
+                if(indexSquare < 9){
+                    line = arrayWithSquares.get(indexSquare).line;
+                    colon = arrayWithSquares.get(indexSquare).colon;
+                }
+
+            }else{
+                indexSquare--;
+                if(indexSquare > -1){
+                    line = arrayWithSquares.get(indexSquare).lineEnd;
+                    colon = arrayWithSquares.get(indexSquare).colonEnd;
+                }
+            }
+        }
+    }
+
     public void displayArrayWithSquares(){
         for (Square item : arrayWithSquares) {
             System.out.println(item.toString());
@@ -47,14 +65,15 @@ public class Solver {
 
     public boolean squareSolve(int squareIndex, int line, int colon){
         Square squareForSolve = arrayWithSquares.get(squareIndex);
-        int dataArray[];
+        int []dataArray;
         boolean moveBack;
 
         if(line == VALUE_NOT_OK && colon == VALUE_NOT_OK)
             return false;
-        else{
-            if(line == VALUE_OK && colon == VALUE_OK)
-                return true;
+       else if (line == VALUE_OK && colon == VALUE_OK)
+            return true;
+
+        else {
 
             moveBack = !findSetCellValue(line, colon, squareForSolve);
 
@@ -62,16 +81,12 @@ public class Solver {
                 dataArray = jumpBackNotEditableCase(line, colon, squareForSolve);
             else
                 dataArray = jumpAheadNotEditableCase(line, colon, squareForSolve);
-
-            squareSolve(squareIndex, dataArray[0], dataArray[1]);
-
-
         }
-        return false;
+        return squareSolve(squareIndex, dataArray[0], dataArray[1]);
     }
 
     public int[] jumpAheadNotEditableCase(int line, int colon, Square squareForSolve){
-        int dataArray[] = moveAhead(line, colon, squareForSolve);
+        int []dataArray = moveAhead(line, colon, squareForSolve);
 
         if(dataArray[0] != VALUE_OK && dataArray[0] != VALUE_NOT_OK){
             while(!boardSudoku[dataArray[0]][dataArray[1]].isEditable()){
@@ -84,9 +99,9 @@ public class Solver {
     }
 
     public int[] jumpBackNotEditableCase(int line, int colon, Square squareForSolve){
-        int dataArray[] = moveBackMethod(line, colon, squareForSolve);
+        int []dataArray = moveBackMethod(line, colon, squareForSolve);
 
-        if(dataArray[0] != VALUE_NOT_OK && dataArray[0] != VALUE_NOT_OK) {
+        if(dataArray[0] != VALUE_NOT_OK && dataArray[1] != VALUE_NOT_OK) {
             while (!boardSudoku[dataArray[0]][dataArray[1]].isEditable()) {
                 if (boardSudoku[dataArray[0]][dataArray[1]].getValue() == VALUE_NOT_OK)
                     return dataArray;
@@ -150,26 +165,29 @@ public class Solver {
     public boolean findSetCellValue(int line, int colon, Square squareForSolve ){
         boolean find = false;
 
-        if(boardSudoku[line][colon].isEditable()){
-            int index = getValueForCell(line, colon,squareForSolve.getValuesPossibleAll());
+        if(boardSudoku[line][colon].isEditable()) {
+            int index = getValueForCell(line, colon, squareForSolve.getValuesPossibleAll());
 
-            while (!find && index < squareForSolve.getValuesPossibleAll().size()){
-                int valueForTest = squareForSolve.getValuesPossibleAll().get(index);
-                if(
-                        clOperations.colonTest(boardSudoku, colon,valueForTest ) &&
-                        clOperations.lineTest(boardSudoku, line, valueForTest) &&
-                        squareForSolve.checkSquare(boardSudoku,squareForSolve, valueForTest))
-                {
-                    boardSudoku[line][colon].setValue(valueForTest);
-                    find = true;
+            if (index != VALUE_NOT_OK) {
+
+                while (!find && index < squareForSolve.getValuesPossibleAll().size()) {
+                    int valueForTest = squareForSolve.getValuesPossibleAll().get(index);
+                    if (
+                            clOperations.colonTest(boardSudoku, colon, valueForTest) &&
+                                    clOperations.lineTest(boardSudoku, line, valueForTest) &&
+                                    squareForSolve.checkSquare(boardSudoku, squareForSolve, valueForTest)) {
+                        boardSudoku[line][colon].setValue(valueForTest);
+                        find = true;
+                    }
+                    index++;
                 }
-                index++;
             }
-
-        }else if(!boardSudoku[line][colon].isEditable() && !squareForSolve.testStarted  && colon == squareForSolve.colon && line == squareForSolve.line){
+        }
+        else if (!boardSudoku[line][colon].isEditable() && !squareForSolve.testStarted && colon == squareForSolve.colon && line == squareForSolve.line) {
             squareForSolve.testStarted = true;
             find = true;
         }
+
         return find;
     }
 
@@ -179,17 +197,22 @@ public class Solver {
                 if (valuesPossibleActual.get(i) == boardSudoku[line][colon].getValue())
                     return i;
             }
-            return VALUE_NOT_OK;
+            //return VALUE_NOT_OK;
         }
         return 0;
     }
 
     public int getValueForCell(int line, int colon, ArrayList<Integer> valuesPossibleActual){
         int actualIndexOfValue = getActualIndexOfValue(line, colon, valuesPossibleActual);
-        for (int i  = actualIndexOfValue; i < valuesPossibleActual.size(); i++) {
+
+        for (int i = actualIndexOfValue; i < valuesPossibleActual.size(); i++) {
             if(valuesPossibleActual.get(i) > boardSudoku[line][colon].getValue())
                 return i;
         }
+
+       if(actualIndexOfValue + 1  == valuesPossibleActual.size())
+            return VALUE_NOT_OK;
+
         return 0;
     }
 
