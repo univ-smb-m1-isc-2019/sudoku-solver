@@ -1,40 +1,30 @@
 package myPackage;
 import org.junit.Assert;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.testng.annotations.BeforeTest;
 
 class SolverTest {
+    private static Board mySdkBoard;
+    private static Solver solverTest;
+    private static Square newSquare;
 
-    int[][] board = {
-            { 8, 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 3, 6, 0, 0, 0, 0, 0 },
-            { 0, 7, 0, 0, 9, 0, 2, 0, 0 },
-            { 0, 5, 0, 0, 0, 7, 0, 0, 0 },
-            { 0, 0, 0, 0, 4, 5, 7, 0, 0 },
-            { 0, 0, 0, 1, 0, 0, 0, 3, 0 },
-            { 0, 0, 1, 0, 0, 0, 0, 6, 8 },
-            { 0, 0, 8, 5, 0, 0, 0, 1, 0 },
-            { 0, 9, 0, 0, 0, 0, 4, 0, 0 }
-    };
-
-    Board mySdkBoard;
-    Solver solverTest;
-    Square newSquare;
-
-    @BeforeTest
-    public void init(){
+    @BeforeAll
+    public static void init(){
         mySdkBoard = new Board();
-        mySdkBoard.createBoard(board);
+        mySdkBoard.createBoard(Main.board);
+        mySdkBoard.createArrayWithSquares();
         solverTest = new Solver(mySdkBoard);
         newSquare = new Square(0,0);
+        newSquare.createSquareValuePossible(mySdkBoard.getCellBoard());
     }
 
+
+    /***
+     * Check if value in line 0 and column 8 was find and modified to 1.
+     */
     @Test
     void findCellValue() {
-        init();
-
-        newSquare.createSquareValuePossible(mySdkBoard.getCellBoard());
-        boolean result = solverTest.findSetCellValue(0,1,newSquare);
+        boolean result = solverTest.findSetCellValue(0,8,newSquare);
         int actualCellValue = mySdkBoard.getCellBoard()[0][1].getValue();
         int exceptCellValue = 1;
 
@@ -43,9 +33,11 @@ class SolverTest {
 
     }
 
+    /***
+     *  Check if value in line 8 and column 1 was not finding and don't changed it's value.
+     */
     @Test
     void findCellValue2() {
-        init();
         Square newSquare = new Square(6,0);
         newSquare.createSquareValuePossible(mySdkBoard.getCellBoard());
 
@@ -58,65 +50,72 @@ class SolverTest {
 
     }
 
+    /***
+     * Check if column 2 was decremented to 1.
+     */
     @Test
     void moveBackMethodTest1(){
-        init();
-
         int [] arrayExcept = {1,1};
         int [] arrayActual = solverTest.moveBackMethod(1, 2, newSquare);
         Assert.assertArrayEquals(arrayExcept, arrayActual);
     }
 
+    /***
+     * Check if line 2 was decremented to 1 and column equal 2.
+     */
     @Test
     void moveBackMethodTest2(){
-        init();
-
         int [] arrayExcept = {1,2};
         int [] arrayActual = solverTest.moveBackMethod(2, 0, newSquare);
         Assert.assertArrayEquals(arrayExcept, arrayActual);
     }
 
+    /***
+     * Check if line equal first line of square and column equal first column of square, decrementation is not available.
+     */
     @Test
     void moveBackMethodTest3(){
-        init();
-
         int [] arrayExcept = {Solver.VALUE_NOT_OK,Solver.VALUE_NOT_OK};
         int [] arrayActual = solverTest.moveBackMethod(0, 0, newSquare);
         Assert.assertArrayEquals(arrayExcept, arrayActual);
     }
 
+    /***
+     * Check column incrementation.
+     */
     @Test
     void moveAhead(){
-        init();
-
         int [] arrayExcept = {0,1};
         int [] arrayActual = solverTest.moveAhead(0, 0, newSquare);
         Assert.assertArrayEquals(arrayExcept, arrayActual);
     }
 
+    /***
+     * Check line incrementation.
+     */
     @Test
     void moveAhead2(){
-        init();
-
         int [] arrayExcept = {2,0};
         int [] arrayActual = solverTest.moveAhead(1, 2, newSquare);
         Assert.assertArrayEquals(arrayExcept, arrayActual);
     }
 
+    /***
+     * Check if line equal last line of square and column equal last column of square, incrementation is not available.
+     */
     @Test
     void moveAhead3(){
-        init();
-
         int [] arrayExcept = {Solver.VALUE_OK,Solver.VALUE_OK};
         int [] arrayActual = solverTest.moveAhead(2, 2, newSquare);
         Assert.assertArrayEquals(arrayExcept, arrayActual);
     }
 
-    /*@Test
-    void squareSolve(){
-        init();
+    /***
+     * Display resolved first square.
+     */
+    @Test
+    void squareSolveTest(){
         solverTest.squareSolve(0, 0, 0);
-        solverTest.displayArrayWithSquares();
-    }*/
-
+        mySdkBoard.displayBoard();
+    }
 }
