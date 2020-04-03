@@ -1,42 +1,29 @@
 package myPackage;
 
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.testng.annotations.BeforeTest;
-
 import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class SquareTest {
 
-    int[][] board = {
-            { 8, 0, 0, 0, 0, 0, 0, 0, 0 },
-            { 0, 0, 3, 6, 0, 0, 0, 0, 0 },
-            { 0, 7, 0, 0, 9, 0, 2, 0, 0 },
-            { 0, 5, 0, 0, 0, 7, 0, 0, 0 },
-            { 0, 0, 0, 0, 4, 5, 7, 0, 0 },
-            { 0, 0, 0, 1, 0, 0, 0, 3, 0 },
-            { 0, 0, 1, 0, 0, 0, 0, 6, 8 },
-            { 0, 0, 8, 5, 0, 0, 0, 1, 0 },
-            { 0, 9, 0, 0, 0, 0, 4, 0, 0 }
-    };
-    Board mySdkBoard;
-    Square sq;
+    private static Board mySdkBoard;
+    private static Square newSquare;
 
-    @BeforeTest
-    void init(){
+    @BeforeAll
+    public static void init(){
         mySdkBoard = new Board();
-        mySdkBoard.createBoard(board);
-        sq = new Square(0,0);
+        mySdkBoard.createBoard(Main.board);
+        newSquare = new Square(0,0);
+        newSquare.createSquareValuePossible(mySdkBoard.getCellBoard());
     }
 
+    /***
+     * Check if method for creating array with values possible for squares, working well.
+     */
     @Test
-    void createSquareValuePossible() {
-        init();
-        sq.createSquareValuePossible(mySdkBoard.getCellBoard());
-        ArrayList<Integer> actualArray = sq.getValuesPossibleAll();
+    void createSquareValuePossibleTest() {
+        ArrayList<Integer> actualArray = newSquare.getValuesPossibleAll();
         ArrayList<Integer> exceptArray = new ArrayList<>();
         exceptArray.add(1);
         exceptArray.add(2);
@@ -48,11 +35,12 @@ class SquareTest {
         Assert.assertArrayEquals(new ArrayList[]{exceptArray}, new ArrayList[]{actualArray});
     }
 
+    /***
+     * Check if value 8 is not possible for the square because it already exists, and value 2 is possible.
+     */
     @Test
     void checkSquareTest(){
-        init();
-        Assert.assertFalse(sq.checkSquare(mySdkBoard.getCellBoard(), sq, 8));
-        Assert.assertTrue(sq.checkSquare(mySdkBoard.getCellBoard(), sq, 2));
-
+        Assert.assertFalse(newSquare.checkSquare(mySdkBoard.getCellBoard(), newSquare, 8));
+        Assert.assertTrue(newSquare.checkSquare(mySdkBoard.getCellBoard(), newSquare, 2));
     }
 }
