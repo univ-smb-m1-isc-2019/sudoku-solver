@@ -220,7 +220,6 @@ public class Solver {
                 if (valuesPossibleActual.get(i) == boardSudoku[line][column].getValue())
                     return i;
             }
-            //return VALUE_NOT_OK;
         }
         return 0;
     }
