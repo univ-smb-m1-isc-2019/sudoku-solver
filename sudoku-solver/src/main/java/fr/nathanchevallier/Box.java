@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Box {
-    int number;
-    int line;
-    int column;
-    int[] region;
+    public int number;
+    public int line;
+    public int column;
+    public Region region;
 
     boolean valid;
-    List<Integer> possibleNumbers = new ArrayList<Integer>();
+    public List<Integer> possibleNumbers = new ArrayList<Integer>();
 
-    public Box(int number, int line, int column){
+    public Box(int number, int line, int column, Region region){
         this.number = number;
         this.line = line;
         this.column = column;
-        this.region = findRegion(this.line, this.column);
+        this.region = region;
         if(this.number != 0)
             this.valid = true;
         else{
@@ -28,32 +28,25 @@ public class Box {
 
     }
 
+    public void updateNumber(){
+        if(this.possibleNumbers.size() == 1){
+            this.number = this.possibleNumbers.get(0);
+            this.valid = true;
+        }
 
-    public int[] findRegion(int line, int column){
-        if(line >= 0 && line <= 2 && column >= 0 && column <= 2)
-            return new int[]{0, 2, 0, 2};
-        if(line >= 0 && line <= 2 && column >= 3 && column <= 5)
-            return new int[]{0, 2, 3, 5};
-        if(line >= 0 && line <= 2 && column >= 6 && column <= 8)
-            return new int[]{0, 2, 6, 8};
-
-        if(line >= 3 && line <= 5 && column >= 0 && column <= 2)
-            return new int[]{3, 5, 0, 2};
-        if(line >= 3 && line <= 5 && column >= 3 && column <= 5)
-            return new int[]{3, 5, 3, 5};
-        if(line >= 3 && line <= 5 && column >= 6 && column <= 8)
-            return new int[]{3, 5, 6, 8};
-
-        if(line >= 6 && line <= 8 && column >= 0 && column <= 2)
-            return new int[]{6, 8, 0, 2};
-        if(line >= 6 && line <= 8 && column >= 3 && column <= 5)
-            return new int[]{6, 8, 3, 5};
-        else
-            return new int[]{6, 8, 6, 8};
     }
 
+    public void updateListPossibleNumbers(Box[][] grid){
+        this.possibleNumbers.removeAll(this.areaList(grid));
+    }
+
+    public boolean sameListMembers(Box box){
+        return this.possibleNumbers.containsAll(box.possibleNumbers);
+    }
+
+
     public boolean isInArea(int num, Box[][] grid){
-        if(areaList(grid).contains(num))
+        if(this.areaList(grid).contains(num))
             return true;
         else
             return false;
@@ -63,7 +56,7 @@ public class Box {
         List<Integer> list = new ArrayList<Integer>();
         list.addAll(areaLine(grid));
         list.addAll(areaColumn(grid));
-        list.addAll(areaRegion(grid));
+        list.addAll(this.region.areaRegion(grid, this.line, this.column));
 
         return list;
     }
@@ -85,15 +78,5 @@ public class Box {
         }
         return listColumn;
     }
-    public List<Integer> areaRegion(Box[][] grid){
-        List<Integer> listColumn = new ArrayList<Integer>();
-        for(int i=this.region[0]; i <= this.region[1]; i++){
-            for(int j=this.region[2]; j <= this.region[3]; j++){
-                if( grid[i][j].valid && !(this.line == i && this.column == j))
-                    listColumn.add(grid[i][j].number);
-            }
 
-        }
-        return listColumn;
-    }
 }

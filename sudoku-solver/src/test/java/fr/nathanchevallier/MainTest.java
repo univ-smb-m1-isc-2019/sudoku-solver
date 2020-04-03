@@ -10,18 +10,8 @@ import org.junit.Test;
 public class MainTest
 {
     /**
-     * Rigorous Test :-)
-     */
-    @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
-    }
-
-
-    /**
+     * Test 1.
      * Test if the grid is correct and valid.
-     *
      */
     @Test
     public void gridIsValid()
@@ -43,7 +33,8 @@ public class MainTest
     }
 
     /**
-     * test : check a full grid.
+     * Test 2.
+     * Test : check a full grid.
      */
     @Test
     public void checkFullGrid()
@@ -66,7 +57,8 @@ public class MainTest
     }
 
     /**
-     * test that solves a single region
+     * Test 3.
+     * Test that solves a single region
      */
     @Test
     public void solvesSingleRegion()
@@ -85,10 +77,33 @@ public class MainTest
 
 
         Sudoku sudoku = new Sudoku(grid);
-        //assertTrue( sudoku.isValid() );
+        sudoku.solve();
         assertTrue( sudoku.isResolvedCorrectly() );
-       // assertThat(sudoku.hitPoints()).isEqualTo(0);
     }
 
+    /**
+     * Test 4.
+     * Test that solves a easy grid
+     */
+    @Test
+    public void solvesEasyGrid()
+    {
+        int[][] grid = {
+                { 7, 9, 4, 0, 8, 6, 3, 1, 0 },
+                { 1, 0, 2, 0, 7, 3, 5, 8, 9 },
+                { 0, 5, 0, 0, 9, 2, 0, 0, 0 },
+                { 0, 0, 0, 7, 5, 0, 1, 2, 0 },
+                { 0, 0, 7, 3, 0, 0, 0, 9, 6 },
+                { 0, 4, 0, 0, 1, 0, 0, 0, 0 },
+                { 4, 3, 0, 0, 0, 0, 0, 5, 1 },
+                { 0, 0, 0, 9, 0, 0, 6, 0, 0 },
+                { 6, 0, 1, 0, 3, 0, 0, 0, 0 }
+        };
+
+
+        Sudoku sudoku = new Sudoku(grid);
+        sudoku.solve();
+        assertTrue( sudoku.isResolvedCorrectly() );
+    }
 
 }
