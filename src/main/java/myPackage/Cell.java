@@ -4,7 +4,6 @@ public class Cell {
     private int value;
     private boolean editable = false;
 
-
     public Cell(int value){
         this.value = value;
         if(value == 0)
@@ -22,7 +21,6 @@ public class Cell {
     public boolean isEditable() {
         return editable;
     }
-
 
     @Override
     public String toString() {

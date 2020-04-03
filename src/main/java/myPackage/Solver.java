@@ -13,22 +13,14 @@ public class Solver {
     public Solver(Board mySdkBoard){
         this.mySdkBoard = mySdkBoard;
         this.boardSudoku = mySdkBoard.getCellBoard();
+        this.arrayWithSquares = mySdkBoard.getArrayWithSquares();
         this.clOperations = new ColonLineOperations();
-        this.arrayWithSquares = new ArrayList<>();
-        createArrayWithSquares();
     }
 
-    public void createArrayWithSquares(){
-        for(int line = 0 ; line < boardSudoku.length; line+=3 ){
-            for(int colon = 0; colon < boardSudoku.length; colon+=3){
-                Square newSquare = new Square(line,colon);
-                newSquare.createSquareValuePossible(boardSudoku);
-                arrayWithSquares.add(newSquare);
-            }
-        }
-    }
-
-    public void testSolve(){
+    /***
+     *
+     */
+    public void sudokuSolve(){
         int indexSquare = 0;
         int line = 0;
         int colon = 0;
@@ -37,7 +29,6 @@ public class Solver {
         while (indexSquare < 9 && indexSquare >= 0){
 
             findOk = squareSolve(indexSquare, line, colon);
-            mySdkBoard.displayBoard();
 
             if(findOk){
 
@@ -57,12 +48,13 @@ public class Solver {
         }
     }
 
-    public void displayArrayWithSquares(){
-        for (Square item : arrayWithSquares) {
-            System.out.println(item.toString());
-        }
-    }
-
+    /***
+     *
+     * @param squareIndex
+     * @param line
+     * @param colon
+     * @return
+     */
     public boolean squareSolve(int squareIndex, int line, int colon){
         Square squareForSolve = arrayWithSquares.get(squareIndex);
         int []dataArray;
@@ -85,6 +77,13 @@ public class Solver {
         return squareSolve(squareIndex, dataArray[0], dataArray[1]);
     }
 
+    /***
+     *
+     * @param line
+     * @param colon
+     * @param squareForSolve
+     * @return
+     */
     public int[] jumpAheadNotEditableCase(int line, int colon, Square squareForSolve){
         int []dataArray = moveAhead(line, colon, squareForSolve);
 
@@ -98,6 +97,13 @@ public class Solver {
         return dataArray;
     }
 
+    /***
+     *
+     * @param line
+     * @param colon
+     * @param squareForSolve
+     * @return
+     */
     public int[] jumpBackNotEditableCase(int line, int colon, Square squareForSolve){
         int []dataArray = moveBackMethod(line, colon, squareForSolve);
 
@@ -111,6 +117,13 @@ public class Solver {
         return dataArray;
     }
 
+    /***
+     *
+     * @param line
+     * @param colon
+     * @param squareForSolve
+     * @return
+     */
     public int[] moveAhead(int line, int colon, Square squareForSolve){
         int []dataArray = new int[2];
 
@@ -134,6 +147,13 @@ public class Solver {
         return dataArray;
     }
 
+    /***
+     *
+     * @param line
+     * @param colon
+     * @param squareForSolve
+     * @return
+     */
     public int[] moveBackMethod(int line, int colon, Square squareForSolve){
         int []dataArray = new int[2];
 
@@ -162,6 +182,13 @@ public class Solver {
         return dataArray;
     }
 
+    /***
+     *
+     * @param line
+     * @param colon
+     * @param squareForSolve
+     * @return
+     */
     public boolean findSetCellValue(int line, int colon, Square squareForSolve ){
         boolean find = false;
 
@@ -191,6 +218,13 @@ public class Solver {
         return find;
     }
 
+    /***
+     *
+     * @param line
+     * @param colon
+     * @param valuesPossibleActual
+     * @return
+     */
     public int getActualIndexOfValue(int line, int colon, ArrayList<Integer> valuesPossibleActual) {
         if (boardSudoku[line][colon].getValue() != 0) {
             for (int i = 0; i < valuesPossibleActual.size(); i++) {
@@ -202,6 +236,13 @@ public class Solver {
         return 0;
     }
 
+    /***
+     *
+     * @param line
+     * @param colon
+     * @param valuesPossibleActual
+     * @return
+     */
     public int getValueForCell(int line, int colon, ArrayList<Integer> valuesPossibleActual){
         int actualIndexOfValue = getActualIndexOfValue(line, colon, valuesPossibleActual);
 

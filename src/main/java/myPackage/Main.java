@@ -16,8 +16,15 @@ public class Main{
 
         Board mySdkBoard = new Board();
         mySdkBoard.createBoard(board);
+        mySdkBoard.createArrayWithSquares();
+        System.out.println("\n===== Initial board =====");
+        mySdkBoard.displayBoard();
 
         Solver ms = new Solver(mySdkBoard);
-        ms.testSolve();
+        ms.sudokuSolve();
+
+        System.out.println("\n====== Final board ======");
+        mySdkBoard.displayBoard();
+
     }
 }
