@@ -6,16 +6,16 @@ public class Square {
     private ArrayList<Integer> valuesPossibleAll;
 
     public int line;
-    public int colon;
+    public int column;
     public int lineEnd;
-    public int colonEnd;
+    public int columnEnd;
     public boolean testStarted;
 
-    public Square(int line, int colon){
+    public Square(int line, int column){
         this.line = line;
-        this.colon = colon;
+        this.column = column;
         this.lineEnd = line + 2;
-        this.colonEnd = colon + 2;
+        this.columnEnd = column + 2;
         this.testStarted = false;
         initTabTestTemp();
     }
@@ -53,7 +53,7 @@ public class Square {
      */
     public void createSquareValuePossible(Cell[][] cellBoard){
         for(int i = line ; i < line + 3; i++ ){
-            for(int j = colon; j < colon + 3; j++){
+            for(int j = column; j < column + 3; j++){
                 int valOFCell = cellBoard[i][j].getValue();
                 updateSquareValue(valuesPossibleAll, valOFCell);
             }
@@ -69,7 +69,7 @@ public class Square {
      */
     public boolean checkSquare(Cell[][] cellBoard, Square squareForTest, int val){
         for(int i = squareForTest.line ; i < line + 3; i++ ){
-            for(int j = squareForTest.colon; j < colon + 3; j++){
+            for(int j = squareForTest.column; j < column + 3; j++){
                 if(cellBoard[i][j].getValue() == val)
                     return false;
             }
@@ -82,7 +82,7 @@ public class Square {
         return "\nSquare{" +
                 "\nvaluesPossibleAll= " + valuesPossibleAll +
                 ",\nline= " + line +
-                ",\ncolon= " + colon +
+                ",\ncolumn= " + column +
                 "\n";
     }
 }

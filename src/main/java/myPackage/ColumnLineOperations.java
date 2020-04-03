@@ -1,17 +1,17 @@
 package myPackage;
 
-public class ColonLineOperations {
+public class ColumnLineOperations {
 
     /***
-     *Test if value present in colon of board.
+     *Test if value present in column of board.
      * @param cellBoard - Board of sudoku.
-     * @param colon - colon for test.
+     * @param column - column for test.
      * @param val - value for test.
-     * @return - true when value not present in colon.
+     * @return - true when value not present in column.
      */
-    public boolean colonTest(Cell[][] cellBoard, int colon, int val){
+    public boolean columnTest(Cell[][] cellBoard, int column, int val){
         for (int i = 0; i < cellBoard.length; i++ ){
-            if(cellBoard[i][colon].getValue()== val)
+            if(cellBoard[i][column].getValue()== val)
                 return false;
         }
         return true;
