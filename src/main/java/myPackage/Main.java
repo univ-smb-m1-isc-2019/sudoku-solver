@@ -14,15 +14,18 @@ public class Main{
                 { 0, 9, 0, 0, 0, 0, 4, 0, 0 }
         };
 
+        /*Initialization*/
         Board mySdkBoard = new Board();
         mySdkBoard.createBoard(board);
         mySdkBoard.createArrayWithSquares();
         System.out.println("\n===== Initial board =====");
         mySdkBoard.displayBoard();
 
+        /*Solving*/
         Solver ms = new Solver(mySdkBoard);
         ms.sudokuSolve();
 
+        /*Result*/
         System.out.println("\n====== Final board ======");
         mySdkBoard.displayBoard();
 

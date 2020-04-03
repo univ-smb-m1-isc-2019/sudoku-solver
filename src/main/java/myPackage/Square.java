@@ -34,9 +34,9 @@ public class Square {
     }
 
     /***
-     * Delete the value from array with values possible if it's present in square
-     * @param values - Array with values that need be possible for square
-     * @param valOfCell - Value for delete from array with values possible
+     * Delete the value from array with values possible if it's present in square.
+     * @param values - Array with values that need be possible for square.
+     * @param valOfCell - Value for delete from array with values possible.
      */
     public void updateSquareValue (ArrayList<Integer> values, int valOfCell){
         int i = 0;
@@ -48,8 +48,8 @@ public class Square {
     }
 
     /***
-     * Generation of array with values possible for square
-     * @param cellBoard - cellBoard - Board of sudoku
+     * Generation of array with values possible for square.
+     * @param cellBoard - cellBoard - Board of sudoku.
      */
     public void createSquareValuePossible(Cell[][] cellBoard){
         for(int i = line ; i < line + 3; i++ ){
@@ -61,11 +61,11 @@ public class Square {
     }
 
     /***
-     * Test if value present in square
-     * @param cellBoard - Board of sudoku
-     * @param squareForTest - Square for check
-     * @param val - value for test
-     * @return true when value not present in square
+     * Test if value present in square.
+     * @param cellBoard - Board of sudoku.
+     * @param squareForTest - Square for check.
+     * @param val - value for test.
+     * @return true when value not present in square.
      */
     public boolean checkSquare(Cell[][] cellBoard, Square squareForTest, int val){
         for(int i = squareForTest.line ; i < line + 3; i++ ){

@@ -3,11 +3,11 @@ package myPackage;
 public class ColonLineOperations {
 
     /***
-     *Test if value present in colon of board
-     * @param cellBoard - Board of sudoku
-     * @param colon - colon for test
-     * @param val - value for test
-     * @return - true when value not present in colon
+     *Test if value present in colon of board.
+     * @param cellBoard - Board of sudoku.
+     * @param colon - colon for test.
+     * @param val - value for test.
+     * @return - true when value not present in colon.
      */
     public boolean colonTest(Cell[][] cellBoard, int colon, int val){
         for (int i = 0; i < cellBoard.length; i++ ){
@@ -19,11 +19,11 @@ public class ColonLineOperations {
 
 
     /***
-     *Test if value present in line of board
-     * @param cellBoard - Board of sudoku
-     * @param line - line for test
-     * @param val - value for test
-     * @return - true when value not present in line
+     *Test if value present in line of board.
+     * @param cellBoard - Board of sudoku.
+     * @param line - line for test.
+     * @param val - value for test.
+     * @return - true when value not present in line.
      */
     public boolean lineTest(Cell[][] cellBoard, int line ,int val){
         for (int i = 0; i < cellBoard.length; i++ ){
