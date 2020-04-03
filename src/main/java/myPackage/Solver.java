@@ -18,7 +18,7 @@ public class Solver {
     }
 
     /***
-     *
+     *Method for resolve sudoku board.
      */
     public void sudokuSolve(){
         int indexSquare = 0;
@@ -49,11 +49,11 @@ public class Solver {
     }
 
     /***
-     *
-     * @param squareIndex
-     * @param line
-     * @param colon
-     * @return
+     * Method for find all values of square.
+     * @param squareIndex - The index of the square that need be solves.
+     * @param line - index of actual square line.
+     * @param colon - index of actual square colon.
+     * @return - True when square was resolved.
      */
     public boolean squareSolve(int squareIndex, int line, int colon){
         Square squareForSolve = arrayWithSquares.get(squareIndex);
@@ -78,11 +78,11 @@ public class Solver {
     }
 
     /***
-     *
-     * @param line
-     * @param colon
-     * @param squareForSolve
-     * @return
+     * Method for incrementing cell's index, while it's not editable.
+     * @param line - index of actual cell line.
+     * @param colon - index of actual cell colon.
+     * @param squareForSolve - square that need be solve.
+     * @return - Array with two values that correspond to index for finding the next cell.
      */
     public int[] jumpAheadNotEditableCase(int line, int colon, Square squareForSolve){
         int []dataArray = moveAhead(line, colon, squareForSolve);
@@ -98,11 +98,11 @@ public class Solver {
     }
 
     /***
-     *
-     * @param line
-     * @param colon
-     * @param squareForSolve
-     * @return
+     * Method for decrementing cell's index, while it's not editable .
+     * @param line - index of actual cell line.
+     * @param colon - index of actual cell colon.
+     * @param squareForSolve - square that need be solve.
+     * @return - Array with two values that correspond to index for finding the previous cell.
      */
     public int[] jumpBackNotEditableCase(int line, int colon, Square squareForSolve){
         int []dataArray = moveBackMethod(line, colon, squareForSolve);
@@ -118,14 +118,13 @@ public class Solver {
     }
 
     /***
-     *
-     * @param line
-     * @param colon
-     * @param squareForSolve
-     * @return
+     * Method for incrementing cell's index for check next one.
+     * @param line - index of actual cell line.
+     * @param colon - index of actual cell colon.
+     * @param squareForSolve - square that need be solve.
+     * @return - Array with two values that correspond to index for finding the next cell.
      */
     public int[] moveAhead(int line, int colon, Square squareForSolve){
-        int []dataArray = new int[2];
 
         if(line != squareForSolve.line + 2 && colon == squareForSolve.colon + 2 ){
             line++;
@@ -141,23 +140,19 @@ public class Solver {
             colon = VALUE_OK;
         }
 
-        dataArray[0] = line;
-        dataArray[1] = colon;
-
-        return dataArray;
+        return (new int[]{line,colon});
     }
 
     /***
-     *
-     * @param line
-     * @param colon
-     * @param squareForSolve
-     * @return
+     * Method for decrementing cell's index for check previous one.
+     * @param line - index of actual cell line.
+     * @param colon - index of actual cell colon.
+     * @param squareForSolve - square that need be solve.
+     * @return - Array with two values that correspond to index for finding the previous cell.
      */
     public int[] moveBackMethod(int line, int colon, Square squareForSolve){
-        int []dataArray = new int[2];
 
-        mySdkBoard.initCellOfBoard(line,colon);
+        mySdkBoard.initCellOfBoard(line,colon); // Initialize actual cell's value. (0)
 
         if(line != squareForSolve.line && colon == squareForSolve.colon){
             line--;
@@ -168,26 +163,20 @@ public class Solver {
             colon--;
         }
 
-
         else if(line == squareForSolve.line && colon == squareForSolve.colon){
             line = VALUE_NOT_OK;
             colon = VALUE_NOT_OK;
         }
 
-        dataArray[0] = line;
-        dataArray[1] = colon;
-
-
-
-        return dataArray;
+        return (new int[]{line, colon});
     }
 
     /***
-     *
-     * @param line
-     * @param colon
-     * @param squareForSolve
-     * @return
+     *Find and set the value of cell if it's possible.
+     * @param line - index of cell line.
+     * @param colon - index of cell colon.
+     * @param squareForSolve - square that need be solve.
+     * @return - true when value was found.
      */
     public boolean findSetCellValue(int line, int colon, Square squareForSolve ){
         boolean find = false;
@@ -219,11 +208,11 @@ public class Solver {
     }
 
     /***
-     *
-     * @param line
-     * @param colon
-     * @param valuesPossibleActual
-     * @return
+     *Get index of actual value of cell.
+     * @param line - index of cell line.
+     * @param colon - index of cell colon.
+     * @param valuesPossibleActual - array with values that can be possible for cell.
+     * @return - index of actual value.
      */
     public int getActualIndexOfValue(int line, int colon, ArrayList<Integer> valuesPossibleActual) {
         if (boardSudoku[line][colon].getValue() != 0) {
@@ -237,11 +226,11 @@ public class Solver {
     }
 
     /***
-     *
-     * @param line
-     * @param colon
-     * @param valuesPossibleActual
-     * @return
+     *Find the value that can be possible for cell.
+     * @param line - index of cell line.
+     * @param colon - index of cell colon.
+     * @param valuesPossibleActual - array with values that can be possible for cell.
+     * @return - index of value that can be possible for cell.
      */
     public int getValueForCell(int line, int colon, ArrayList<Integer> valuesPossibleActual){
         int actualIndexOfValue = getActualIndexOfValue(line, colon, valuesPossibleActual);
