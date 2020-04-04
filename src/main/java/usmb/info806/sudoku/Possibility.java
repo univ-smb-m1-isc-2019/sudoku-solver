@@ -1,32 +1,47 @@
 package usmb.info806.sudoku;
 
+
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Possibility {
-    public ArrayList<Integer> availablePossibility;
+    public boolean[] availablePossibility;
 
     public Possibility(){
-    availablePossibility = new ArrayList<Integer>();
-    addAllPosibility();
+    availablePossibility = new boolean[9];
+    Arrays.fill(availablePossibility, Boolean.TRUE);
     }
 
-    public void checkCellList(ArrayList<Cell> cellList){
+
+    public void updatePossibility(ArrayList<Cell> cellList) {
         for (Cell cell: cellList) {
             if (cell.value != 0){
-                availablePossibility.remove(cell.value);
+                availablePossibility[cell.value - 1] = false;
             }
         }
     }
 
-    public void addAllPosibility(){
-        availablePossibility.add(1);
-        availablePossibility.add(2);
-        availablePossibility.add(3);
-        availablePossibility.add(4);
-        availablePossibility.add(5);
-        availablePossibility.add(6);
-        availablePossibility.add(7);
-        availablePossibility.add(8);
-        availablePossibility.add(9);
+    public int getSolution(){
+        int i =0;
+        if(nbPossibility() == 1){
+            while(!this.availablePossibility[i]){
+                i++;
+            }
+        }
+        return i+1;
+    }
+
+    public int nbPossibility(){
+        int nb = 0;
+        for (int i = 0; i < availablePossibility.length; i++){
+            if(availablePossibility[i])nb++;
+        }
+        return nb;
+    }
+
+    public void printPossibility(){
+        for (int i = 0; i < availablePossibility.length; i++){
+            System.out.println("id " + i + " : " + availablePossibility[i]);
+        }
     }
 }

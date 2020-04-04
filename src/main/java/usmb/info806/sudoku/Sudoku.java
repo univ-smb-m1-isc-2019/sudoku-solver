@@ -55,15 +55,42 @@ public class Sudoku {
     }
 
     public void solve(){
+        boolean autoEnd = false;
         boolean solved = false;
-        //while(!solved){
+        int nbTour = 0;
+        while(!solved && nbTour < 15){
             for (Cell cell : cellList){
                 if (cell.value == 0){
+                    trySolve(new Possibility(), cell);
 
                 }
+
             }
-        //}
+            nbTour++;
+            System.out.println("tour n° " + nbTour);
+        }
     }
 
+    public void trySolve(Possibility possibility, Cell cell){
+        possibility.updatePossibility(lineList.get(cell.x).cellList);
+        possibility.updatePossibility(columnsList.get(cell.y).cellList);
+        possibility.updatePossibility(squareList.get(cell.getSquareID()).cellList);
+        if (possibility.nbPossibility() == 1){
+            System.out.println("la case :" + cell.x + "," + cell.y + " est un " + possibility.getSolution());
+            cell.value = possibility.getSolution();
+        }
+        else {
+            System.out.println("la solution pour la case :" + cell.x + "," + cell.y + " n'est pas encore disponible");
+            possibility.printPossibility();
+        }
+    }
+
+    public void print(){
+        for (Line line: lineList) {
+            System.out.println("{" + line.cellList.get(0).value + ", " + line.cellList.get(1).value + ", " + line.cellList.get(2).value
+                    + ", " + line.cellList.get(3).value + ", " + line.cellList.get(4).value + ", " + line.cellList.get(5).value
+                    + ", " + line.cellList.get(6).value + ", " + line.cellList.get(7).value + ", " + line.cellList.get(8).value + "}");
+        }
+    }
 
 }
