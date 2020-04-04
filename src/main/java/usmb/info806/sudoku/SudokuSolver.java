@@ -32,7 +32,9 @@ public class SudokuSolver
         System.out.println("----------------------------------");
         System.out.println("  On tente de résoudre le Sudoku  ");
         System.out.println("----------------------------------");
+        System.out.println("                                  ");
         sudoku.solve();
+        System.out.println("                                  ");
         System.out.println("----------------------------------");
         System.out.println("       Résolution terminée        ");
         System.out.println("----------------------------------");

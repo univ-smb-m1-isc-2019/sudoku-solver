@@ -55,19 +55,18 @@ public class Sudoku {
     }
 
     public void solve(){
-        boolean autoEnd = false;
-        boolean solved = false;
         int nbTour = 0;
-        while(!solved && nbTour < 15){
+        while(!isSolved() && nbTour < 15){
+            System.out.println("----------------------------------");
+            System.out.println("tour n° " + nbTour + " :");
+            System.out.println("----------------------------------");
             for (Cell cell : cellList){
                 if (cell.value == 0){
                     trySolve(new Possibility(), cell);
 
                 }
-
             }
             nbTour++;
-            System.out.println("tour n° " + nbTour);
         }
     }
 
@@ -76,13 +75,21 @@ public class Sudoku {
         possibility.updatePossibility(columnsList.get(cell.y).cellList);
         possibility.updatePossibility(squareList.get(cell.getSquareID()).cellList);
         if (possibility.nbPossibility() == 1){
-            System.out.println("la case :" + cell.x + "," + cell.y + " est un " + possibility.getSolution());
+            System.out.println("la case " + cell.x + "," + cell.y + " est un " + possibility.getSolution());
             cell.value = possibility.getSolution();
         }
         else {
-            System.out.println("la solution pour la case :" + cell.x + "," + cell.y + " n'est pas encore disponible");
-            possibility.printPossibility();
+            System.out.println("la solution pour la case " + cell.x + "," + cell.y + " n'est pas encore disponible");
         }
+    }
+
+    public boolean isSolved(){
+        boolean res = true;
+        for (Cell cell : cellList) {
+            if (cell.value == 0)
+                res=false;
+        }
+        return res;
     }
 
     public void print(){
