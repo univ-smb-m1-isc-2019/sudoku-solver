@@ -26,7 +26,7 @@ public class Sudoku {
         return false;
     }
 
-    // On vérifie si un nombre n'est pas déjà dans une colonne
+    // On vérifie si un nombre est dans une colonne
     public boolean estDansLaColonne(Colonne col, int nombre) {
         for (int i = 0; i < NB_COLONNES; i++)
             if (grille[i][col.getColonne()] == nombre && nombreValide(nombre))
@@ -35,11 +35,24 @@ public class Sudoku {
         return false;
     }
 
-    // On vérifie si un nombre n'est pas déjà dans une ligne
+    // On vérifie si un nombre est dans une ligne
     public boolean estDansLaLigne(Ligne ligne, int nombre) {
         for (int i = 0; i < NB_COLONNES; i++)
             if (grille[i][ligne.getLigne()] == nombre && nombreValide(nombre))
                 return true;
+
+        return false;
+    }
+
+    // On vérifie si un nombre est dans un carré donné
+    public boolean estDansLeCarré(Ligne ligne, Colonne colonne, int nombre) {
+        int l = ligne.getLigne() - ligne.getLigne() % 3;
+        int c = colonne.getColonne() - colonne.getColonne() % 3;
+
+        for (int i = l; i < l + 3; i++)
+            for (int j = c; j < c + 3; j++)
+                if (grille[i][j] == nombre && nombreValide(nombre))
+                    return true;
 
         return false;
     }

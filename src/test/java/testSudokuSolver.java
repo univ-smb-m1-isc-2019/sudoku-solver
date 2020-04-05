@@ -68,6 +68,14 @@ public class testSudokuSolver {
     @Test
     public void UnCarrerEstComplet(){
         Sudoku sudoku = new Sudoku(grilleRemplie);
+        Colonne colonne = new Colonne(0);
+        Ligne ligne = new Ligne(0);
+        for (int i = 0; i < 9; i++) {
+            ligne.setLigne(i);
+            for (int j = 0; j < 9; j++)
+            {   colonne.setColonne(j);
+                assertTrue(sudoku.estDansLeCarré(ligne,colonne,grilleRemplie[i][j]));}
+        }
 
     }
 
