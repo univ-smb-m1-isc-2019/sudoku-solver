@@ -34,13 +34,29 @@ public class testSudokuSolver {
     @Test
     public void laLigneEstComplète(){
         Sudoku sudoku = new Sudoku(grilleRemplie);
-
+        Ligne ligne = new Ligne(0);
+        for (int i = 0; i < 9; i++)
+        {
+            ligne.setLigne(i);
+            for (int j=0;j<9;j++)
+            {
+                assertTrue(sudoku.estDansLaLigne(ligne,grilleRemplie[i][j]));
+            }
+        }
     }
 
     @Test
     public void laColonneEstComplète(){
         Sudoku sudoku = new Sudoku(grilleRemplie);
-
+        Colonne column = new Colonne(0);
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j=0;j<9;j++)
+            {
+                column.setColonne(j);
+                assertTrue(sudoku.estDansLaColonne(column,grilleRemplie[i][j]));
+            }
+        }
     }
 
     @Test

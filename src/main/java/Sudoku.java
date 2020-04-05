@@ -25,4 +25,22 @@ public class Sudoku {
             return true;
         return false;
     }
+
+    // On vérifie si un nombre n'est pas déjà dans une colonne
+    public boolean estDansLaColonne(Colonne col, int nombre) {
+        for (int i = 0; i < NB_COLONNES; i++)
+            if (grille[i][col.getColonne()] == nombre && nombreValide(nombre))
+                return true;
+
+        return false;
+    }
+
+    // On vérifie si un nombre n'est pas déjà dans une ligne
+    public boolean estDansLaLigne(Ligne ligne, int nombre) {
+        for (int i = 0; i < NB_COLONNES; i++)
+            if (grille[i][ligne.getLigne()] == nombre && nombreValide(nombre))
+                return true;
+
+        return false;
+    }
 }
