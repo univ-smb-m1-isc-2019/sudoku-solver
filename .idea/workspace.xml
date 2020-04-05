@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="560d0b52-f83c-4790-a57f-0fef2e4b3b7f" name="Default Changelist" comment="" />
+    <list default="true" id="560d0b52-f83c-4790-a57f-0fef2e4b3b7f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Sudoku.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tempo.txt" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,7 +21,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/sudoku-solver" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1a1Zc8RVrxnQBYAdmgyoHNeDvqH" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -44,6 +50,7 @@
       <option name="presentableId" value="Default" />
       <updated>1585905138952</updated>
       <workItem from="1585905146025" duration="2448000" />
+      <workItem from="1586094813203" duration="1064000" />
     </task>
     <servers />
   </component>
@@ -51,17 +58,17 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="552" y="178" key="#Project_Structure" timestamp="1585905814503">
+    <state x="552" y="178" key="#Project_Structure" timestamp="1586102568897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="178" key="#Project_Structure/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585905814503" />
+    <state x="552" y="178" key="#Project_Structure/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586102568897" />
     <state x="463" y="165" key="SettingsEditor" timestamp="1585905246411">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="463" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585905246411" />
-    <state x="667" y="347" key="com.intellij.ide.util.TipDialog" timestamp="1585905148268">
+    <state x="667" y="347" key="com.intellij.ide.util.TipDialog" timestamp="1586094848283">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="667" y="347" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1585905148268" />
+    <state x="667" y="347" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586094848283" />
   </component>
 </project>
