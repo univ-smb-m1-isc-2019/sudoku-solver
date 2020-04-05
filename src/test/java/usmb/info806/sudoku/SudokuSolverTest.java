@@ -1,38 +1,36 @@
 package usmb.info806.sudoku;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.Test;
+import java.util.ArrayList;
+import java.util.Arrays;
+import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * Unit test for simple App.
- */
+
 public class SudokuSolverTest
-    extends TestCase
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public SudokuSolverTest(String testName )
-    {
-        super( testName );
+
+    @Test
+    public void lineShouldHaveEveryNumber(){
+        int[][] board = SudokuSolver.easyBoard;
+        Sudoku sudoku = new Sudoku(board);
+        sudoku.solve();
+        Integer[] allPossibleNumber = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        for (Line line: sudoku.lineList) {
+            ArrayList<Cell> cellList = line.cellList;
+            Integer[] cellValue = getAllValueInCell(cellList);
+            Arrays.sort(cellValue);
+            assertThat(cellValue).isEqualTo(allPossibleNumber);
+        }
+
+
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( SudokuSolverTest.class );
+    private Integer[] getAllValueInCell(ArrayList<Cell> cellList){
+        Integer[] res = new Integer[9];
+        for (int i= 0; i< res.length; i++){
+            res[i] = cellList.get(i).value;
+        }
+        return res;
     }
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
-    }
 }
