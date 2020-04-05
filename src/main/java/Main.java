@@ -16,6 +16,16 @@ public class Main {
 
         Sudoku sudoku = new Sudoku(grille); // On initialise la grille
         sudoku.afficheGrille();
+        System.out.println(" ");
+
+        if (sudoku.resoudGrille()) {
+            System.out.println("Voici la solution :");
+            sudoku.afficheGrille();
+        } else {
+            System.out.println("Unsolvable");
+        }
+
 
     }
+
 }

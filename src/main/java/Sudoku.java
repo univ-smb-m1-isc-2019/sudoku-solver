@@ -19,7 +19,7 @@ public class Sudoku {
         }
     }
 
-    //Fonction qui vérifie si le nombre est compris entre 0 et 9
+    // Fonction qui vérifie si le nombre est compris entre 0 et 9
     public boolean nombreValide(int nombre){
         if(nombre!=0 && nombre<=9)
             return true;
@@ -29,7 +29,7 @@ public class Sudoku {
     // On vérifie si un nombre est dans une colonne
     public boolean estDansLaColonne(Colonne col, int nombre) {
         for (int i = 0; i < NB_COLONNES; i++)
-            if (grille[i][col.getColonne()] == nombre && nombreValide(nombre))
+            if (grille[col.getColonne()][i] == nombre && nombreValide(nombre))
                 return true;
 
         return false;
@@ -45,7 +45,7 @@ public class Sudoku {
     }
 
     // On vérifie si un nombre est dans un carré donné
-    public boolean estDansLeCarré(Ligne ligne, Colonne colonne, int nombre) {
+    public boolean estDansLeCarre(Ligne ligne, Colonne colonne, int nombre) {
         int l = ligne.getLigne() - ligne.getLigne() % 3;
         int c = colonne.getColonne() - colonne.getColonne() % 3;
 
@@ -60,6 +60,51 @@ public class Sudoku {
     // Méthode qui véréfie si un nombre est dans sa bonne ligne, colonne et sont carré
     public boolean estASaPlace(Ligne ligne, Colonne colonne, int nombre)
     {
-        return !estDansLaLigne(ligne, nombre)  &&  !estDansLaColonne(colonne, nombre)  &&  !estDansLeCarré(ligne, colonne, nombre);
+        return (!estDansLaLigne(ligne, nombre)  &&  !estDansLaColonne(colonne, nombre)  &&  !estDansLeCarre(ligne, colonne, nombre));
     }
+
+
+
+    // Méthode qui résoud la grille de sudoku en utilisant estASaPlace jusqu'à ce qu'on est la grille complètée
+    public boolean resoudGrille()
+    {
+        Ligne ligne = new Ligne(0);
+        Colonne colonne = new Colonne(0);
+
+        for (int l = 0; l < NB_LIGNES; l++)
+        {
+            ligne.setLigne(l);
+            for (int c = 0; c < NB_COLONNES; c++)
+            {
+                colonne.setColonne(c);
+
+                // On cherche une case vide
+                if (grille[ligne.getLigne()][colonne.getColonne()] == 0)
+                {
+                    // On test toutes les possibilitées
+                    for (int nombre = 1; nombre <= (NB_LIGNES + NB_COLONNES) / 2 ; nombre++)
+                    {
+                        // Si on trouve sa bonne place on l'affecte à la grille
+                        if (estASaPlace(ligne, colonne, nombre))
+                        {
+                            grille[ligne.getLigne()][colonne.getColonne()] = nombre;
+
+                            // On appel récursivement jusqu'à ce que la grille est complètée
+                            if (resoudGrille()) {
+                                return true;
+                            } else // Si la solution n'est pas bonne, on remet la case libre
+                            {
+                                grille[ligne.getLigne()][colonne.getColonne()] = 0;
+
+                            }
+                        }
+                    }
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+
 }
