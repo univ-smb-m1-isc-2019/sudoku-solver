@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="560d0b52-f83c-4790-a57f-0fef2e4b3b7f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sudoku.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sudoku.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/testSudokuSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/testSudokuSolver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Sudoku.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Sudoku.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/testSudokuSolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/testSudokuSolver.class" afterDir="false" />
@@ -39,7 +38,7 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.testSudokuSolver">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Sudoku" />
@@ -47,8 +46,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="testSudokuSolver" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Sudoku" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="testSudokuSolver" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.testSudokuSolver" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -64,7 +73,7 @@
       <option name="presentableId" value="Default" />
       <updated>1585905138952</updated>
       <workItem from="1585905146025" duration="2448000" />
-      <workItem from="1586094813203" duration="5201000" />
+      <workItem from="1586094813203" duration="5544000" />
     </task>
     <servers />
   </component>
@@ -80,22 +89,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="666" y="222" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586103541893" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1586110002547">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1586110479494">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586110002547" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1586110002547">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586110479494" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1586110479493">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586110002547" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1586110002547">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586110479493" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1586110479493">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586110002547" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1586110002547">
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586110479493" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1586110479493">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586110002547" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586110479493" />
     <state x="463" y="165" key="SettingsEditor" timestamp="1585905246411">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

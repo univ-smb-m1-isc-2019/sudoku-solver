@@ -29,6 +29,12 @@ public class testSudokuSolver {
     @Test
     public void lesNombresDeLaGrilleVontDe_0_A_9(){
         Sudoku sudoku = new Sudoku(grilleRemplie);
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j=0;j<9;j++) {
+                assertTrue(sudoku.nombreValide(grilleRemplie[i][j]));
+            }
+        }
     }
 
     @Test
