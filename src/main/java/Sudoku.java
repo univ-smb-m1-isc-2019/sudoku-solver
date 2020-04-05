@@ -18,4 +18,11 @@ public class Sudoku {
             System.out.println("");
         }
     }
+
+    //Fonction qui vérifie si le nombre est compris entre 0 et 9
+    public boolean nombreValide(int nombre){
+        if(nombre!=0 && nombre<=9)
+            return true;
+        return false;
+    }
 }
