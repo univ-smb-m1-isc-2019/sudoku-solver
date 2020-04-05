@@ -2,7 +2,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 
 public class testSudokuSolver {
-    int[][] board = {
+    int[][] grilleATester = {
             { 8, 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 3, 6, 0, 0, 0, 0, 0 },
             { 0, 7, 0, 0, 9, 0, 2, 0, 0 },
@@ -13,4 +13,40 @@ public class testSudokuSolver {
             { 0, 0, 8, 5, 0, 0, 0, 1, 0 },
             { 0, 9, 0, 0, 0, 0, 4, 0, 0 }
     };
+
+    int[][] grilleRemplie = {
+            { 8, 1, 2, 7, 5, 3, 6, 4, 9},
+            { 9, 4, 3, 6, 8, 2, 1, 7, 5},
+            { 6, 7, 5, 4, 9, 1, 2, 8, 3},
+            { 1, 5, 4, 2, 3, 7, 8, 9, 6},
+            { 3, 6, 9, 8, 4, 5, 7, 2, 1},
+            { 2, 8, 7, 1, 6, 9, 5, 3, 4},
+            { 5, 2, 1, 9, 7, 4, 3, 6, 8},
+            { 4, 3, 8, 5, 2, 6, 9, 1, 7},
+            { 7, 9, 6, 3, 1, 8, 4, 5, 2}
+    };
+
+    @Test
+    public void lesNombresDeLaGrilleVontDe_0_A_9(){
+        Sudoku sudoku = new Sudoku(grilleRemplie);
+    }
+
+    @Test
+    public void laLigneEstComplète(){
+        Sudoku sudoku = new Sudoku(grilleRemplie);
+
+    }
+
+    @Test
+    public void laColonneEstComplète(){
+        Sudoku sudoku = new Sudoku(grilleRemplie);
+
+    }
+
+    @Test
+    public void UnCarrerEstComplet(){
+        Sudoku sudoku = new Sudoku(grilleRemplie);
+
+    }
+
 }

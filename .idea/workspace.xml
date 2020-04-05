@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="560d0b52-f83c-4790-a57f-0fef2e4b3b7f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sudoku.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sudoku.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/testSudokuSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/testSudokuSolver.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +61,7 @@
       <option name="presentableId" value="Default" />
       <updated>1585905138952</updated>
       <workItem from="1585905146025" duration="2448000" />
-      <workItem from="1586094813203" duration="2098000" />
+      <workItem from="1586094813203" duration="3946000" />
     </task>
     <servers />
   </component>
