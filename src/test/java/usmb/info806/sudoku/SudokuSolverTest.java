@@ -24,6 +24,20 @@ public class SudokuSolverTest
 
 
     }
+    @Test
+    public void columnShouldHaveEveryNumber(){
+        int[][] board = SudokuSolver.easyBoard;
+        Sudoku sudoku = new Sudoku(board);
+        sudoku.solve();
+        Integer[] allPossibleNumber = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        for (Column column: sudoku.columnsList) {
+            ArrayList<Cell> cellList = column.cellList;
+            Integer[] cellValue = getAllValueInCell(cellList);
+            Arrays.sort(cellValue);
+            assertThat(cellValue).isEqualTo(allPossibleNumber);
+        }
+    }
+
 
     private Integer[] getAllValueInCell(ArrayList<Cell> cellList){
         Integer[] res = new Integer[9];
