@@ -56,4 +56,10 @@ public class Sudoku {
 
         return false;
     }
+
+    // Méthode qui véréfie si un nombre est dans sa bonne ligne, colonne et sont carré
+    public boolean estASaPlace(Ligne ligne, Colonne colonne, int nombre)
+    {
+        return !estDansLaLigne(ligne, nombre)  &&  !estDansLaColonne(colonne, nombre)  &&  !estDansLeCarré(ligne, colonne, nombre);
+    }
 }
