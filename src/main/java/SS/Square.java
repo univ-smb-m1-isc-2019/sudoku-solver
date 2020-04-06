@@ -1,4 +1,4 @@
-package main.java.SS;
+package SS;
 
 import java.util.ArrayList;
 public class Square extends Container {

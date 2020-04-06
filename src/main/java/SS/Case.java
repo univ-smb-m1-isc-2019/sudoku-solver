@@ -1,4 +1,4 @@
-package main.java.SS;
+package SS;
 
 public class Case {
     public int value;

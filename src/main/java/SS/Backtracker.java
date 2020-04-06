@@ -1,4 +1,5 @@
-package main.java.SS;
+package SS;
+
 
 import java.util.ArrayList;
 
