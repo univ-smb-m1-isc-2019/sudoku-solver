@@ -27,28 +27,53 @@ class SudokuTest {
     }
     //test pour verifier que toute la grille est complète (qu'aucun chiffre ne soit = a 0)
     @Test
-    public void gridIsComplete() {
-        assertTrue(this.sudoku.solved());
+    public void gridIsCompleteTest() {
+        assertTrue(this.gridIsComplete());
+    }
+    public boolean gridIsComplete(){
+        return this.sudoku.solved();
     }
 
     //on vérifie que chaque container contient tout les chiffres (vérifiant les doublons et les cases vide en même temps)
     @Test
-    public void allLineContainAllNumber() {
-        sudoku.lineList.stream().forEach(line ->{
-            assertTrue(this.sudoku.containAllNumber(line));
-        });
+    public void allLineContainAllNumberTest() {
+        assertTrue(allLineContainAllNumber());
     }
-    @Test
-    public void allColumnContainAllNumber() {
-        sudoku.columnList.stream().forEach(column ->{
-            assertTrue(this.sudoku.containAllNumber(column));
-        });
+    public boolean allLineContainAllNumber(){
+        boolean rtr = true;
+        for(Container line : sudoku.lineList){
+            if(!this.sudoku.containAllNumber(line))rtr = false;
+        }
+        return rtr;
     }
+
     @Test
-    public void allSquareContainAllNumber() {
-        sudoku.squareList.stream().forEach(square ->{
-            assertTrue(this.sudoku.containAllNumber(square));
-        });
+    public void allColumnContainAllNumberTest() {
+        assertTrue(allColumnContainAllNumber());
+    }
+    public boolean allColumnContainAllNumber(){
+        boolean rtr = true;
+        for(Container column : sudoku.columnList){
+            if(!this.sudoku.containAllNumber(column))rtr = false;
+        }
+        return rtr;
+    }
+
+    @Test
+    public void allSquareContainAllNumberTest() {
+        assertTrue(allSquareContainAllNumber());
+    }
+    public boolean allSquareContainAllNumber(){
+        boolean rtr = true;
+        for(Container square : sudoku.squareList){
+            if(!this.sudoku.containAllNumber(square))rtr = false;
+        }
+        return rtr;
+    }
+    //on vérifie tout les test précédent qui permettent d'être sur du résultat
+    @Test
+    public void allTest(){
+        assertTrue(gridIsComplete() && allLineContainAllNumber() && allColumnContainAllNumber() && allSquareContainAllNumber());
     }
 
     @AfterEach
