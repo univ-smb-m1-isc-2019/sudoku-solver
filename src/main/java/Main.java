@@ -12,13 +12,15 @@
                     { 0, 9, 0, 0, 0, 0, 4, 0, 0 }
             };
             Sudoku su = new Sudoku(board);
-
-            for(Case i : su.listeC){
+            for (Bloc i : su.bloc){
+                System.out.print(i);
+            }
+           /* for(Case i : su.listeC){
                 System.out.println(i.getNumber());
                 System.out.println(i.getColone());
                 System.out.println(i.getLigne());
             }
-            /*for (Ligne i : su.ligne){
+            for (Ligne i : su.ligne){
                 System.out.print(i);
             }
             for (Colone i : su.colone){

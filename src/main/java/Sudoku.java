@@ -4,6 +4,7 @@ public class Sudoku {
     ArrayList<Case> listeC = new ArrayList<Case>(); // Create an ArrayList object
     ArrayList<Ligne> ligne = new ArrayList<Ligne>();
     ArrayList<Colone> colone = new ArrayList<Colone>();
+    ArrayList<Bloc> bloc = new ArrayList<Bloc>();
 
     public Sudoku(int[][] board) {
         for (int[] i : board) {
@@ -35,6 +36,40 @@ public class Sudoku {
 
         }
 
+        for (int i =0 ;  i < board.length; i++) {
+            Bloc b = new Bloc();
+            bloc.add(b);
+        }
+
+        int p = 0 ;
+        int max = 2;
+        int min = 0;
+        for (int i =0 ;  i < listeC.size(); i = i+3) {
+           // System.out.println(p);
+
+            //fonction a rendre dynamique
+            bloc.get(p).add(listeC.get(i));
+            bloc.get(p).add(listeC.get(i+1));
+            bloc.get(p).add(listeC.get(i+2));
+            p = p+1 ;
+
+
+            if ( p > max){
+                System.out.println(bloc.get(p-1).listeC.size());
+                if (bloc.get(p-1).listeC.size() == 9){
+                    min = min + 3;
+                    max = max + 3;
+                }else{
+                    p = min;
+                }
+
+            }
+
+
+
+
+
+        }
 
     }
 

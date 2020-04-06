@@ -2,6 +2,7 @@ public class Case {
     private int number;
     private Ligne ligne;
     private Colone colone;
+    private Bloc bloc;
 
     public Case(int i) {
         setNumber(i);
@@ -30,6 +31,15 @@ public class Case {
 
     public void setColone(Colone colone) {
         this.colone = colone;
+    }
+
+
+    public Bloc getBloc() {
+        return bloc;
+    }
+
+    public void setBloc(Bloc bloc) {
+        this.bloc = bloc;
     }
 
     @Override
