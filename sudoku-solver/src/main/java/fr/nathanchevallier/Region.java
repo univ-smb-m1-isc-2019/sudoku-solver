@@ -36,6 +36,25 @@ public class Region {
         }
     }
 
+    public void single_nb_region(int nbsearch, int line, int column, Sudoku sudo){
+        boolean same_number = false;
+        int[] tabPosition = addPosition(sudo.findRegion(line, column));
+        for (int l = tabPosition[0]; l <= tabPosition[1]; l++){
+            for (int c = tabPosition[2]; c <= tabPosition[3]; c++){
+                if(!(sudo.SudokuGrid[l][c].valid) ){
+                    if( (l != line && c != column) || (l == line && c != column) || (l != line && c == column) ){
+                        if(sudo.SudokuGrid[l][c].possibleNumbers.contains(nbsearch))
+                            same_number = true;
+                    }
+
+                }
+            }
+        }
+        if(!same_number){
+            sudo.SudokuGrid[line][column].number = nbsearch;
+            sudo.SudokuGrid[line][column].valid = true;
+        }
+    }
 
     public List<Integer> areaRegion(Box[][] grid, int line, int column){
         List<Integer> listColumn = new ArrayList<Integer>();
@@ -49,14 +68,4 @@ public class Region {
         return listColumn;
     }
 
-    public List<Box> listInRegion(Box[][] grid){
-        List<Box> list = new ArrayList<Box>();
-        for(int i=this.minLine; i <= this.maxLine; i++){
-            for(int j=this.minColumne; j <= this.maxColumne; j++){
-                if( !(grid[i][j].valid) && (grid[i][j].possibleNumbers.size() <= 2))
-                    list.add(grid[i][j]);
-            }
-        }
-        return list;
-    }
 }

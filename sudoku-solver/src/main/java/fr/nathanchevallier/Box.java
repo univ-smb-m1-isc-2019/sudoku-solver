@@ -31,6 +31,7 @@ public class Box {
     public void updateNumber(){
         if(this.possibleNumbers.size() == 1){
             this.number = this.possibleNumbers.get(0);
+            this.possibleNumbers.clear();
             this.valid = true;
         }
 
@@ -42,6 +43,11 @@ public class Box {
 
     public boolean sameListMembers(Box box){
         return this.possibleNumbers.containsAll(box.possibleNumbers);
+    }
+
+    public void cleanPossibleNumbers(){
+        if(this.valid && this.possibleNumbers != null)
+            this.possibleNumbers.clear();
     }
 
 
@@ -77,6 +83,12 @@ public class Box {
                 listColumn.add(grid[i][this.column].number);
         }
         return listColumn;
+    }
+
+    public void displays_possibleNumbers(){
+        for(int element : this.possibleNumbers){
+            System.out.print(element);
+        }
     }
 
 }

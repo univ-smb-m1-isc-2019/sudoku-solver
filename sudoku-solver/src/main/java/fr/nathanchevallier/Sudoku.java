@@ -35,6 +35,42 @@ public class Sudoku {
         }
     }
 
+    public void solve() {
+        boolean fini = false;
+        //this.showGrid();
+        int[][] saveGrid = this.convertGrid(this.SudokuGrid);
+
+        for(int i=0; i < this.SudokuGrid.length; i++){
+            for(int j=0; j < this.SudokuGrid[i].length; j++){
+                this.SudokuGrid[i][j].cleanPossibleNumbers();
+                if(!(this.SudokuGrid[i][j].valid)){
+                    this.SudokuGrid[i][j].updateListPossibleNumbers(SudokuGrid);
+                    this.SudokuGrid[i][j].updateNumber();
+                    single_nb_in_area(this.SudokuGrid[i][j]);
+                }
+            }
+
+        }
+
+
+//        // affichage
+//        this.showGrid();
+//        this.show_possibleNumbers_Grid();
+
+
+        if( this.isResolvedCorrectly() )
+            this.showGrid();
+        else{
+            if(this.isEqualToGrid(saveGrid)){
+                System.out.println(" FIN ");
+            }
+            else {
+                this.solve();
+            }
+        }
+
+    }
+
     public boolean isValid() {
         for(int i=0; i < this.SudokuGrid.length; i++){
             for(int j=0; j < this.SudokuGrid[i].length; j++){
@@ -61,143 +97,62 @@ public class Sudoku {
         return true;
     }
 
-    public void solve() {
-        int x =0;
-        while (x <= 4){
-            for(int i=0; i < this.SudokuGrid.length; i++){
-                for(int j=0; j < this.SudokuGrid[i].length; j++){
-                    if(!(this.SudokuGrid[i][j].valid)){
-                        this.SudokuGrid[i][j].updateListPossibleNumbers(SudokuGrid);
-                        this.SudokuGrid[i][j].updateNumber();
-                        single_nb_in_area(this.SudokuGrid[i][j]);
-                    }
-                }
-
-            }
-
-//            for(int i=0; i <= 8; i++){
-//                this.doubleLine(i);
-//                this.doubleColumn(i);
-//                this.doubleRegion(this.listRegion.get(i));
-//            }
-            x = x+1;
-        }
-    }
-
     public void single_nb_in_area(Box box){
-        for (int i = 0; i <= box.possibleNumbers.size() -1; i++){
-            this.single_nb_line(box.possibleNumbers.get(i),box.line, box.column);
+        for(int element : box.possibleNumbers){
+            this.single_nb_line(element,box.line, box.column);
+            this.single_nb_column(element,box.line, box.column);
+            box.region.single_nb_region(element,box.line, box.column,this);
         }
     }
     public void single_nb_line(int nbsearch, int line, int column){
         boolean same_number = false;
-        for (int c = 0; c <= SUDOKU_SIZE-1; c++){
+        for (int c = 0; c < SUDOKU_SIZE; c++){
             if(!(this.SudokuGrid[line][c].valid) && (c != column)){
                 if(this.SudokuGrid[line][c].possibleNumbers.contains(nbsearch))
                     same_number = true;
             }
-
         }
         if(!same_number){
             this.SudokuGrid[line][column].number = nbsearch;
             this.SudokuGrid[line][column].valid = true;
         }
-
     }
+
     public void single_nb_column(int nbsearch, int line, int column){
-    }
-
-    public void single_nb_region(Box box){
-
-    }
-
-    public void doubleLine(int line){
-        List<Box> list = new ArrayList<Box>();
-        list = this.listInLine(line);
-        list = this.duplicate(list);
-        for(int i=0; i <= 8; i++){
-            if(!(this.SudokuGrid[line][i].valid) && (this.SudokuGrid[line][i] != list.get(0)) && (this.SudokuGrid[line][i] != list.get(1))){
-                this.SudokuGrid[line][i].possibleNumbers.removeAll(list.get(0).possibleNumbers);
-            }
-
-        }
-    }
-
-    public void doubleColumn(int column){
-        List<Box> list = new ArrayList<Box>();
-        list = this.listInColumn(column);
-        list = this.duplicate(list);
-        for(int i=0; i <= 8; i++){
-            if(!(this.SudokuGrid[i][column].valid) && (this.SudokuGrid[i][column] != list.get(0)) && (this.SudokuGrid[i][column] != list.get(1))){
-                this.SudokuGrid[i][column].possibleNumbers.removeAll(list.get(0).possibleNumbers);
-            }
-
-        }
-    }
-
-    public void doubleRegion(Region region){
-        List<Box> list = new ArrayList<Box>();
-        list = region.listInRegion(this.SudokuGrid);
-        list = this.duplicate(list);
-        for(int i = region.minLine; i <= region.maxLine; i++){
-            for(int j=region.minColumne; j <= region.maxColumne; j++){
-                if(!(this.SudokuGrid[i][j].valid) && (this.SudokuGrid[i][j] != list.get(0)) && (this.SudokuGrid[i][j] != list.get(1))){
-                    this.SudokuGrid[i][j].possibleNumbers.removeAll(list.get(0).possibleNumbers);
-                }
+        boolean same_number = false;
+        for (int l = 0; l < SUDOKU_SIZE; l++){
+            if(!(this.SudokuGrid[l][column].valid) && (l != line)){
+                if(this.SudokuGrid[l][column].possibleNumbers.contains(nbsearch))
+                    same_number = true;
             }
         }
-    }
-
-    public List<Box> duplicate(List<Box> list){
-        List<Box> listBoxDouble = new ArrayList<Box>();
-        if(!list.isEmpty() && list.size() >= 2 ){
-            boolean nofini = true;
-            while(nofini){
-                for(int i=0; i < list.size(); i++){
-                    for(int j=i+1; j < list.size(); i++){
-                         if(list.get(i).sameListMembers(list.get(j))){
-                            listBoxDouble.add((list.get(i)));
-                            listBoxDouble.add((list.get(j)));
-                        }
-                    }
-                }
-            }
-
+        if(!same_number){
+            this.SudokuGrid[line][column].number = nbsearch;
+            this.SudokuGrid[line][column].valid = true;
         }
-        return listBoxDouble;
-
     }
-
-    public List<Box> listInLine(int line){
-        List<Box> list = new ArrayList<Box>();
-        for(int i=0; i <= 8; i++){
-            if(!(this.SudokuGrid[line][i].valid) && (this.SudokuGrid[line][i].possibleNumbers.size() <= 2))
-                list.add(this.SudokuGrid[line][i]);
-        }
-        return list;
-    }
-
-    public List<Box> listInColumn(int column){
-        List<Box> list = new ArrayList<Box>();
-        for(int i=0; i <= 8; i++){
-            if(!(this.SudokuGrid[i][column].valid) && (this.SudokuGrid[i][column].possibleNumbers.size() <= 2))
-                list.add(this.SudokuGrid[i][column]);
-        }
-        return list;
-    }
-
-
 
 
     public void showGrid(){
-        for(int i=0; i < this.SudokuGrid.length; i++){
-            for(int j=0; j < this.SudokuGrid[i].length; j++){
+        for(int i=0; i < SUDOKU_SIZE; i++){
+            for(int j=0; j < SUDOKU_SIZE; j++){
                 System.out.print( this.SudokuGrid[i][j].number + " ");
             }
             System.out.println();
         }
+        System.out.println();
     }
 
+
+    public void show_possibleNumbers_Grid(){
+        for(int i=0; i < SUDOKU_SIZE; i++){
+            for(int j=0; j < SUDOKU_SIZE; j++){
+                this.SudokuGrid[i][j].displays_possibleNumbers();
+                System.out.print("  |  ");
+            }
+            System.out.println();
+        }
+    }
 
     public int findRegion(int line, int column){
         if(line >= 0 && line <= 2 && column >= 0 && column <= 2)
@@ -220,4 +175,24 @@ public class Sudoku {
             return 9;
     }
 
+    public int[][] convertGrid(Box[][] grid){
+        int[][] resGrid= new int[9][9];
+        for(int i=0; i < SUDOKU_SIZE; i++) {
+            for (int j = 0; j < SUDOKU_SIZE; j++) {
+                resGrid[i][j] = grid[i][j].number;
+            }
+        }
+        return resGrid;
+    }
+
+    public boolean isEqualToGrid(int[][] grid){
+        int[][] newGrid = this.convertGrid(this.SudokuGrid);
+        for(int i=0; i < SUDOKU_SIZE; i++) {
+            for (int j = 0; j < SUDOKU_SIZE; j++) {
+                if( newGrid[i][j] != grid[i][j])
+                    return false;
+            }
+        }
+        return true;
+    }
 }
