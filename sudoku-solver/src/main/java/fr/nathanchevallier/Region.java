@@ -68,4 +68,31 @@ public class Region {
         return listColumn;
     }
 
+    public void doubleInRegion(Box[][] grid, Sudoku sudo){
+        List<Box> list = new ArrayList<Box>();
+        for(int i=this.minLine; i <= this.maxLine; i++){
+            for(int j=this.minColumne; j <= this.maxColumne; j++){
+                if( !(grid[i][j].valid) && (grid[i][j].possibleNumbers.size() <= 2))
+                    list.add(grid[i][j]);
+            }
+        }
+        if (!list.isEmpty()){
+            for(Box element : list){
+                for(Box other : list){
+                    if((element != other) && element.sameListMembers(other)){
+                        for(int l=this.minLine; l <= this.maxLine; l++){
+                            for(int c=this.minColumne; c<= this.maxColumne; c++){
+                                if(!(sudo.SudokuGrid[l][c].valid) && (l!=element.line && c!=element.column) && (l!=other.line && c!=other.column) ){
+                                    for(int nb : element.possibleNumbers){
+                                        if(sudo.SudokuGrid[l][c].possibleNumbers.contains(nb))
+                                            sudo.SudokuGrid[l][c].possibleNumbers.remove((Object)nb);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

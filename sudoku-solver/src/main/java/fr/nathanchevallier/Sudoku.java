@@ -52,6 +52,11 @@ public class Sudoku {
 
         }
 
+        for (int elem = 0; elem < SUDOKU_SIZE; elem++){
+            this.doubleInLine(elem);
+            this.doubleInColumn(elem);
+            this.listRegion.get(elem).doubleInRegion(SudokuGrid, this);
+        }
 
 //        // affichage
 //        this.showGrid();
@@ -194,5 +199,53 @@ public class Sudoku {
             }
         }
         return true;
+    }
+
+    public void doubleInLine(int line){
+        List<Box> list = new ArrayList<Box>();
+        for(int i=0; i<SUDOKU_SIZE; i++){
+            if(!(this.SudokuGrid[line][i].valid) && (this.SudokuGrid[line][i].possibleNumbers.size() <= 2))
+                list.add(this.SudokuGrid[line][i]);
+        }
+        if (!list.isEmpty()){
+            for(Box element : list){
+                for(Box other : list){
+                    if((element != other) && element.sameListMembers(other)){
+                        for(int c=0; c<SUDOKU_SIZE; c++){
+                            if(!(this.SudokuGrid[line][c].valid) && c!=element.column && c!=other.column){
+                                for(int nb : element.possibleNumbers){
+                                    if(this.SudokuGrid[line][c].possibleNumbers.contains(nb))
+                                        this.SudokuGrid[line][c].possibleNumbers.remove((Object)nb);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void doubleInColumn(int column){
+        List<Box> list = new ArrayList<Box>();
+        for(int i=0; i <= 8; i++){
+            if(!(this.SudokuGrid[i][column].valid) && (this.SudokuGrid[i][column].possibleNumbers.size() <= 2))
+                list.add(this.SudokuGrid[i][column]);
+        }
+        if (!list.isEmpty()){
+            for(Box element : list){
+                for(Box other : list){
+                    if((element != other) && element.sameListMembers(other)){
+                        for(int l=0; l<SUDOKU_SIZE; l++){
+                            if(!(this.SudokuGrid[l][column].valid) && l!=element.line && l!=other.line){
+                                for(int nb : element.possibleNumbers){
+                                    if(this.SudokuGrid[l][column].possibleNumbers.contains(nb))
+                                        this.SudokuGrid[l][column].possibleNumbers.remove((Object)nb);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
