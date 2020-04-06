@@ -13,6 +13,21 @@
             };
             Sudoku su = new Sudoku(board);
 
+            for(Case i : su.listeC){
+                System.out.println(i.getNumber());
+                System.out.println(i.getColone());
+                System.out.println(i.getLigne());
+            }
+            /*for (Ligne i : su.ligne){
+                System.out.print(i);
+            }
+            for (Colone i : su.colone){
+                System.out.print(i);
+            }*/
+
+
+
+
         }
     }
 
