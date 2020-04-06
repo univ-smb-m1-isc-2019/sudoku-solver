@@ -31,11 +31,23 @@ class SudokuTest {
         assertTrue(this.sudoku.solved());
     }
 
-    //on vient verifier que chaque container ne contient aucun chiffre en double
+    //on vérifie que chaque container contient tout les chiffres (vérifiant les doublons et les cases vide en même temps)
     @Test
-    public void allContainerContainAllNumber() {
+    public void allLineContainAllNumber() {
         sudoku.lineList.stream().forEach(line ->{
-            assertTrue(line.);
+            assertTrue(this.sudoku.containAllNumber(line));
+        });
+    }
+    @Test
+    public void allColumnContainAllNumber() {
+        sudoku.columnList.stream().forEach(column ->{
+            assertTrue(this.sudoku.containAllNumber(column));
+        });
+    }
+    @Test
+    public void allSquareContainAllNumber() {
+        sudoku.squareList.stream().forEach(square ->{
+            assertTrue(this.sudoku.containAllNumber(square));
         });
     }
 

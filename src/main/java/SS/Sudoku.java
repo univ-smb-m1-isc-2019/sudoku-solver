@@ -134,4 +134,11 @@ public class Sudoku {
             System.out.println("");
         });
     }
+    public boolean containAllNumber(Container container) {
+        boolean rtr = true;
+        for (int i = 1; i < 10; i++){
+            if(!container.contain(i))rtr = false;
+        }
+        return rtr;
+    }
 }

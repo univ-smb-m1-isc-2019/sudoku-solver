@@ -40,11 +40,5 @@ public abstract class Container {
         }
         return rtr;
     }
-    public boolean ContainAllNumber(Container container) {
-        boolean rtr = true;
-        for (int i = 1; i < 10; i++){
-            if(!container.contain(i))rtr = false;
-        }
-        return rtr;
-    }
+
 }
