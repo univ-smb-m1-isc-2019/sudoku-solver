@@ -46,7 +46,6 @@ public class AvailablePossibilities {
     }
     public int getPossibility(int nb){
         int i =0;
-        this.printPossibilities();
         if(getAvailablePossibilitiesNB() > 1) {
             while (!this.list[i] || nb - 1 > 0) {
                 if (this.list[i]) {

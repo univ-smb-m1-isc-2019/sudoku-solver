@@ -33,4 +33,18 @@ public abstract class Container {
             System.out.println(i.value);
         });
     }
+    public boolean contain(int nb){
+        boolean rtr = false;
+        for(Case c : this.list){
+            if(c.value == nb)rtr=true;
+        }
+        return rtr;
+    }
+    public boolean ContainAllNumber(Container container) {
+        boolean rtr = true;
+        for (int i = 1; i < 10; i++){
+            if(!container.contain(i))rtr = false;
+        }
+        return rtr;
+    }
 }
