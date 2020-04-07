@@ -28,6 +28,28 @@ public class Box {
 
     }
 
+    public Box(int number, int line, int column, Region region, List<Integer> possibleNumbers, boolean valid){
+        this.number = number;
+        this.line = line;
+        this.column = column;
+        this.region = region;
+        this.valid = valid;
+        this.possibleNumbers = possibleNumbers;
+    }
+
+    public int getSizePossibleNumbers(){
+        return this.possibleNumbers.size();
+    }
+
+    public int getNumberPossibleNumbers(int index){
+        return this.possibleNumbers.get(index);
+    }
+
+    public void changeBox(int newNumber){
+        this.number = newNumber;
+        this.valid = true;
+    }
+
     public void updateNumber(){
         if(this.possibleNumbers.size() == 1){
             this.number = this.possibleNumbers.get(0);

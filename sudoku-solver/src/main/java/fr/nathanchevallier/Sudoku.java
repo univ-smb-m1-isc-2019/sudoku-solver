@@ -8,8 +8,10 @@ public class Sudoku {
     public static final int SUDOKU_SIZE = 9;
     public Box[][] SudokuGrid = new Box[9][9];
     public List<Region> listRegion = new ArrayList<Region>();
+    public List<SaveChoice> saveGridBeforeRandom = new ArrayList<SaveChoice>();
 
     public Sudoku(int[][] grid){
+
         listRegion.add(new Region(1));
         listRegion.add(new Region(2));
         listRegion.add(new Region(3));
@@ -20,11 +22,8 @@ public class Sudoku {
         listRegion.add(new Region(8));
         listRegion.add(new Region(9));
 
-        for(int i=0; i < grid.length; i++){
-            for(int j=0; j < grid[i].length; j++){
-                this.SudokuGrid[i][j] = new Box(grid[i][j], i, j, listRegion.get(findRegion(i,j)-1));
-            }
-        }
+        this.createSudokuGrid(grid);
+
         for(int i=0; i < this.SudokuGrid.length; i++){
             for(int j=0; j < this.SudokuGrid[i].length; j++){
                 if(!(this.SudokuGrid[i][j].valid)){
@@ -35,9 +34,17 @@ public class Sudoku {
         }
     }
 
+    public void createSudokuGrid(int[][] grid){
+        for(int i=0; i < grid.length; i++){
+            for(int j=0; j < grid[i].length; j++){
+                this.SudokuGrid[i][j] = new Box(grid[i][j], i, j, listRegion.get(findRegion(i,j)-1));
+            }
+        }
+    }
+
     public void solve() {
         boolean fini = false;
-        //this.showGrid();
+        this.showGrid();
         int[][] saveGrid = this.convertGrid(this.SudokuGrid);
 
         for(int i=0; i < this.SudokuGrid.length; i++){
@@ -58,16 +65,18 @@ public class Sudoku {
             this.listRegion.get(elem).doubleInRegion(SudokuGrid, this);
         }
 
-//        // affichage
-//        this.showGrid();
-//        this.show_possibleNumbers_Grid();
+        // affichage
+        this.showGrid();
+        this.show_possibleNumbers_Grid();
 
 
         if( this.isResolvedCorrectly() )
             this.showGrid();
         else{
             if(this.isEqualToGrid(saveGrid)){
-                System.out.println(" FIN ");
+                System.out.println(" Rentre dans sauvgarde ");
+                this.SudokuGrid = this.randomNumber();
+                this.solve();
             }
             else {
                 this.solve();
@@ -118,8 +127,7 @@ public class Sudoku {
             }
         }
         if(!same_number){
-            this.SudokuGrid[line][column].number = nbsearch;
-            this.SudokuGrid[line][column].valid = true;
+            this.SudokuGrid[line][column].changeBox(nbsearch);
         }
     }
 
@@ -132,8 +140,7 @@ public class Sudoku {
             }
         }
         if(!same_number){
-            this.SudokuGrid[line][column].number = nbsearch;
-            this.SudokuGrid[line][column].valid = true;
+            this.SudokuGrid[line][column].changeBox(nbsearch);
         }
     }
 
@@ -248,4 +255,79 @@ public class Sudoku {
             }
         }
     }
+
+    public Box[][] randomNumber(){
+        Box choiceBox = boxLeastChoice();
+        System.out.println(choiceBox.line + " " + choiceBox.column);
+        int random;
+        if(this.saveGridBeforeRandom.isEmpty()){
+            // Create first grid backup
+            this.saveGridBeforeRandom.add(new SaveChoice(this.convertGrid(this.getSudokuGrid()),choiceBox));
+            random = choiceBox.getNumberPossibleNumbers(0);
+            System.out.println(random);
+            this.SudokuGrid[choiceBox.line][choiceBox.column].changeBox(random);
+            return this.SudokuGrid;
+        }
+        else{
+            if(choiceBox.getSizePossibleNumbers() == 2){
+                //Create grid backups continuer avec nouvelle sauvgarde
+                this.saveGridBeforeRandom.add(new SaveChoice(this.convertGrid(this.getSudokuGrid()),choiceBox));
+                random = choiceBox.getNumberPossibleNumbers(0);
+                System.out.println(random);
+                this.SudokuGrid[choiceBox.line][choiceBox.column].changeBox(random);
+                return this.SudokuGrid;
+            }
+            else{
+                //Revenir sauvgarde d'avant
+                System.out.println(" Revenu en arriere");
+                SaveChoice save = this.saveGridBeforeRandom.get(this.saveGridBeforeRandom.size() - 1);
+
+                this.showGrid();
+                this.createSudokuGrid(save.getGrid());
+                this.showGrid();
+                choiceBox = save.getSelectBox();
+                System.out.println(this.SudokuGrid[choiceBox.line][choiceBox.column].number);
+
+                if(save.isChoice(save.getChoice() + 1)){
+                    save.setChoice(save.getChoice() + 1);
+                    System.out.println(save.getChoice() + 1);
+                    random = choiceBox.getNumberPossibleNumbers(save.getChoice());
+                    System.out.println(random);
+
+                    this.SudokuGrid[choiceBox.line][choiceBox.column] = choiceBox;
+                    this.SudokuGrid[choiceBox.line][choiceBox.column].changeBox(random);
+                    return this.SudokuGrid;
+                }
+                else{
+                    this.saveGridBeforeRandom.remove(this.saveGridBeforeRandom.size() - 1);
+                    this.createSudokuGrid(this.saveGridBeforeRandom.get(this.saveGridBeforeRandom.size() - 1).getGrid());
+                    return this.SudokuGrid;
+                }
+
+            }
+        }
+    }
+
+    public Box boxLeastChoice(){
+        boolean passInLoop = false;
+        Box myBox = this.SudokuGrid[0][0];
+        for(int i=0; i < SUDOKU_SIZE; i++) {
+            for (int j = 0; j < SUDOKU_SIZE; j++) {
+                if(!(this.SudokuGrid[i][j].valid)){
+                    if(!passInLoop){
+                        myBox = this.SudokuGrid[i][j];
+                        passInLoop = true;
+                    }
+                    if(myBox.possibleNumbers.size() > this.SudokuGrid[i][j].possibleNumbers.size())
+                        myBox = this.SudokuGrid[i][j];
+                }
+            }
+        }
+        return myBox;
+    }
+
+    public Box[][] getSudokuGrid(){
+        return this.SudokuGrid;
+    }
+
 }

@@ -51,8 +51,7 @@ public class Region {
             }
         }
         if(!same_number){
-            sudo.SudokuGrid[line][column].number = nbsearch;
-            sudo.SudokuGrid[line][column].valid = true;
+            sudo.SudokuGrid[line][column].changeBox(nbsearch);
         }
     }
 
