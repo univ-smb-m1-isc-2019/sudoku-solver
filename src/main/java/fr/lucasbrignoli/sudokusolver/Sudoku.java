@@ -5,7 +5,7 @@ public class Sudoku {
     private int COLONNES;
     public int[][] grille;
 
-    public Sudoku(int[][] grille){
+    public Sudoku(int[][] grille) {
         this.grille = grille;
         LIGNES = grille.length;
         COLONNES = grille[0].length;
