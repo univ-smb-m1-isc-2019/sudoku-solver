@@ -17,7 +17,10 @@ public class Main {
     public static void main(String[] args) {
         Sudoku sudokutosolve = new Sudoku(Main.board);
         sudokutosolve.affiche();
+        long depart = System.currentTimeMillis();
 
+        long fin = System.currentTimeMillis();
+        System.out.println("Temps de resolution: " + (fin - depart) + " ms.");
 
     }
 }
