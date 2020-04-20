@@ -21,5 +21,6 @@ public class Main
         };
 
         Sudoku sudoku = new Sudoku(board);
+        sudoku.display();
     }
 }
