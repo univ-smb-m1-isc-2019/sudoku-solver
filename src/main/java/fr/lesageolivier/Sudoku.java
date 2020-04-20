@@ -16,14 +16,14 @@ public class Sudoku {
      *
      * @param board Tableau contenant les valeur de la grille de jeu
      */
-    public Sudoku(int [][] board) {
+    public Sudoku(int[][] board) {
         this.board = board;
     }
 
     /**
      * Méthode permettant de savoir si un nombre est dans une ligne
      *
-     * @param row Le numéro de la ligne
+     * @param row    Le numéro de la ligne
      * @param number Le nombre dont on veut connaitre la présence
      * @return true si le nombre est présent dans la ligne, false sinon
      */
@@ -38,7 +38,7 @@ public class Sudoku {
     /**
      * Méthode permettant de savoir si un nombre est dans une colonne
      *
-     * @param col Le numéro de la colonne
+     * @param col    Le numéro de la colonne
      * @param number Le nombre dont on veut connaitre la présence
      * @return true si le nombre est présent dans la colonne, false sinon
      */
@@ -53,8 +53,8 @@ public class Sudoku {
     /**
      * Méthode permettant de savoir si un élément est dans un 3x3
      *
-     * @param row Ligne appartenant au 3x3
-     * @param col Colonne appartenant au 3x3
+     * @param row    Ligne appartenant au 3x3
+     * @param col    Colonne appartenant au 3x3
      * @param number Le nombre dont on veut connaitre la présence
      * @return true si le nombre est présent dans le 3x3, false sinon
      */
@@ -73,21 +73,49 @@ public class Sudoku {
     /**
      * Méthode permettant de savoir si un nombre placé dans la case désignée
      *
-     * @param row Ligne dans laquelle on veut placer le nombre
-     * @param col Colonne dans laquelle on veut placer le nombre
+     * @param row    Ligne dans laquelle on veut placer le nombre
+     * @param col    Colonne dans laquelle on veut placer le nombre
      * @param number Le nombre que l'on veut placer
      * @return true si le nombre peut être placer dans la case désignée, false sinon
      */
     private boolean canBeHere(int row, int col, int number) {
-        return !isInRow(row, number)  &&  !isInCol(col, number)  &&  !isInSub3x3(row, col, number);
+        return !isInRow(row, number) && !isInCol(col, number) && !isInSub3x3(row, col, number);
+    }
+
+    /**
+     * Méthode permettant de résoudre la grille
+     *
+     * @return true si la grill est résolue, false sinon
+     */
+    public boolean solve() {
+        for (int row = 0; row < SIZE; row++) {
+            for (int col = 0; col < SIZE; col++) {
+                if (board[row][col] == 0) {
+                    for (int number = 1; number <= SIZE; number++) {
+                        if (canBeHere(row, col, number)) {
+                            board[row][col] = number;
+
+                            if (solve()) {
+                                return true;
+                            } else {
+                                board[row][col] = 0;
+                            }
+                        }
+                    }
+
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     /**
      * Méthode permettant d'afficher la grille
      */
     public void show() {
-        for (int[] line: this.board) {
-            for (int cell: line) {
+        for (int[] line : this.board) {
+            for (int cell : line) {
                 System.out.print(cell);
             }
             System.out.println();

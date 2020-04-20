@@ -17,6 +17,9 @@ public class Main {
         };
 
         Sudoku sudoku = new Sudoku(board);
-        sudoku.show();
+
+        if (sudoku.solve())
+            sudoku.show();
+        else System.out.println("Unsolvable");
     }
 }
