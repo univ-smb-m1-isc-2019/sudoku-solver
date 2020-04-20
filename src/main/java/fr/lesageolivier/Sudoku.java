@@ -71,6 +71,18 @@ public class Sudoku {
     }
 
     /**
+     * Méthode permettant de savoir si un nombre placé dans la case désignée
+     *
+     * @param row Ligne dans laquelle on veut placer le nombre
+     * @param col Colonne dans laquelle on veut placer le nombre
+     * @param number Le nombre que l'on veut placer
+     * @return true si le nombre peut être placer dans la case désignée, false sinon
+     */
+    private boolean canBeHere(int row, int col, int number) {
+        return !isInRow(row, number)  &&  !isInCol(col, number)  &&  !isInSub3x3(row, col, number);
+    }
+
+    /**
      * Méthode permettant d'afficher la grille
      */
     public void show() {
