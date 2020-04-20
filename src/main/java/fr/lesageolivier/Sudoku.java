@@ -36,6 +36,21 @@ public class Sudoku {
     }
 
     /**
+     * Méthode permettant de savoir si un nombre est dans une colonne
+     *
+     * @param col Le numéro de la colonne
+     * @param number Le nombre dont on veut connaitre la présence
+     * @return true si le nombre est présent dans la colonne, false sinon
+     */
+    private boolean isInCol(int col, int number) {
+        for (int i = 0; i < SIZE; i++)
+            if (board[i][col] == number)
+                return true;
+
+        return false;
+    }
+
+    /**
      * Méthode permettant d'afficher la grille
      */
     public void show() {
