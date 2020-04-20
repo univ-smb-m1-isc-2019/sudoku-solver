@@ -1,5 +1,13 @@
 public class Sudoku {
 
+    /**
+     * Constante de la taille de la Grille
+     */
+    public static final int SIZE = 9;
+
+    /**
+     * Grille de sudoku de la classe
+     */
     private int[][] board;
 
     /**
@@ -9,4 +17,6 @@ public class Sudoku {
     public Sudoku(int[][] board){
         this.board = board;
     }
+
+
 }
