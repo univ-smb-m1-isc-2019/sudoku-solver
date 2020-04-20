@@ -20,6 +20,9 @@ public class Sudoku {
         this.board = board;
     }
 
+    /**
+     * Méthode permettant d'afficher la grille
+     */
     public void display() {
         for(int i = 0; i < SIZE; i++){
             for(int j = 0; j < SIZE; j++){
