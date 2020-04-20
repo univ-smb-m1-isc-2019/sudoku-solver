@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
         //Grille à résoudre
-        int[][] board = {
+        int[][] grid = {
                 {8, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 3, 6, 0, 0, 0, 0, 0},
                 {0, 7, 0, 0, 9, 0, 2, 0, 0},
@@ -14,7 +14,7 @@ public class Main {
         };
 
         //Instance de Sudoku
-        Sudoku sudoku = new Sudoku(board);
+        Sudoku sudoku = new Sudoku(grid);
         //Affichage de la grille
         sudoku.display();
 

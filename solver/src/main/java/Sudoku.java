@@ -8,14 +8,14 @@ public class Sudoku {
     /**
      * Grille de sudoku de la classe
      */
-    private int[][] board;
+    private int[][] grid;
 
     /**
      * Contructeur de la classe Sudoku
-     * @param board
+     * @param grid
      */
-    public Sudoku(int[][] board){
-        this.board = board;
+    public Sudoku(int[][] grid){
+        this.grid = grid;
     }
 
     /**
@@ -26,7 +26,7 @@ public class Sudoku {
      */
     private boolean isInRow(int row, int number) {
         for (int i = 0; i < SIZE; i++) {
-            if (board[row][i] == number) {
+            if (grid[row][i] == number) {
                 return true;
             }
         }
@@ -41,7 +41,7 @@ public class Sudoku {
      */
     private boolean isInCol(int col, int number) {
         for (int i = 0; i < SIZE; i++){
-            if (board[i][col] == number) {
+            if (grid[i][col] == number) {
                 return true;
             }
         }
@@ -60,7 +60,7 @@ public class Sudoku {
 
         for (int i = r; i < r + 3; i++) {
             for (int j = c; j < c + 3; j++) {
-                if (board[i][j] == number) {
+                if (grid[i][j] == number) {
                     return true;
                 }
             }
@@ -75,7 +75,7 @@ public class Sudoku {
     public void display() {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
-                System.out.print(" " + board[i][j]);
+                System.out.print(" " + grid[i][j]);
             }
             System.out.println();
         }
