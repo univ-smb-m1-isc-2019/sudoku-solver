@@ -22,7 +22,8 @@ public class Sudoku {
 
     /**
      * Méthode permettant de vérifier si un nombre est dans une rangée
-     * @param row Rangée à vérifier
+     *
+     * @param row    Rangée à vérifier
      * @param number Nombre à vérifier
      * @return Un booléen qui vérifie si le nombre est dans la rangée
      */
@@ -36,7 +37,8 @@ public class Sudoku {
 
     /**
      * Méthode permettant de vérifier si un nombre est dans une colonne
-     * @param col Colonne à vérifier
+     *
+     * @param col    Colonne à vérifier
      * @param number Nombre à vérifier
      * @return Un booléen qui vérifie si le nombre est dans la colonne
      */
@@ -44,6 +46,27 @@ public class Sudoku {
         for (int i = 0; i < SIZE; i++) {
             if (board[i][col] == number)
                 return true;
+        }
+        return false;
+    }
+
+    /**
+     * Méthode permettant de vérifier si un nombre est dans un container 3x3
+     *
+     * @param row Rangée à vérifier
+     * @param col Colonne à vérifier
+     * @param number Nombre à vérifier
+     * @return Un Booléen si le nombre est dans le container 3x3
+     */
+    private boolean isInContainer(int row, int col, int number) {
+        int r = row - row % 3;
+        int c = col - col % 3;
+
+        for (int i = r; i < r + 3; i++) {
+            for (int j = c; j < c + 3; j++) {
+                if (board[i][j] == number)
+                    return true;
+            }
         }
         return false;
     }
