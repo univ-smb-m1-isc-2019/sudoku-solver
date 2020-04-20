@@ -1,7 +1,5 @@
 package fr.lesageolivier;
 
-import java.awt.*;
-
 public class Sudoku {
     /**
      * Taille de la grille
