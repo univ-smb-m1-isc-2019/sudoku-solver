@@ -19,5 +19,7 @@ public class Main {
 
         Sudoku sudoku = new Sudoku(GRID);
         sudoku.printGrid();
+        sudoku.solve();
+        sudoku.printGrid();
     }
 }

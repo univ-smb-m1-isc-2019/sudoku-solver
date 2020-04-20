@@ -35,6 +35,7 @@ public class Sudoku {
 
     public void solve() {
         Solver solver = new Solver(this.grid);
+        //solver.solve();
     }
 
 }
