@@ -1,5 +1,6 @@
 public class Main {
     public static void main(String[] args) {
+        //Grille à résoudre
         int[][] board = {
                 {8, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 3, 6, 0, 0, 0, 0, 0},
@@ -11,6 +12,9 @@ public class Main {
                 {0, 0, 8, 5, 0, 0, 0, 1, 0},
                 {0, 9, 0, 0, 0, 0, 4, 0, 0}
         };
+
+        //Instance de Sudoku
+        Sudoku sudoku = new Sudoku(board);
 
     }
 }
