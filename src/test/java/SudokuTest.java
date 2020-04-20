@@ -7,9 +7,5 @@ import static org.junit.Assert.assertTrue;
 
 public class SudokuTest {
 
-    @Test
-    public void testMain (){
-        Sudoku s= new Sudoku("sudoku");
-        assertThat(s.getName()).isEqualTo("sudoku");
-    }
+
 }
