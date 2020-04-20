@@ -1,7 +1,5 @@
 package fr.jugand.theo.sudoku;
 
-import java.security.Signature;
-
 /**
  * Classe représentant le sudoku
  */
@@ -10,15 +8,15 @@ public class Sudoku {
     /**
      * Grille du sudoku
      */
-    private int[][] board;
+    private int[][] grid;
     /**
      * Taille de la grille
      */
     public final static int SIZE = 9;
     public final static int EMPTY = 0;
 
-    public Sudoku(int[][] board) {
-        this.board = board;
+    public Sudoku(int[][] grid) {
+        this.grid = grid;
     }
 
     /**
@@ -30,7 +28,7 @@ public class Sudoku {
      */
     private boolean isInRow(int row, int number) {
         for (int i = 0; i < SIZE; i++) {
-            if (board[row][i] == number)
+            if (grid[row][i] == number)
                 return true;
         }
         return false;
@@ -45,7 +43,7 @@ public class Sudoku {
      */
     private boolean isInCol(int column, int number) {
         for (int i = 0; i < SIZE; i++) {
-            if (board[i][column] == number)
+            if (grid[i][column] == number)
                 return true;
         }
         return false;
@@ -65,7 +63,7 @@ public class Sudoku {
 
         for (int i = r; i < r + 3; i++) {
             for (int j = c; j < c + 3; j++) {
-                if (board[i][j] == number)
+                if (grid[i][j] == number)
                     return true;
             }
         }
@@ -90,15 +88,15 @@ public class Sudoku {
     public boolean solve() {
         for (int row = 0; row < SIZE; row++) {
             for (int col = 0; col < SIZE; col++) {
-                if (board[row][col] == EMPTY) {
+                if (grid[row][col] == EMPTY) {
                     for (int number = 1; number <= SIZE; number++) {
                         if (isPlaceable(row, col, number)) {
-                            board[row][col] = number;
+                            grid[row][col] = number;
 
                             if (solve()) {
                                 return true;
                             } else {
-                                board[row][col] = EMPTY;
+                                grid[row][col] = EMPTY;
                             }
                         }
                     }
@@ -117,7 +115,7 @@ public class Sudoku {
     public void display() {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
-                System.out.print(" " + board[i][j]);
+                System.out.print(" " + grid[i][j]);
             }
             System.out.println();
         }

@@ -8,7 +8,7 @@ public class Main
     public static void main( String[] args )
     {
         //Grille du sudoku
-        int[][] board = {
+        int[][] grid = {
                 {8, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 3, 6, 0, 0, 0, 0, 0},
                 {0, 7, 0, 0, 9, 0, 2, 0, 0},
@@ -20,7 +20,7 @@ public class Main
                 {0, 9, 0, 0, 0, 0, 4, 0, 0}
         };
 
-        Sudoku sudoku = new Sudoku(board);
+        Sudoku sudoku = new Sudoku(grid);
         if (sudoku.solve()) {
             System.out.println("La grille est résolue");
             sudoku.display();
