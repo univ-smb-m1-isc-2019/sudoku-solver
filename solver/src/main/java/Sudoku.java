@@ -6,6 +6,12 @@ public class Sudoku {
     public static final int SIZE = 9;
 
     /**
+     * Constante d'une case vide de la grille
+     */
+    public static final int EMPTY = 0;
+
+
+    /**
      * Grille de sudoku de la classe
      */
     private int[][] grid;
@@ -78,7 +84,33 @@ public class Sudoku {
         return !isInRow(row, number)  &&  !isInCol(col, number)  &&  !isInSubgrid(row, col, number);
     }
 
+    /**
+     * Méthode de résolution de la grille de sudoku
+     * @return
+     */
+    public boolean solve() {
+        for (int row = 0; row < SIZE; row++) {
+            for (int col = 0; col < SIZE; col++) {
+                if (grid[row][col] == EMPTY) {
+                    for (int number = 1; number <= SIZE; number++) {
+                        if (checkPosition(row, col, number)) {
+                            grid[row][col] = number;
 
+                            if (solve()) {
+                                return true;
+                            } else {
+                                grid[row][col] = EMPTY;
+                            }
+                        }
+                    }
+
+                    return false;
+                }
+            }
+        }
+
+        return true; // sudoku solved
+    }
     /**
      * Méthode d'affichage de la grille
      */
