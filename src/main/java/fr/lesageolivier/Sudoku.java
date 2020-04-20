@@ -4,6 +4,11 @@ import java.awt.*;
 
 public class Sudoku {
     /**
+     * Taille de la grille
+     */
+    public static final int SIZE = 9;
+
+    /**
      * Tableau contenant le Sudoku
      */
     private int[][] board;
