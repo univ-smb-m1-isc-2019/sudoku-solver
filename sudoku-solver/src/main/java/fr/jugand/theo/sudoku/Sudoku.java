@@ -110,6 +110,22 @@ public class Sudoku {
     }
 
     /**
+     * Méthode permettant de vérifier si la grille est complète (case != de 0)
+     * @return Un booléen indiquant si la grille est complète
+     */
+    public boolean isComplete(){
+        boolean res = true;
+        for (int i = 0; i < SIZE ; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                if (grid[i][j] == 0)
+                    res = false;
+            }
+        }
+        return res;
+
+    }
+
+    /**
      * Méthode permettant d'afficher la grille
      */
     public void display() {
