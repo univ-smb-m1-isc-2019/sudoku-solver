@@ -15,5 +15,8 @@ public class Main {
                 { 0, 0, 8, 5, 0, 0, 0, 1, 0 },
                 { 0, 9, 0, 0, 0, 0, 4, 0, 0 }
         };
+
+        Sudoku sudoku = new Sudoku(board);
+        sudoku.show();
     }
 }
