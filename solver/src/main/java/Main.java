@@ -15,6 +15,8 @@ public class Main {
 
         //Instance de Sudoku
         Sudoku sudoku = new Sudoku(board);
+        //Affichage de la grille
+        sudoku.display();
 
     }
 }
