@@ -48,6 +48,26 @@ public class Sudoku {
         return false;
     }
 
+    /**
+     * Méthode vérifiant si un entier se trouve deja dans une sous-grille de 3X3 cases
+     * @param col
+     * @param number
+     * @return un booléen
+     */
+    private boolean isInSubgrid(int row, int col, int number) {
+        int r = row - row % 3;
+        int c = col - col % 3;
+
+        for (int i = r; i < r + 3; i++) {
+            for (int j = c; j < c + 3; j++) {
+                if (board[i][j] == number) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 
     /**
      * Méthode d'affichage de la grille
