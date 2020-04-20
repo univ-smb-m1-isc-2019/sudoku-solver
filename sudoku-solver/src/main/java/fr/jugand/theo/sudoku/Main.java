@@ -21,6 +21,11 @@ public class Main
         };
 
         Sudoku sudoku = new Sudoku(board);
-        sudoku.display();
+        if (sudoku.solve()) {
+            System.out.println("La grille est résolue");
+            sudoku.display();
+        } else {
+            System.out.println("On ne peut pas résoudre la grille");
+        }
     }
 }
