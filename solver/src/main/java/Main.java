@@ -18,5 +18,13 @@ public class Main {
         //Affichage de la grille
         sudoku.display();
 
+        //On tente de résoudre la grille
+        if (sudoku.solve()) {
+            System.out.println("La grille est résolue");
+            sudoku.display();
+        } else {
+            System.out.println("Grille insolvable");
+        }
+
     }
 }
