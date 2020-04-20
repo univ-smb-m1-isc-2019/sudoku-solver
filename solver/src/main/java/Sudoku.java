@@ -22,12 +22,28 @@ public class Sudoku {
      * Méthode vérifiant si un entier se trouve deja dans la ligne
      * @param row
      * @param number
-     * @return
+     * @return un booléen
      */
     private boolean isInRow(int row, int number) {
         for (int i = 0; i < SIZE; i++) {
-            if (board[row][i] == number)
+            if (board[row][i] == number) {
                 return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Méthode vérifiant si un entier se trouve deja dans la colonne
+     * @param col
+     * @param number
+     * @return un booléen
+     */
+    private boolean isInCol(int col, int number) {
+        for (int i = 0; i < SIZE; i++){
+            if (board[i][col] == number) {
+                return true;
+            }
         }
         return false;
     }
