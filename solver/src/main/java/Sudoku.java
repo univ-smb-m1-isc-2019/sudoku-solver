@@ -19,6 +19,21 @@ public class Sudoku {
     }
 
     /**
+     * Méthode vérifiant si un entier se trouve deja dans la ligne
+     * @param row
+     * @param number
+     * @return
+     */
+    private boolean isInRow(int row, int number) {
+        for (int i = 0; i < SIZE; i++) {
+            if (board[row][i] == number)
+                return true;
+        }
+        return false;
+    }
+
+
+    /**
      * Méthode d'affichage de la grille
      */
     public void display() {
