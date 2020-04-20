@@ -38,13 +38,13 @@ public class Sudoku {
     /**
      * Méthode permettant de vérifier si un nombre est dans une colonne
      *
-     * @param col    Colonne à vérifier
+     * @param column    Colonne à vérifier
      * @param number Nombre à vérifier
      * @return Un booléen qui vérifie si le nombre est dans la colonne
      */
-    private boolean isInCol(int col, int number) {
+    private boolean isInCol(int column, int number) {
         for (int i = 0; i < SIZE; i++) {
-            if (board[i][col] == number)
+            if (board[i][column] == number)
                 return true;
         }
         return false;
@@ -54,13 +54,13 @@ public class Sudoku {
      * Méthode permettant de vérifier si un nombre est dans un container 3x3
      *
      * @param row Rangée à vérifier
-     * @param col Colonne à vérifier
+     * @param column Colonne à vérifier
      * @param number Nombre à vérifier
      * @return Un Booléen si le nombre est dans le container 3x3
      */
-    private boolean isInContainer(int row, int col, int number) {
+    private boolean isInContainer(int row, int column, int number) {
         int r = row - row % 3;
-        int c = col - col % 3;
+        int c = column - column % 3;
 
         for (int i = r; i < r + 3; i++) {
             for (int j = c; j < c + 3; j++) {
@@ -69,6 +69,17 @@ public class Sudoku {
             }
         }
         return false;
+    }
+
+    /**
+     * Méthode permettant de vérifier si un nombre peut être placé à une certaine position
+     * @param row Rangée à vérifier
+     * @param column Colonne à vérifier
+     * @param number Nombre à vérifier
+     * @return Un booléen si le nombre peut être placer à cette position
+     */
+    private boolean isPlaceable(int row, int column, int number) {
+        return !isInRow(row, number)  &&  !isInCol(column, number)  &&  !isInContainer(row, column, number);
     }
 
     /**
