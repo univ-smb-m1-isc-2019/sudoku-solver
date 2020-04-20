@@ -51,6 +51,26 @@ public class Sudoku {
     }
 
     /**
+     * Méthode permettant de savoir si un élément est dans un 3x3
+     *
+     * @param row Ligne appartenant au 3x3
+     * @param col Colonne appartenant au 3x3
+     * @param number Le nombre dont on veut connaitre la présence
+     * @return true si le nombre est présent dans le 3x3, false sinon
+     */
+    private boolean isInSub3x3(int row, int col, int number) {
+        int r = row - row % 3;
+        int c = col - col % 3;
+
+        for (int i = r; i < r + 3; i++)
+            for (int j = c; j < c + 3; j++)
+                if (board[i][j] == number)
+                    return true;
+
+        return false;
+    }
+
+    /**
      * Méthode permettant d'afficher la grille
      */
     public void show() {
