@@ -57,7 +57,6 @@ public class Sudoku {
     private boolean isInSubgrid(int row, int col, int number) {
         int r = row - row % 3;
         int c = col - col % 3;
-
         for (int i = r; i < r + 3; i++) {
             for (int j = c; j < c + 3; j++) {
                 if (grid[i][j] == number) {
@@ -66,6 +65,17 @@ public class Sudoku {
             }
         }
         return false;
+    }
+
+    /**
+     * Méthode vérifiant si un entier peut etre placé à une certaine position
+     * @param row
+     * @param col
+     * @param number
+     * @return
+     */
+    private boolean checkPosition(int row, int col, int number) {
+        return !isInRow(row, number)  &&  !isInCol(col, number)  &&  !isInSubgrid(row, col, number);
     }
 
 
