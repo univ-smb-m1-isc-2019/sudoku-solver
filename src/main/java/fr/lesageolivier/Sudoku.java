@@ -22,37 +22,42 @@ public class Sudoku {
     private CellGroup[] columns;
 
     /**
+     * Tableau contenant les colonnes de la grille
+     */
+    private CellGroup[] subGrid;
+
+    /**
      * Constructeur
      *
      * @param board Tableau contenant les valeur de la grille de jeu
      */
     public Sudoku(int[][] board) {
-        this.board = new Cell[SIZE][];
+        this.board = new Cell[SIZE][SIZE];
         this.rows = new CellGroup[SIZE];
         this.columns = new CellGroup[SIZE];
+        this.subGrid = new CellGroup[SIZE];
 
-        for (int i = 0; i < SIZE; ++i)  {
+        for (int i = 0; i < SIZE; ++i) {
             this.rows[i] = new CellGroup();
             this.columns[i] = new CellGroup();
+            this.subGrid[i] = new CellGroup();
         }
 
         for (int i = 0; i < SIZE; ++i) {
-            this.board[i] = new Cell[SIZE];
-
             for (int j = 0; j < SIZE; ++j) {
                 Cell cell = new Cell(board[i][j]);
                 this.board[i][j] = cell;
                 this.rows[i].add(cell);
                 this.columns[j].add(cell);
+                this.subGrid[(i / 3) * 3 + (j / 3)].add(cell);
             }
         }
-        this.show();
     }
 
     /**
      * Méthode permettant de savoir si un nombre est dans une ligne
      *
-     * @param row    Le numéro de la ligne
+     * @param row  Le numéro de la ligne
      * @param cell La case dont on veut connaitre la présence
      * @return true si le nombre est présent dans la ligne, false sinon
      */
@@ -63,7 +68,7 @@ public class Sudoku {
     /**
      * Méthode permettant de savoir si un nombre est dans une colonne
      *
-     * @param col    Le numéro de la colonne
+     * @param col  Le numéro de la colonne
      * @param cell La case dont on veut connaitre la présence
      * @return true si le nombre est présent dans la colonne, false sinon
      */
@@ -74,28 +79,20 @@ public class Sudoku {
     /**
      * Méthode permettant de savoir si un élément est dans un 3x3
      *
-     * @param row    Ligne appartenant au 3x3
-     * @param col    Colonne appartenant au 3x3
+     * @param row  Ligne appartenant au 3x3
+     * @param col  Colonne appartenant au 3x3
      * @param cell La case dont on veut connaitre la présence
      * @return true si le nombre est présent dans le 3x3, false sinon
      */
     private boolean isInSub3x3(int row, int col, Cell cell) {
-        int r = row - row % 3;
-        int c = col - col % 3;
-
-        for (int i = r; i < r + 3; i++)
-            for (int j = c; j < c + 3; j++)
-                if (board[i][j].equals(cell))
-                    return true;
-
-        return false;
+        return this.subGrid[(row / 3) * 3 + (col /3)].isIn(cell);
     }
 
     /**
      * Méthode permettant de savoir si un nombre placé dans la case désignée
      *
-     * @param row    Ligne dans laquelle on veut placer le nombre
-     * @param col    Colonne dans laquelle on veut placer le nombre
+     * @param row  Ligne dans laquelle on veut placer le nombre
+     * @param col  Colonne dans laquelle on veut placer le nombre
      * @param cell La case que l'on veut placer
      * @return true si le nombre peut être placer dans la case désignée, false sinon
      */
