@@ -111,7 +111,7 @@ public class Sudoku {
                 if (board[row][col].isEmpty()) {
                     for (Cell cell = new Cell(1); cell.getValue() <= SIZE; cell.increment()) {
                         if (canBeHere(row, col, cell)) {
-                            board[row][col] = new Cell(cell);
+                            board[row][col].setValue(cell.getValue());
 
                             if (solve()) {
                                 return true;
