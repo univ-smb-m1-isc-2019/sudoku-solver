@@ -8,7 +8,7 @@ public class Sudoku {
     /**
      * Grille du sudoku
      */
-    private int[][] grid;
+    private Cell[][] grid;
     /**
      * Taille de la grille
      */
@@ -16,7 +16,12 @@ public class Sudoku {
     public final static int EMPTY = 0;
 
     public Sudoku(int[][] grid) {
-        this.grid = grid;
+        this.grid = new Cell[SIZE][SIZE];
+        for(int i = 0; i < SIZE ; i++){
+            for(int j = 0; j < SIZE;j++){
+                this.grid[i][j] = new Cell(grid[i][j]);
+            }
+        }
     }
 
     /**
@@ -28,7 +33,7 @@ public class Sudoku {
      */
     private boolean isInRow(int row, int number) {
         for (int i = 0; i < SIZE; i++) {
-            if (grid[row][i] == number)
+            if (this.grid[row][i].getValue() == number)
                 return true;
         }
         return false;
@@ -43,7 +48,7 @@ public class Sudoku {
      */
     private boolean isInCol(int column, int number) {
         for (int i = 0; i < SIZE; i++) {
-            if (grid[i][column] == number)
+            if (this.grid[i][column].getValue() == number)
                 return true;
         }
         return false;
@@ -63,7 +68,7 @@ public class Sudoku {
 
         for (int i = r; i < r + 3; i++) {
             for (int j = c; j < c + 3; j++) {
-                if (grid[i][j] == number)
+                if (this.grid[i][j].getValue() == number)
                     return true;
             }
         }
@@ -88,15 +93,15 @@ public class Sudoku {
     public boolean solve() {
         for (int row = 0; row < SIZE; row++) {
             for (int col = 0; col < SIZE; col++) {
-                if (grid[row][col] == EMPTY) {
+                if (this.grid[row][col].isEmpty()) {
                     for (int number = 1; number <= SIZE; number++) {
                         if (isPlaceable(row, col, number)) {
-                            grid[row][col] = number;
+                            this.grid[row][col].setValue(number);
 
                             if (solve()) {
                                 return true;
                             } else {
-                                grid[row][col] = EMPTY;
+                                grid[row][col].setValue(EMPTY);
                             }
                         }
                     }
@@ -117,7 +122,7 @@ public class Sudoku {
         boolean res = true;
         for (int i = 0; i < SIZE ; i++) {
             for (int j = 0; j < SIZE; j++) {
-                if (grid[i][j] == 0)
+                if (grid[i][j].isEmpty())
                     res = false;
             }
         }
@@ -131,7 +136,7 @@ public class Sudoku {
     public void display() {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
-                System.out.print(" " + grid[i][j]);
+                System.out.print(" " + grid[i][j].getValue());
             }
             System.out.println();
         }

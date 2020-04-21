@@ -3,13 +3,13 @@ package fr.jugand.theo.sudoku;
 /**
  * Classe représentant une case
  */
-public class Case {
+public class Cell {
     /**
      * Valeur de la case
      */
     private int value;
 
-    public Case(int value){
+    public Cell(int value){
         this.value = value;
     }
 
