@@ -11,6 +11,8 @@ public class Sudoku {
      */
     private Cell[][] board;
 
+    private CellGroup[] rows;
+
     /**
      * Constructeur
      *
@@ -18,29 +20,19 @@ public class Sudoku {
      */
     public Sudoku(int[][] board) {
         this.board = new Cell[SIZE][];
+        this.rows = new CellGroup[SIZE];
 
         for (int i = 0; i < SIZE; ++i) {
             this.board[i] = new Cell[SIZE];
+            this.rows[i] = new CellGroup();
 
-            for (int j = 0; j < SIZE; ++j)
-                this.board[i][j] = new Cell(board[i][j]);
+            for (int j = 0; j < SIZE; ++j) {
+                Cell cell = new Cell(board[i][j]);
+                this.board[i][j] = cell;
+                this.rows[i].add(cell);
+            }
         }
         this.show();
-    }
-
-    /**
-     * Méthode permettant de savoir si un nombre est dans une ligne
-     *
-     * @param row    Le numéro de la ligne
-     * @param cell La case dont on veut connaitre la présence
-     * @return true si le nombre est présent dans la ligne, false sinon
-     */
-    private boolean isInRow(int row, Cell cell) {
-        for (int i = 0; i < SIZE; i++)
-            if (board[row][i].equals(cell))
-                return true;
-
-        return false;
     }
 
     /**
@@ -87,7 +79,7 @@ public class Sudoku {
      * @return true si le nombre peut être placer dans la case désignée, false sinon
      */
     private boolean canBeHere(int row, int col, Cell cell) {
-        return !isInRow(row, cell) && !isInCol(col, cell) && !isInSub3x3(row, col, cell);
+        return !this.rows[row].isIn(cell) && !isInCol(col, cell) && !isInSub3x3(row, col, cell);
     }
 
     /**
