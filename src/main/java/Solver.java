@@ -43,4 +43,8 @@ public class Solver {
         return false;
     }
 
+
+    public boolean solve() {
+        return true;
+    }
 }

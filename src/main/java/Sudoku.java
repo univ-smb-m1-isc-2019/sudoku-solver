@@ -19,7 +19,7 @@ public class Sudoku {
         System.out.println("-------------------------");
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if (j %3 == 0 )
+                if (j % 3 == 0)
                     System.out.print("| ");
 
                 if (grid[i][j].getValue() == 0)
@@ -28,14 +28,17 @@ public class Sudoku {
 
             }
             System.out.println("| ");
-            if (i%3 == 2)
+            if (i % 3 == 2)
                 System.out.println("-------------------------");
         }
     }
 
     public void solve() {
         Solver solver = new Solver(this.grid);
-        //solver.solve();
+        solver.solve();
     }
 
+    public Cell[][] getGrid() {
+        return grid;
+    }
 }
