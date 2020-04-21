@@ -1,5 +1,4 @@
 package fr.jugand.theo.sudoku;
 
-public class Column {
-
+public class Container {
 }
