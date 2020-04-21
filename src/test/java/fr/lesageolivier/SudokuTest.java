@@ -16,12 +16,12 @@ public class SudokuTest {
             { 0, 9, 0, 0, 0, 0, 4, 0, 0 }
     };
 
-    private Sudoku suodku;
+    private Sudoku sudoku;
 
     @BeforeEach
     public void setUp() {
-        this.suodku = new Sudoku(SudokuTest.board);
-        this.suodku.solve();
+        this.sudoku = new Sudoku(SudokuTest.board);
+        this.sudoku.solve();
     }
 
     @Test
@@ -35,5 +35,4 @@ public class SudokuTest {
             for(int cell: line)
                 assertNotEquals(cell, Sudoku.EMPTY);
     }
-
 }
