@@ -1,6 +1,8 @@
 package fr.lesageolivier;
 
 public class Cell {
+    public static final int EMPTY = 0;
+
     private int value;
 
     public Cell(int value) {
@@ -13,6 +15,10 @@ public class Cell {
 
     public void setValue(int value) {
         this.value = value;
+    }
+
+    public Boolean isEmpty() {
+        return this.value == EMPTY;
     }
 
     @Override
