@@ -11,7 +11,15 @@ public class Sudoku {
      */
     private Cell[][] board;
 
+    /**
+     * Tableau conentant les rangées de la grille
+     */
     private CellGroup[] rows;
+
+    /**
+     * Tableau contenant les colonnes de la grille
+     */
+    private CellGroup[] columns;
 
     /**
      * Constructeur
@@ -21,18 +29,35 @@ public class Sudoku {
     public Sudoku(int[][] board) {
         this.board = new Cell[SIZE][];
         this.rows = new CellGroup[SIZE];
+        this.columns = new CellGroup[SIZE];
+
+        for (int i = 0; i < SIZE; ++i)  {
+            this.rows[i] = new CellGroup();
+            this.columns[i] = new CellGroup();
+        }
 
         for (int i = 0; i < SIZE; ++i) {
             this.board[i] = new Cell[SIZE];
-            this.rows[i] = new CellGroup();
 
             for (int j = 0; j < SIZE; ++j) {
                 Cell cell = new Cell(board[i][j]);
                 this.board[i][j] = cell;
                 this.rows[i].add(cell);
+                this.columns[j].add(cell);
             }
         }
         this.show();
+    }
+
+    /**
+     * Méthode permettant de savoir si un nombre est dans une ligne
+     *
+     * @param row    Le numéro de la ligne
+     * @param cell La case dont on veut connaitre la présence
+     * @return true si le nombre est présent dans la ligne, false sinon
+     */
+    private boolean isInRow(int row, Cell cell) {
+        return this.rows[row].isIn(cell);
     }
 
     /**
@@ -43,11 +68,7 @@ public class Sudoku {
      * @return true si le nombre est présent dans la colonne, false sinon
      */
     private boolean isInCol(int col, Cell cell) {
-        for (int i = 0; i < SIZE; i++)
-            if (board[i][col].equals(cell))
-                return true;
-
-        return false;
+        return this.columns[col].isIn(cell);
     }
 
     /**
@@ -79,7 +100,7 @@ public class Sudoku {
      * @return true si le nombre peut être placer dans la case désignée, false sinon
      */
     private boolean canBeHere(int row, int col, Cell cell) {
-        return !this.rows[row].isIn(cell) && !isInCol(col, cell) && !isInSub3x3(row, col, cell);
+        return !isInRow(row, cell) && !isInCol(col, cell) && !isInSub3x3(row, col, cell);
     }
 
     /**
