@@ -14,4 +14,8 @@ public class Case {
     public void setValue(int value){
         this.value = value;
     }
+
+    public boolean isEmpty(){
+        return this.value == 0;
+    }
 }
