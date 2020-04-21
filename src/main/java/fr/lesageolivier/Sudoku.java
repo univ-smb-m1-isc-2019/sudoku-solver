@@ -7,6 +7,11 @@ public class Sudoku {
     public static final int SIZE = 9;
 
     /**
+     * Valeur d'une case vide
+     */
+    public static final int EMPTY = 0;
+
+    /**
      * Tableau contenant le Sudoku
      */
     private int[][] board;
@@ -90,7 +95,7 @@ public class Sudoku {
     public boolean solve() {
         for (int row = 0; row < SIZE; row++) {
             for (int col = 0; col < SIZE; col++) {
-                if (board[row][col] == 0) {
+                if (board[row][col] == EMPTY) {
                     for (int number = 1; number <= SIZE; number++) {
                         if (canBeHere(row, col, number)) {
                             board[row][col] = number;
@@ -98,7 +103,7 @@ public class Sudoku {
                             if (solve()) {
                                 return true;
                             } else {
-                                board[row][col] = 0;
+                                board[row][col] = EMPTY;
                             }
                         }
                     }
