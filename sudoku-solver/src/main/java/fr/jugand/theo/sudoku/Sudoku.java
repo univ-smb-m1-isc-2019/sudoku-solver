@@ -33,17 +33,17 @@ public class Sudoku {
         this.columns = new Column[SIZE];
         this.subgrids = new Container[SIZE];
         for (int h = 0; h < SIZE; h++) {
-            columns[h] = new Column();
-            subgrids[h] = new Container();
+            this.columns[h] = new Column();
+            this.subgrids[h] = new Container();
         }
         for (int i = 0; i < SIZE; i++) {
-            rows[i] = new Row();
+            this.rows[i] = new Row();
             for (int j = 0; j < SIZE; j++) {
                 Cell cell = new Cell(grid[i][j]);
                 this.grid[i][j] = cell;
-                rows[i].addCell(cell);
-                columns[j].addCell(cell);
-                subgrids[(i/3) * 3 + (j/3)].addCell(cell);
+                this.rows[i].addCell(cell);
+                this.columns[j].addCell(cell);
+                this.subgrids[(i/3) * 3 + (j/3)].addCell(cell);
             }
         }
     }
