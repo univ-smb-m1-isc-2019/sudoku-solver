@@ -26,13 +26,14 @@ public class SudokuTest {
 
     @Test
     public void testCalculer() {
-        assertEquals(board.length, Sudoku.SIZE);
+        int[][] matrix = this.sudoku.toIntArray();
+        assertEquals(matrix.length, Sudoku.SIZE);
 
-        for (int[] line: board)
+        for (int[] line: matrix)
             assertEquals(line.length, Sudoku.SIZE);
 
-        for (int[] line: board)
+        for (int[] line: matrix)
             for(int cell: line)
-                assertNotEquals(cell, Sudoku.EMPTY);
+                assertNotEquals(cell, Cell.EMPTY);
     }
 }
