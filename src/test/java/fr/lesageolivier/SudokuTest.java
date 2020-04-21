@@ -25,7 +25,7 @@ public class SudokuTest {
     }
 
     @Test
-    public void testCalculer() throws Exception {
+    public void testCalculer() {
         assertEquals(board.length, Sudoku.SIZE);
 
         for (int[] line: board)
