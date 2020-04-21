@@ -109,7 +109,7 @@ public class Sudoku {
             }
         }
 
-        return true; // sudoku solved
+        return true;
     }
 
     /**
@@ -129,7 +129,7 @@ public class Sudoku {
             }
             j++;
         }
-        return isComplete;
+        return true;
     }
 
     /**

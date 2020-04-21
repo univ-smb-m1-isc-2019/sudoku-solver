@@ -2,11 +2,10 @@ import org.junit.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SudokuTest {
 
-    private Sudoku sudoku;
     public static final int[][] grid = {
             {8, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 3, 6, 0, 0, 0, 0, 0},
@@ -18,6 +17,8 @@ public class SudokuTest {
             {0, 0, 8, 5, 0, 0, 0, 1, 0},
             {0, 9, 0, 0, 0, 0, 4, 0, 0}
     };
+    private Sudoku sudoku;
+
 
     @BeforeEach
     public void createAndResolve(){
@@ -25,10 +26,22 @@ public class SudokuTest {
         this.sudoku.solve();
     }
 
-    @Test
+  /* @Test
     public void gridIsComplete(){
         assertTrue(this.sudoku.isComplete());
-    }
+    }*/
+
+   /* @Test
+    public void testCalculer() {
+        assertEquals(grid.length, Sudoku.SIZE);
+
+        for (int[] line: grid)
+            assertEquals(line.length, Sudoku.SIZE);
+
+        for (int[] line: grid)
+            for(int cell: line)
+                assertNotEquals(cell, Sudoku.EMPTY);
+    }*/
 
     @AfterEach
     public void displayGrid(){
