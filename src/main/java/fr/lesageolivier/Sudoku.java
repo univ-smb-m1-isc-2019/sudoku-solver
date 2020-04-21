@@ -130,6 +130,11 @@ public class Sudoku {
         }
     }
 
+    /**
+     * Méthode permettant de réacuperer la grille une fois réolue
+     *
+     * @return Un tableau de int contenant la grille
+     */
     public int[][] toIntArray() {
         int[][] matrix = new int[SIZE][SIZE];
 
