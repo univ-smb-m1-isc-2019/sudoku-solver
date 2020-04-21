@@ -111,6 +111,27 @@ public class Sudoku {
 
         return true; // sudoku solved
     }
+
+    /**
+     * Methode verifiant que la grille ne comporte plus de 0
+     * @return
+     */
+    public boolean isComplete(){
+        boolean isComplete = true;
+        int i = 0;
+        int j = 0;
+        while(isComplete && j < Sudoku.SIZE){
+            while(isComplete && i < Sudoku.SIZE){
+                if(this.grid[i][j] == Sudoku.EMPTY){
+                    isComplete = false;
+                }
+                i++;
+            }
+            j++;
+        }
+        return isComplete;
+    }
+
     /**
      * Méthode d'affichage de la grille
      */
