@@ -21,11 +21,19 @@ public class SudokuTest {
     @BeforeEach
     public void setUp() {
         this.suodku = new Sudoku(SudokuTest.board);
+        this.suodku.solve();
     }
 
     @Test
     public void testCalculer() throws Exception {
-        assertTrue(true);
+        assertEquals(board.length, Sudoku.SIZE);
+
+        for (int[] line: board)
+            assertEquals(line.length, Sudoku.SIZE);
+
+        for (int[] line: board)
+            for(int cell: line)
+                assertNotEquals(cell, Sudoku.EMPTY);
     }
 
 }
