@@ -18,6 +18,10 @@ public class Sudoku {
      */
     public Column[] columns;
     /**
+     * Groupe de SubGrid
+     */
+    public Container[] subgrids;
+    /**
      * Taille de la grille
      */
     public final static int SIZE = 9;
@@ -27,8 +31,10 @@ public class Sudoku {
         this.grid = new Cell[SIZE][SIZE];
         this.rows = new Row[SIZE];
         this.columns = new Column[SIZE];
+        this.subgrids = new Container[SIZE];
         for (int h = 0; h < SIZE; h++) {
             columns[h] = new Column();
+            subgrids[h] = new Container();
         }
         for (int i = 0; i < SIZE; i++) {
             rows[i] = new Row();
@@ -37,6 +43,7 @@ public class Sudoku {
                 this.grid[i][j] = cell;
                 rows[i].addCell(cell);
                 columns[j].addCell(cell);
+                subgrids[(i/3) * 3 + (j/3)].addCell(cell);
             }
         }
     }
@@ -71,17 +78,8 @@ public class Sudoku {
      * @param number Nombre à vérifier
      * @return Un Booléen si le nombre est dans le container 3x3
      */
-    private boolean isInContainer(int row, int column, int number) {
-        int r = row - row % 3;
-        int c = column - column % 3;
-
-        for (int i = r; i < r + 3; i++) {
-            for (int j = c; j < c + 3; j++) {
-                if (this.grid[i][j].getValue() == number)
-                    return true;
-            }
-        }
-        return false;
+    private boolean isInSubgrid(int row, int column, int number) {
+        return this.subgrids[(row/3) * 3 + column/3].isInContainer(number);
     }
 
     /**
@@ -93,7 +91,7 @@ public class Sudoku {
      * @return Un booléen si le nombre peut être placer à cette position
      */
     private boolean isPlaceable(int row, int column, int number) {
-        return !isInRow(row, number) && !isInCol(column, number) && !isInContainer(row, column, number);
+        return !isInRow(row, number) && !isInCol(column, number) && !isInSubgrid(row, column, number);
     }
 
     /**
