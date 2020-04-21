@@ -1,4 +1,4 @@
-public class Case {
+public class Cell {
 
     /**
      * Valeur de la case
@@ -9,7 +9,7 @@ public class Case {
      * Contructeur de la case
      * @param value
      */
-    public Case(int value){
+    public Cell(int value){
         this.value = value;
     }
 

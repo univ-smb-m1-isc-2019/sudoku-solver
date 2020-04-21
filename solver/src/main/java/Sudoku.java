@@ -1,5 +1,3 @@
-import javafx.css.Size;
-
 public class Sudoku {
 
     /**
@@ -16,17 +14,17 @@ public class Sudoku {
     /**
      * Grille de sudoku de la classe
      */
-    private Case[][] grid;
+    private Cell[][] grid;
 
     /**
      * Contructeur de la classe Sudoku
      * @param grid
      */
     public Sudoku(int[][] grid){
-        this.grid = new Case[SIZE][SIZE];
+        this.grid = new Cell[SIZE][SIZE];
         for(int i = 0 ; i < SIZE ; i++){
             for (int j = 0; j < SIZE ; j++){
-                this.grid[i][j] = new Case(grid[i][j]);
+                this.grid[i][j] = new Cell(grid[i][j]);
             }
         }
 
@@ -146,7 +144,7 @@ public class Sudoku {
     public void display() {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
-                System.out.print(" " + grid[i][j]);
+                System.out.print(" " + this.grid[i][j].getValue());
             }
             System.out.println();
         }
