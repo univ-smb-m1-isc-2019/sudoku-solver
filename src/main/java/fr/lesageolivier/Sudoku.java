@@ -129,4 +129,14 @@ public class Sudoku {
             System.out.println();
         }
     }
+
+    public int[][] toIntArray() {
+        int[][] matrix = new int[SIZE][SIZE];
+
+        for (int i = 0; i < SIZE; ++i)
+            for (int j = 0; j < SIZE; ++j)
+                matrix[i][j] = this.board[i][j].getValue();
+
+        return matrix;
+    }
 }
