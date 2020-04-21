@@ -29,7 +29,7 @@ public class Container {
      * @param number Nombre à vérifier
      * @return Un Booléen si le nombre est dans le container
      */
-    private boolean isInContainer(int number) {
+    public boolean isInContainer(int number) {
         for (Cell cell : this.listCell) {
             if (cell.getValue() == number) {
                 return true;
