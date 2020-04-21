@@ -46,6 +46,10 @@ public class Cell {
         return this.value == EMPTY;
     }
 
+    public void increment() {
+        ++this.value;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Cell) {
@@ -55,5 +59,10 @@ public class Cell {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value + "";
     }
 }
