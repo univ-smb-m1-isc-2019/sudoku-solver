@@ -7,7 +7,13 @@ public class Cell {
         this.value = value;
     }
 
+    public int getValue() {
+        return this.value;
+    }
 
+    public void setValue(int value) {
+        this.value = value;
+    }
 
     @Override
     public boolean equals(Object obj) {
