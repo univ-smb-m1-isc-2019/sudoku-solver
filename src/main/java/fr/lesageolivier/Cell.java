@@ -21,6 +21,15 @@ public class Cell {
     }
 
     /**
+     * Constructeur
+     *
+     * @param cell Case dont la valeur va être copié
+     */
+    public Cell(Cell cell) {
+        this.value = cell.value;
+    }
+
+     /**
      * Getter sur la valeur de la case
      *
      * @return La valeur de la case
