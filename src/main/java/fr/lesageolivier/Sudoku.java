@@ -9,7 +9,7 @@ public class Sudoku {
     /**
      * Tableau contenant le Sudoku
      */
-    private int[][] board;
+    private Cell[][] board;
 
     /**
      * Constructeur
@@ -17,19 +17,27 @@ public class Sudoku {
      * @param board Tableau contenant les valeur de la grille de jeu
      */
     public Sudoku(int[][] board) {
-        this.board = board;
+        this.board = new Cell[SIZE][];
+
+        for (int i = 0; i < SIZE; ++i) {
+            this.board[i] = new Cell[SIZE];
+
+            for (int j = 0; j < SIZE; ++j)
+                this.board[i][j] = new Cell(board[i][j]);
+        }
+        this.show();
     }
 
     /**
      * Méthode permettant de savoir si un nombre est dans une ligne
      *
      * @param row    Le numéro de la ligne
-     * @param number Le nombre dont on veut connaitre la présence
+     * @param cell La case dont on veut connaitre la présence
      * @return true si le nombre est présent dans la ligne, false sinon
      */
-    private boolean isInRow(int row, int number) {
+    private boolean isInRow(int row, Cell cell) {
         for (int i = 0; i < SIZE; i++)
-            if (board[row][i] == number)
+            if (board[row][i].equals(cell))
                 return true;
 
         return false;
@@ -39,12 +47,12 @@ public class Sudoku {
      * Méthode permettant de savoir si un nombre est dans une colonne
      *
      * @param col    Le numéro de la colonne
-     * @param number Le nombre dont on veut connaitre la présence
+     * @param cell La case dont on veut connaitre la présence
      * @return true si le nombre est présent dans la colonne, false sinon
      */
-    private boolean isInCol(int col, int number) {
+    private boolean isInCol(int col, Cell cell) {
         for (int i = 0; i < SIZE; i++)
-            if (board[i][col] == number)
+            if (board[i][col].equals(cell))
                 return true;
 
         return false;
@@ -55,16 +63,16 @@ public class Sudoku {
      *
      * @param row    Ligne appartenant au 3x3
      * @param col    Colonne appartenant au 3x3
-     * @param number Le nombre dont on veut connaitre la présence
+     * @param cell La case dont on veut connaitre la présence
      * @return true si le nombre est présent dans le 3x3, false sinon
      */
-    private boolean isInSub3x3(int row, int col, int number) {
+    private boolean isInSub3x3(int row, int col, Cell cell) {
         int r = row - row % 3;
         int c = col - col % 3;
 
         for (int i = r; i < r + 3; i++)
             for (int j = c; j < c + 3; j++)
-                if (board[i][j] == number)
+                if (board[i][j].equals(cell))
                     return true;
 
         return false;
@@ -75,11 +83,11 @@ public class Sudoku {
      *
      * @param row    Ligne dans laquelle on veut placer le nombre
      * @param col    Colonne dans laquelle on veut placer le nombre
-     * @param number Le nombre que l'on veut placer
+     * @param cell La case que l'on veut placer
      * @return true si le nombre peut être placer dans la case désignée, false sinon
      */
-    private boolean canBeHere(int row, int col, int number) {
-        return !isInRow(row, number) && !isInCol(col, number) && !isInSub3x3(row, col, number);
+    private boolean canBeHere(int row, int col, Cell cell) {
+        return !isInRow(row, cell) && !isInCol(col, cell) && !isInSub3x3(row, col, cell);
     }
 
     /**
@@ -90,15 +98,15 @@ public class Sudoku {
     public boolean solve() {
         for (int row = 0; row < SIZE; row++) {
             for (int col = 0; col < SIZE; col++) {
-                if (board[row][col] == Cell.EMPTY) {
-                    for (int number = 1; number <= SIZE; number++) {
-                        if (canBeHere(row, col, number)) {
-                            board[row][col] = number;
+                if (board[row][col].isEmpty()) {
+                    for (Cell cell = new Cell(1); cell.getValue() <= SIZE; cell.increment()) {
+                        if (canBeHere(row, col, cell)) {
+                            board[row][col] = new Cell(cell);
 
                             if (solve()) {
                                 return true;
                             } else {
-                                board[row][col] = Cell.EMPTY;
+                                board[row][col].setValue(Cell.EMPTY);
                             }
                         }
                     }
@@ -114,8 +122,8 @@ public class Sudoku {
      * Méthode permettant d'afficher la grille
      */
     public void show() {
-        for (int[] line : this.board) {
-            for (int cell : line) {
+        for (Cell[] line : this.board) {
+            for (Cell cell : line) {
                 System.out.print(cell);
             }
             System.out.println();
