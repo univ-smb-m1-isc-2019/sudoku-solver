@@ -1,7 +1,6 @@
 package fr.jugand.theo.sudoku;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * Classe représentant un groupe de case
