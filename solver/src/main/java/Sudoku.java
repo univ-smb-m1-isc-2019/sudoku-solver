@@ -126,8 +126,8 @@ public class Sudoku {
         boolean isComplete = true;
         int i = 0;
         int j = 0;
-        while(isComplete && j < Sudoku.SIZE){
-            while(isComplete && i < Sudoku.SIZE){
+        while(isComplete && j < SIZE){
+            while(isComplete && i < SIZE){
                 if(this.grid[i][j].isEmpty()){
                     isComplete = false;
                 }
@@ -135,7 +135,7 @@ public class Sudoku {
             }
             j++;
         }
-        return true;
+        return isComplete;
     }
 
     /**
