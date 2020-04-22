@@ -27,34 +27,34 @@ public class TestSudoku {
 
     @Test
     public void PossedeTousLesChiffresParLigne() {
-        Sudoku sudok = new Sudoku(board);
+        Solver solver = new Solver(board);
         for (int b = 0; b<20; b++) {
-            sudok.resoudre(0, 0);
+            solver.resoudre(0, 0);
             for (int i = 0; i < 9; i++) {
-                assertTrue(sudok.possedeTousLesChiffresParLigne(i));
+                assertTrue(solver.sudoku.possedeTousLesChiffresParLigne(i));
             }
         }
     }
 
     @Test
     public void PossedeTousLesChiffresParColonne() {
-        Sudoku sudok = new Sudoku(board);
+        Solver solver = new Solver(board);
         for (int i = 0; i<20; i++) {
-            sudok.resoudre(0, 0);
+            solver.resoudre(0, 0);
             for (int y = 0; y < 9; y++) {
-                assertTrue(sudok.possedeTousLesChiffresParColonne(y));
+                assertTrue(solver.sudoku.possedeTousLesChiffresParColonne(y));
             }
         }
     }
 
     @Test
     public void PossedeTousLesChiffresParBloc() {
-        Sudoku sudok = new Sudoku(board);
+        Solver solver = new Solver(board);
         for (int i = 0; i<20; i++) {
-            sudok.resoudre(0, 0);
+            solver.resoudre(0, 0);
             for (int x = 0; x < 9; x++) {
                 for (int y = 0; y < 9; y++) {
-                    assertTrue(sudok.possedeTousLesChiffresParBloc(x, y));
+                    assertTrue(solver.sudoku.possedeTousLesChiffresParBloc(x, y));
                 }
             }
         }
@@ -62,19 +62,19 @@ public class TestSudoku {
 
     @Test
     public void resolutionEstCorrecte(){
-        Sudoku sudok = new Sudoku(board);
+        Solver solver = new Solver(board);
         for (int i = 0; i<20; i++) {
-            sudok.resoudre(0,0);
-            assertTrue(sudok.resolutionCorrecte());
+            solver.resoudre(0,0);
+            assertTrue(solver.sudoku.resolutionCorrecte());
         }
     }
 
     @Test
-    public void solve_should_return_false_if_unsolvable(){
-        Sudoku sudok = new Sudoku(fausse_board);
+    public void resolutionIncorrect(){
+        Solver solver = new Solver(fausse_board);
         for (int i = 0; i<20; i++) {
-            sudok.resoudre(0,0);
-            assertFalse(sudok.resolutionCorrecte());
+            solver.resoudre(0,0);
+            assertFalse(solver.sudoku.resolutionCorrecte());
         }
     }
 }

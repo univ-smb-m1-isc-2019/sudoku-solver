@@ -12,9 +12,10 @@ public class Main {
     };
 
     public static void main(String[] args) {
-        Sudoku s = new Sudoku(board);
-        s.afficherSudoku();
-        s.resoudre(0,0);
-        s.afficherSudoku();
+        Solver solver = new Solver(board);
+        solver.sudoku.afficherSudoku();
+        solver.resoudre(0,0);
+        solver.sudoku.afficherSudoku();
+
     }
 }
