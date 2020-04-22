@@ -33,9 +33,9 @@ public class Sudoku {
         }
     }
 
-    public void solve() {
+    public boolean solve() {
         Solver solver = new Solver(this.grid);
-        solver.solve();
+        return solver.solve();
     }
 
     public Cell[][] getGrid() {

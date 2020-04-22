@@ -33,6 +33,7 @@ public class SudokuTest {
     };
 
     Sudoku TEST_GRID = new Sudoku(GRID);
+    Sudoku IMPOSSIBLE_TEST_GRID = new Sudoku(IMPOSSIBLE_GRID);
 
     @Test
     public void number_in_row(){
@@ -66,5 +67,11 @@ public class SudokuTest {
             assertTrue(solver.numberInBox(6, 3, 5));
             assertFalse(solver.numberInBox(3, 3, 8));
         }
+    }
+
+    @Test
+    public void test_solve(){
+        assertTrue(TEST_GRID.solve());
+        assertFalse(IMPOSSIBLE_TEST_GRID.solve());
     }
 }

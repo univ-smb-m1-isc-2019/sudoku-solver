@@ -43,8 +43,29 @@ public class Solver {
         return false;
     }
 
-
     public boolean solve() {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+
+                if (grid[i][j].getValue() == 0) {
+
+                    for (int val = 1; val <= size; val++) {
+                        if (!numberInRow(i, val)
+                                && !numberInCol(j, val)
+                                && !numberInBox(i, j, val)) {
+                            grid[i][j].setValue(val);
+
+                            if (solve()) {
+                                return true;
+                            } else {
+                                grid[i][j].setValue(0);
+                            }
+                        }
+                    }
+                    return false;
+                }
+            }
+        }
         return true;
     }
 }
