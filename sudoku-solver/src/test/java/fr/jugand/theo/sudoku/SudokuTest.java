@@ -33,11 +33,21 @@ public class SudokuTest {
         assertTrue(this.sudoku.isComplete());
     }
 
+
     @Test
     public void everyNumberFromOneToNineAreInColumnOnce() {
         for (int i = 0; i < Sudoku.SIZE; i++) {
             for (int j = 0; j < Sudoku.SIZE; j++) {
                 assertTrue(this.sudoku.columns[i].isInContainer(possibilities[j]));
+            }
+        }
+    }
+
+    @Test
+    public void everyNumberFromOneToNineAreInRowOnce() {
+        for (int i = 0; i < Sudoku.SIZE; i++) {
+            for (int j = 0; j < Sudoku.SIZE; j++) {
+                assertTrue(this.sudoku.rows[i].isInContainer(possibilities[j]));
             }
         }
     }
