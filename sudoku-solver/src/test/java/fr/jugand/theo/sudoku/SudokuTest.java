@@ -52,6 +52,15 @@ public class SudokuTest {
         }
     }
 
+    @Test
+    public void everyNumberFromOneToNineAreInSubgridOnce() {
+        for (int i = 0; i < Sudoku.SIZE; i++) {
+            for (int j = 0; j < Sudoku.SIZE; j++) {
+                assertTrue(this.sudoku.subgrids[i].isInContainer(possibilities[j]));
+            }
+        }
+    }
+
     @AfterEach
     public void displayGrid() {
         this.sudoku.display();
