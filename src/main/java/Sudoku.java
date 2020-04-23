@@ -49,8 +49,13 @@ public class Sudoku {
 
             //fonction a rendre dynamique
             bloc.get(p).add(listeC.get(i));
+            listeC.get(i).setBloc(bloc.get(p));
             bloc.get(p).add(listeC.get(i+1));
+            listeC.get(i+1).setBloc(bloc.get(p));
+
             bloc.get(p).add(listeC.get(i+2));
+            listeC.get(i+2).setBloc(bloc.get(p));
+
             p = p+1 ;
 
 
@@ -64,7 +69,6 @@ public class Sudoku {
                 }
 
             }
-
 
 
 
