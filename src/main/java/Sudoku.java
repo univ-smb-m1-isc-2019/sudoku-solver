@@ -77,4 +77,33 @@ public class Sudoku {
 
     }
 
+    public void resoudre1() {
+        for (Case i : listeC){
+            if (i.getNumber() == 0){
+                i.setNumber(i.tryNumber());
+                System.out.println(toString());
+
+                for (Case j : listeC){
+                    j.setPossible();
+                }
+            }
+
+        }
+    }
+
+
+    @Override
+    public String toString() {
+        String res = "";
+        for (int i =0 ; i< ligne.size() ; i++){
+             for ( Case j : ligne.get(i).listeC){
+                 res = res +  j.getNumber() + " ";
+             }
+             res  = res + "\n";
+        }
+
+        return "Sudoku{" + "\n" +
+                res +
+                '}';
+    }
 }

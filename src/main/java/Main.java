@@ -12,25 +12,15 @@
                     { 0, 9, 0, 0, 0, 0, 4, 0, 0 }
             };
             Sudoku su = new Sudoku(board);
-            for (Ligne i : su.ligne){
-                System.out.print(i);
-            }
+            System.out.println(su.toString());
+
 
             for (Case i : su.listeC){
                i.setPossible();
-               System.out.println("bloc");
-               System.out.println(i.getPossible());
-
             }
 
-            for (Case i : su.listeC){
-                i.setPossible();
-                System.out.println("bloc");
-                System.out.println(i.getPossible());
-
-            }
-
-            su.listeC.get(3).setPossible();
+            su.resoudre1();
+            System.out.println(su.toString());
 
 
 

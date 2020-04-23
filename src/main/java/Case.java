@@ -94,4 +94,8 @@ public class Case {
 
 
     }
+
+    public int tryNumber() {
+        return possible.get(0);
+    }
 }
