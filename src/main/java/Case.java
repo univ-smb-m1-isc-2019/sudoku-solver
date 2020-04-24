@@ -98,4 +98,20 @@ public class Case {
     public int tryNumber() {
         return possible.get(0);
     }
+
+    public boolean absLigne(int k) {
+        return  !ligne.contains(k);
+    }
+
+    public boolean absColonne(int k) {
+
+        return  !colone.contains(k);
+
+    }
+
+    public boolean absBloc(int k) {
+
+        return  !bloc.contains(k);
+
+    }
 }

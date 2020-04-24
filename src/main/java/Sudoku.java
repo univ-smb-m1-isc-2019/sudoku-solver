@@ -45,7 +45,6 @@ public class Sudoku {
         int max = 2;
         int min = 0;
         for (int i =0 ;  i < listeC.size(); i = i+3) {
-           // System.out.println(p);
 
             //fonction a rendre dynamique
             bloc.get(p).add(listeC.get(i));
@@ -60,7 +59,6 @@ public class Sudoku {
 
 
             if ( p > max){
-                System.out.println(bloc.get(p-1).listeC.size());
                 if (bloc.get(p-1).listeC.size() == 9){
                     min = min + 3;
                     max = max + 3;
@@ -81,7 +79,6 @@ public class Sudoku {
         for (Case i : listeC){
             if (i.getNumber() == 0){
                 i.setNumber(i.tryNumber());
-                System.out.println(toString());
 
                 for (Case j : listeC){
                     j.setPossible();
@@ -106,4 +103,51 @@ public class Sudoku {
                 res +
                 '}';
     }
+
+
+
+    public ArrayList<Case> trié() {
+        ArrayList<Case > liste = new  ArrayList<Case >();
+        for (int min =1; min < 10 ; min ++ ) {
+            for (Case i : listeC) {
+                if (i.getPossible().size() == min) {
+                    liste.add(i);
+                }
+
+            }
+        }
+        return liste;
+    }
+
+
+
+
+
+    boolean reslove (int position)
+    {
+        if (position == listeC.size())
+            return true;
+
+        //int i = position/9, j = position%9;
+
+        if (listeC.get(position).getNumber() != 0)
+            return reslove(position+1);
+
+        Case macase = listeC.get(position);
+        for (int k=1; k <= 9; k++)
+        {
+
+            if (macase.absLigne(k) && macase.absColonne(k) && macase.absBloc(k))
+            {
+                macase.setNumber(k);
+
+                if ( reslove (position+1) )
+                    return true;
+            }
+        }
+        macase.setNumber(0);
+
+        return false;
+    }
+
 }

@@ -1,4 +1,6 @@
-    public class Main {
+import java.util.ArrayList;
+
+public class Main {
         public static void main(String[] args) {
             int[][] board = {
                     { 8, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -19,7 +21,9 @@
                i.setPossible();
             }
 
-            su.resoudre1();
+            ArrayList<Case > liste = su.trié();
+
+            su.reslove(0);
             System.out.println(su.toString());
 
 

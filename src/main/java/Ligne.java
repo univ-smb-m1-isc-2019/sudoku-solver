@@ -18,4 +18,13 @@ public class Ligne {
                 "listeC=" + res +
                 '}' + '\n';
     }
+
+    public boolean contains(int k) {
+        boolean bool = false;
+        for (Case c :
+                listeC ) {
+            bool = bool || c.getNumber()==k;
+        }
+       return bool;
+    }
 }
