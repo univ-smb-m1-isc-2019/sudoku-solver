@@ -20,20 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="23d3f1d8-f995-4a03-988d-a9b1f32d6306" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/SudokuTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bloc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bloc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Colone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Colone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ligne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ligne.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Bloc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Bloc.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Case.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Case.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Colone.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Colone.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Ligne.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Ligne.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Sudoku.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Sudoku.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/SudokuTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/SudokuTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-SudokuTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-SudokuTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/SudokuTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/SudokuTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +71,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SudokuTest">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="14" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -118,7 +117,7 @@
       <workItem from="1586181253842" duration="478000" />
       <workItem from="1586183264244" duration="6938000" />
       <workItem from="1587653984690" duration="5996000" />
-      <workItem from="1587738587569" duration="10363000" />
+      <workItem from="1587738587569" duration="10996000" />
     </task>
     <servers />
   </component>
@@ -178,26 +177,26 @@
     </state>
     <state x="580" y="186" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1586181747787" />
     <state x="696" y="225" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587746305476" />
-    <state width="1877" height="238" key="GridCell.Tab.0.bottom" timestamp="1587751320899">
+    <state width="1877" height="238" key="GridCell.Tab.0.bottom" timestamp="1587751958929">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1540" height="272" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1586190769405" />
-    <state width="1877" height="238" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587751320899" />
-    <state width="1877" height="238" key="GridCell.Tab.0.center" timestamp="1587751320898">
+    <state width="1877" height="238" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587751958929" />
+    <state width="1877" height="238" key="GridCell.Tab.0.center" timestamp="1587751958929">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1540" height="272" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1586190769405" />
-    <state width="1877" height="238" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587751320898" />
-    <state width="1877" height="238" key="GridCell.Tab.0.left" timestamp="1587751320898">
+    <state width="1877" height="238" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587751958929" />
+    <state width="1877" height="238" key="GridCell.Tab.0.left" timestamp="1587751958929">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1540" height="272" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1586190769405" />
-    <state width="1877" height="238" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587751320898" />
-    <state width="1877" height="238" key="GridCell.Tab.0.right" timestamp="1587751320898">
+    <state width="1877" height="238" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587751958929" />
+    <state width="1877" height="238" key="GridCell.Tab.0.right" timestamp="1587751958929">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1540" height="272" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1586190769405" />
-    <state width="1877" height="238" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587751320898" />
+    <state width="1877" height="238" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587751958929" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1587747012878">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
