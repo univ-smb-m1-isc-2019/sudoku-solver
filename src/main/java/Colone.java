@@ -27,4 +27,12 @@ public class Colone {
         }
         return bool;
     }
+
+    public Integer[] getTab() {
+        Integer[] res = new Integer[listeC.size()];
+        for (int i =0; i< listeC.size();i++) {
+            res[i] = listeC.get(i).getNumber();
+        }
+        return  res;
+    }
 }
