@@ -5,7 +5,6 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertArrayEquals;
 
 /**
  * Unit test for simple App.
@@ -13,9 +12,10 @@ import static org.junit.Assert.assertArrayEquals;
 public class SudokuSolverTest{
 
 
+    /* values expected in a line/column/matrix */
     public static final Integer[] allValidValuesTab = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
-
+    /* method to get the present values in our line/column/matrix */
     private Integer[] getActualValue(ArrayList<Cell> cells){
         Integer[] res = new Integer[9];
 

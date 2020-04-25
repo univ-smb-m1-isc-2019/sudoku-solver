@@ -1,10 +1,9 @@
 package Sudoku;
 
-import java.util.ArrayList;
-
 public class Sudoku {
     private Grid board;
 
+    /*    CONSTRUCTOR */
     public Sudoku(int[][] board){
         this.board = new Grid(board);
     }
@@ -13,9 +12,11 @@ public class Sudoku {
         return board.toString();
     }
 
+    /*  GETTER  */
     public Grid getBoard(){
         return board;
     }
+
 
     public boolean solver(){
         for(int i = 0; i < 9; ++i) {

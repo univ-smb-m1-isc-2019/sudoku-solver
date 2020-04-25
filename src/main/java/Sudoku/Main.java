@@ -3,7 +3,7 @@ package Sudoku;
 
 public class Main
 {
-    public static int[][] board = {
+/*    public static int[][] board = {
             { 8, 0, 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 3, 6, 0, 0, 0, 0, 0 },
             { 0, 7, 0, 0, 9, 0, 2, 0, 0 },
@@ -13,12 +13,31 @@ public class Main
             { 0, 0, 1, 0, 0, 0, 0, 6, 8 },
             { 0, 0, 8, 5, 0, 0, 0, 1, 0 },
             { 0, 9, 0, 0, 0, 0, 4, 0, 0 }
+    };*/
+
+    public static int[][] board = {
+            { 0, 0, 2, 0, 0, 0, 0, 0, 0 },
+            { 5, 0, 9, 0, 6, 0, 0, 4, 0 },
+            { 0, 0, 0, 0, 0, 1, 0, 0, 3 },
+            { 8, 0, 0, 0, 0, 0, 2, 0, 0 },
+            { 1, 0, 0, 0, 4, 0, 5, 0, 0 },
+            { 0, 6, 0, 9, 0, 0, 0, 7, 0 },
+            { 0, 0, 0, 0, 7, 0, 1, 0, 0 },
+            { 0, 4, 0, 8, 0, 0, 0, 6, 0 },
+            { 0, 0, 0, 5, 0, 2, 0, 0, 0 }
     };
 
     public static void main( String[] args )
     {
        Sudoku sudoku = new Sudoku(board);
+        System.out.println("Unsolved");
+        System.out.println(sudoku);
        sudoku.solver();
+        if (sudoku.solver()){
+            System.out.println("Solved!");
+            System.out.println(sudoku);
+        }
+
 
 
     }

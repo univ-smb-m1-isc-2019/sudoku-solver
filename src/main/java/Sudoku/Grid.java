@@ -8,6 +8,7 @@ public class Grid {
     private Column[] columns;
     private Matrice[] matrix;
 
+    /*  GETTER */
     public Cell getCell(int i, int j){
         return grid[i][j];
     }
@@ -28,11 +29,13 @@ public class Grid {
         return matrix[i];
     }
 
+    /*    CONSTRUCTOR */
     public Grid(int[][] grid) {
         initEmptyGrid();
         createGrid(grid);
     }
 
+    /* methods used to create an empty grid with empty lines/columns/matrix  */
     private void initEmptyGrid(){
         initLines();
         initColumns();
@@ -63,6 +66,7 @@ public class Grid {
         }
     }
 
+    /* display the grid */
     public String toString(){
         StringBuilder s = new StringBuilder();
 
