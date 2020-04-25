@@ -2,7 +2,7 @@ package sudoku_solver.grid
 
 class Grid(grid: Array<Array<Int>>) {
     private val gridState = GridTranscriber.translate(grid)
-    private val verifier = SquareVerifier(gridState)
+    private val verifier = GridVerifier(gridState)
 
     fun isCompleted(): Boolean {
         return verifier.isCompleted()

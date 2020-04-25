@@ -1,6 +1,6 @@
 package sudoku_solver.grid
 
-class SquareVerifier(private val gridState: List<List<Square>>) {
+class GridVerifier(private val gridState: List<List<Square>>) {
     fun isCompleted(): Boolean {
         for(line in gridState) {
             if (lineIsNotCompleted(line)) return false
