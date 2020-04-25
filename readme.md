@@ -1,27 +1,23 @@
 # sudoku-solver
 
-We would like you to provide us a simple sodoku solver.
- here is the structure to provide the initial grid.
- 
+Grid pattern:
+
 ```
-int[][] board = {
-  { 8, 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 3, 6, 0, 0, 0, 0, 0 },
-  { 0, 7, 0, 0, 9, 0, 2, 0, 0 },
-  { 0, 5, 0, 0, 0, 7, 0, 0, 0 },
-  { 0, 0, 0, 0, 4, 5, 7, 0, 0 },
-  { 0, 0, 0, 1, 0, 0, 0, 3, 0 },
-  { 0, 0, 1, 0, 0, 0, 0, 6, 8 },
-  { 0, 0, 8, 5, 0, 0, 0, 1, 0 },
-  { 0, 9, 0, 0, 0, 0, 4, 0, 0 } 
-};
+val notCompletedGrid = Grid(arrayOf(
+            arrayOf(2, 8, 0, 1, 5, 7, 6, 9, 4),
+            arrayOf(1, 0, 0, 2, 6, 9, 0, 5, 8),
+            arrayOf(6, 0, 0, 3, 4, 0, 2, 7, 1),
+            arrayOf(4, 3, 1, 0, 0, 2, 9, 8, 0),
+            arrayOf(8, 9, 0, 6, 1, 0, 5, 0, 0),
+            arrayOf(5, 2, 6, 0, 9, 0, 7, 0, 3),
+            arrayOf(9, 4, 0, 7, 0, 1, 8, 6, 5),
+            arrayOf(0, 6, 0, 4, 2, 5, 0, 3, 9),
+            arrayOf(3, 1, 5, 9, 0, 6, 4, 2, 0)
+    ))
 ```
 
-it's up to you to 
-* create a maven project
-* code the solver (object oriented)
-* provide unit testing
-* configure project for analysis on sonarcloud
+You can choose the grid you want to solve by changing [main.kt](src/main/java/sudoku_solver/main.kt).
 
-good luck :D
+#### Auteurs
 
+Alexandre Ascenci
