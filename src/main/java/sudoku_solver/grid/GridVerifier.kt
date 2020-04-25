@@ -1,5 +1,7 @@
 package sudoku_solver.grid
 
+import sudoku_solver.grid.constants.CellConstants
+
 class GridVerifier(private val gridState: List<List<Square>>) {
     private var rows = Array(9) { SquareContainer() }
     private var columns = Array(9) { SquareContainer() }
@@ -60,11 +62,16 @@ class GridVerifier(private val gridState: List<List<Square>>) {
         val columnChoices = columns[column].getChoices()
         val subGridChoices = subGrids[subGridNumber(row, column)].getChoices()
 
-        // returns all choices that are not used in the actual row, column, subGrid
-        return rowChoices.intersect(
-                columnChoices.intersect(
+        // returns all choices that are used
+        val alreadyUsed = rowChoices.union(
+                columnChoices.union(
                         subGridChoices.toList()
                 ).toList()
-        ).toTypedArray()
+        )
+
+        // return all possible values that are not used
+        return CellConstants.VALUES.toList()
+                .minus(alreadyUsed)
+                .toTypedArray()
     }
 }
