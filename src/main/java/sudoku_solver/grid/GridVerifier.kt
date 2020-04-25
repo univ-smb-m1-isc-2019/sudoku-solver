@@ -62,16 +62,19 @@ class GridVerifier(private val gridState: List<List<Square>>) {
         val columnChoices = columns[column].getChoices()
         val subGridChoices = subGrids[subGridNumber(row, column)].getChoices()
 
-        // returns all choices that are used
-        val alreadyUsed = rowChoices.union(
+        return getNotUsedValues(rowChoices, columnChoices, subGridChoices).toTypedArray()
+    }
+
+    private fun getNotUsedValues(rowChoices: Array<Int>, columnChoices: Array<Int>, subGridChoices: Array<Int>): List<Int> {
+        return CellConstants.VALUES.toList()
+                .minus(getUsedValues(rowChoices, columnChoices, subGridChoices))
+    }
+
+    private fun getUsedValues(rowChoices: Array<Int>, columnChoices: Array<Int>, subGridChoices: Array<Int>): Set<Int> {
+        return rowChoices.union(
                 columnChoices.union(
                         subGridChoices.toList()
                 ).toList()
         )
-
-        // return all possible values that are not used
-        return CellConstants.VALUES.toList()
-                .minus(alreadyUsed)
-                .toTypedArray()
     }
 }
