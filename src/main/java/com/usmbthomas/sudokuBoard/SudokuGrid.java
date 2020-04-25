@@ -1,7 +1,5 @@
 package com.usmbthomas.sudokuBoard;
 
-import java.util.ArrayList;
-
 public class SudokuGrid {
     public static final int GRID_SIZE = 9;
     private Cell[][] grid = new Cell[GRID_SIZE][GRID_SIZE];
@@ -18,7 +16,6 @@ public class SudokuGrid {
     }
 
     private void initGrid(int[][] grid) {
-
         for (int row = 0; row < GRID_SIZE; ++row) {
             for (int column = 0; column < GRID_SIZE; ++column) {
                 Cell cell = new Cell(grid[row][column]);
@@ -26,10 +23,10 @@ public class SudokuGrid {
                 this.rows[row].updateCell(column, cell);
                 this.columns[column].updateCell(row, cell);
                 int squaresIndex = getSquaresIndex(row, column);
-                this.squares[squaresIndex].updateCell(column, cell);
+                int squareIndex = getSquareIndex(row, column);
+                this.squares[squaresIndex].updateCell(squareIndex, cell);
             }
         }
-
     }
 
     private void initRows() {
@@ -54,7 +51,9 @@ public class SudokuGrid {
         return (row / 3) * 3 + (column / 3);
     }
 
-
+    private int getSquareIndex(int row, int column) {
+        return (row * 3 + column) - getSquaresIndex(row, column) * 3;
+    }
 
     public int getCellValue(int row, int column){
         return this.grid[row][column].getNumber();
@@ -87,7 +86,5 @@ public class SudokuGrid {
         }
         return sBuilder.toString();
     }
-
-
 
 }

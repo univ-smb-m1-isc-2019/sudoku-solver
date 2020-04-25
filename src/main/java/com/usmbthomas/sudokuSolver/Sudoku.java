@@ -18,8 +18,6 @@ public class Sudoku {
                 Cell cell = grid.getCell(row, column);
 
                 if(cell.isEmpty()) {
-                    System.out.println("Row["+ row +"]  Column["+ column +"]");
-
                     Integer[] possibilities = SubGridSolver.getAvailableNumbers(grid, row, column);
 
                     for (Integer possibility : possibilities) {

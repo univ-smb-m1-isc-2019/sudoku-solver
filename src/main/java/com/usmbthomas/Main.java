@@ -19,10 +19,12 @@ public class Main
     public static void main( String[] args )
     {
         SudokuGrid sudokuGrid = new SudokuGrid(board);
+        System.out.println("Grille de Sudoku initiale :");
         System.out.println(sudokuGrid);
 
         Sudoku sudoku = new Sudoku(board);
         sudoku.solve();
+        System.out.println("Grille de Sudoku résolue :");
         System.out.println(sudoku);
 
     }
