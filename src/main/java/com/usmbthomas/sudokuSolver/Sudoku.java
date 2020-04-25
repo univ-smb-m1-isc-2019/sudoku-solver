@@ -43,4 +43,8 @@ public class Sudoku {
         return grid.toString();
     }
 
+    public SudokuGrid getGrid() {
+        return this.grid;
+    }
+
 }

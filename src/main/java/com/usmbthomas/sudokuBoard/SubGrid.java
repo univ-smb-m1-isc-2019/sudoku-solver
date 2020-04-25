@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 
 public class SubGrid {
-    private Cell[] subGridCells = new Cell[GRID_SIZE];
+    public Cell[] subGridCells = new Cell[GRID_SIZE];
 
     public SubGrid() {
         initSubGrid();
