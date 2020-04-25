@@ -8,7 +8,6 @@ public class Sudoku {
     public static final int SUDOKU_SIZE = 9;
     public Box[][] SudokuGrid = new Box[9][9];
     public List<Region> listRegion = new ArrayList<Region>();
-    public List<SaveChoice> saveGrid = new ArrayList<SaveChoice>();
 
     public Sudoku(int[][] grid){
 
@@ -28,7 +27,6 @@ public class Sudoku {
             for(int j=0; j < this.SudokuGrid[i].length; j++){
                 if(!(this.SudokuGrid[i][j].valid)){
                     this.SudokuGrid[i][j].updateListPossibleNumbers(SudokuGrid);
-                   // this.SudokuGrid[i][j].updateNumber();
                 }
             }
         }
@@ -75,20 +73,12 @@ public class Sudoku {
             this.listRegion.get(elem).doubleInRegion(SudokuGrid, this);
         }
 
-        // affichage
-//        this.showGrid();
-//        this.show_possibleNumbers_Grid();
-
-
         if( this.isResolvedCorrectly() )
             this.showGrid();
         else{
             if(this.isEqualToGrid(saveGrid)){
-               // System.out.println(" Rentre dans sauvgarde ");
-                this.randomNumber2();
 
-               // this.randomNumber();
-               // this.solve();
+                this.randomNumber();
             }
             else {
                 this.solve();
@@ -97,7 +87,7 @@ public class Sudoku {
 
     }
 
-    public void randomNumber2(){
+    public void randomNumber(){
         Box choiceBox = boxLeastChoice();
 
         if(choiceBox.getSizePossibleNumbers() == 2){
@@ -276,91 +266,6 @@ public class Sudoku {
             }
         }
     }
-    public void randomNumber(){
-        Box choiceBox = boxLeastChoice();
-        int newNumber;
-        if(choiceBox.getSizePossibleNumbers() == 2){
-            this.saveGrid.add(new SaveChoice(this.getSudokuGrid(),choiceBox));
-            newNumber = this.saveGrid.get(this.saveGrid.size()-1).getNumber();
-            this.SudokuGrid[choiceBox.line][choiceBox.column].changeBox(newNumber);
-        }
-        else{
-            boolean find = false;
-            while(!find){
-                int nbTarget = this.saveGrid.get(this.saveGrid.size()-1).getChoice();
-                if(nbTarget == 0){
-                    System.out.println(" CHOIX 2 !!!");
-                    this.saveGrid.get(this.saveGrid.size()-1).setChoice(1);
-                    this.SudokuGrid = this.saveGrid.get(this.saveGrid.size()-1).retrunOldBackup(this.getSudokuGrid());
-                    for(int i=0; i < this.SudokuGrid.length; i++){
-                        for(int j=0; j < this.SudokuGrid[i].length; j++){
-                            if(!(this.SudokuGrid[i][j].valid)){
-                                this.SudokuGrid[i][j].updateListPossibleNumbers(SudokuGrid);
-                                // this.SudokuGrid[i][j].updateNumber();
-                            }
-                        }
-                    }
-                    find = true;
-                }
-                else{
-                    System.out.println(" SUPP DERNIER ");
-                    this.saveGrid.remove(this.saveGrid.size()-1);
-                }
-            }
-        }
-    }
-
-  /*  public Box[][] randomNumber(){
-        Box choiceBox = boxLeastChoice();
-        System.out.println(choiceBox.line + " " + choiceBox.column);
-        int random;
-        if(this.saveGridBeforeRandom.isEmpty()){
-            // Create first grid backup
-            this.saveGridBeforeRandom.add(new SaveChoice(this.convertGrid(this.getSudokuGrid()),choiceBox));
-            random = choiceBox.getNumberPossibleNumbers(0);
-            System.out.println(random);
-            this.SudokuGrid[choiceBox.line][choiceBox.column].changeBox(random);
-            return this.SudokuGrid;
-        }
-        else{
-            if(choiceBox.getSizePossibleNumbers() == 2){
-                //Create grid backups continuer avec nouvelle sauvgarde
-                this.saveGridBeforeRandom.add(new SaveChoice(this.convertGrid(this.getSudokuGrid()),choiceBox));
-                random = choiceBox.getNumberPossibleNumbers(0);
-                System.out.println(random);
-                this.SudokuGrid[choiceBox.line][choiceBox.column].changeBox(random);
-                return this.SudokuGrid;
-            }
-            else{
-                //Revenir sauvgarde d'avant
-                System.out.println(" Revenu en arriere");
-                SaveChoice save = this.saveGridBeforeRandom.get(this.saveGridBeforeRandom.size() - 1);
-
-                this.showGrid();
-                this.createSudokuGrid(save.getGrid());
-                this.showGrid();
-                choiceBox = save.getSelectBox();
-                System.out.println(this.SudokuGrid[choiceBox.line][choiceBox.column].number);
-
-                if(save.isChoice(save.getChoice() + 1)){
-                    save.setChoice(save.getChoice() + 1);
-                    System.out.println(save.getChoice() + 1);
-                    random = choiceBox.getNumberPossibleNumbers(save.getChoice());
-                    System.out.println(random);
-
-                    this.SudokuGrid[choiceBox.line][choiceBox.column] = choiceBox;
-                    this.SudokuGrid[choiceBox.line][choiceBox.column].changeBox(random);
-                    return this.SudokuGrid;
-                }
-                else{
-                    this.saveGridBeforeRandom.remove(this.saveGridBeforeRandom.size() - 1);
-                    this.createSudokuGrid(this.saveGridBeforeRandom.get(this.saveGridBeforeRandom.size() - 1).getGrid());
-                    return this.SudokuGrid;
-                }
-
-            }
-        }
-    }*/
 
     public Box boxLeastChoice(){
         boolean passInLoop = false;
