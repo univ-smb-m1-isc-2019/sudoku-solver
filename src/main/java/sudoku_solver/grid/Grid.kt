@@ -1,5 +1,7 @@
 package sudoku_solver.grid
 
+import sudoku_solver.grid.constants.CellConstants
+
 class Grid(grid: Array<Array<Int>>) {
     private val gridState = GridTranscriber.translate(grid)
 
@@ -58,7 +60,7 @@ class Grid(grid: Array<Array<Int>>) {
 
         for (square in listSquares) {
             if (buffer.contains(square)) return false
-            if (square.value != 0) buffer.add(square)
+            if (square.value != CellConstants.EMPTY) buffer.add(square)
         }
         return true
     }
