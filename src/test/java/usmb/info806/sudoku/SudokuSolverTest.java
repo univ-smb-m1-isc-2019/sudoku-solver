@@ -11,7 +11,7 @@ public class SudokuSolverTest
 
     @Test
     public void lineShouldHaveEveryNumber(){
-        int[][] board = SudokuSolver.easyBoard;
+        int[][] board = SudokuSolver.board;
         Sudoku sudoku = new Sudoku(board);
         sudoku.solve();
         Integer[] allPossibleNumber = {1, 2, 3, 4, 5, 6, 7, 8, 9};
@@ -26,7 +26,7 @@ public class SudokuSolverTest
     }
     @Test
     public void columnShouldHaveEveryNumber(){
-        int[][] board = SudokuSolver.easyBoard;
+        int[][] board = SudokuSolver.board;
         Sudoku sudoku = new Sudoku(board);
         sudoku.solve();
         Integer[] allPossibleNumber = {1, 2, 3, 4, 5, 6, 7, 8, 9};
@@ -40,7 +40,7 @@ public class SudokuSolverTest
 
     @Test
     public void squareShouldHaveEveryNumber(){
-        int[][] board = SudokuSolver.easyBoard;
+        int[][] board = SudokuSolver.board;
         Sudoku sudoku = new Sudoku(board);
         sudoku.solve();
         Integer[] allPossibleNumber = {1, 2, 3, 4, 5, 6, 7, 8, 9};

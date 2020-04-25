@@ -12,17 +12,13 @@ public class Possibility {
     Arrays.fill(availablePossibility, Boolean.TRUE);
     }
 
-
-    public void updatePossibility(ArrayList<Cell> cellList) {
-        for (Cell cell: cellList) {
-            if (cell.value != 0){
-                availablePossibility[cell.value - 1] = false;
-            }
-        }
+    public Possibility(boolean value){
+        availablePossibility = new boolean[9];
+        Arrays.fill(availablePossibility, value);
     }
 
     public int getSolution(){
-        int i =0;
+        int i = 0;
         if(nbPossibility() == 1){
             while(!this.availablePossibility[i]){
                 i++;
@@ -30,6 +26,7 @@ public class Possibility {
         }
         return i+1;
     }
+
 
     public int nbPossibility(){
         int nb = 0;
@@ -39,9 +36,17 @@ public class Possibility {
         return nb;
     }
 
-    public void printPossibility(){
-        for (int i = 0; i < availablePossibility.length; i++){
-            System.out.println("id " + i + " : " + availablePossibility[i]);
-        }
+    public int getPossibility(int nb){
+        int i =0;
+        if(nbPossibility() > 1) {
+            while (!this.availablePossibility[i] || nb - 1 > 0) {
+                if (this.availablePossibility[i]) {
+                    nb--;
+                }
+                i++;
+            }
+        }else i = getSolution();
+        return i+1;
     }
+
 }

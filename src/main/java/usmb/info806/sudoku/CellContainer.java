@@ -9,14 +9,26 @@ public class CellContainer {
     public CellContainer(){
         this.cellList = new ArrayList<Cell>();
     }
-    public CellContainer(ArrayList<Cell> List){
-        this.cellList = List;
+
+
+    public Possibility getAvailablePossibilility(){
+        Possibility possibility = new Possibility();
+        this.cellList.stream().forEach(elt ->{
+            if(elt.value != 0){
+                possibility.availablePossibility[elt.value-1]=false;
+            }
+        });
+        return possibility;
+    }
+    public Possibility getAvailablePossibilility(Possibility possibility){
+        this.cellList.stream().forEach(elt ->{
+            if(elt.value != 0){
+                possibility.availablePossibility[elt.value-1]=false;
+            }
+        });
+        return possibility;
     }
 
-    public void print(){
-        this.cellList.stream().forEach(i -> {
-            System.out.print(i.value);
-        });
-    }
+
 
 }
