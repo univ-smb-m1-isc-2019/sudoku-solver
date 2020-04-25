@@ -1,9 +1,11 @@
 package Sudoku;
 
+import java.util.ArrayList;
+
 public class Line {
-    public Cell[] line;
+    ArrayList<Cell> line;
 
     public Line(Cell[] line) {
-        this.line = new Cell[9];
+        this.line = new ArrayList<>();
     }
 }
