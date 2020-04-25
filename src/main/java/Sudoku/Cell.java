@@ -7,6 +7,14 @@ public class Cell {
         this.value = value;
     }
 
+    public String toString() {
+        return Integer.toString(value);
+    }
+
+    public boolean emptyCell(){
+        return value == 0;
+    }
+
     public int getValue() {
         return value;
     }
