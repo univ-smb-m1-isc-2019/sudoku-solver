@@ -8,9 +8,11 @@ public class Sudoku {
     public static final int SUDOKU_SIZE = 9;
     public Box[][] SudokuGrid = new Box[9][9];
     public List<Region> listRegion = new ArrayList<Region>();
+    public Sudoku firstSudoku;
 
     public Sudoku(int[][] grid){
 
+        this.firstSudoku = this;
         listRegion.add(new Region(1));
         listRegion.add(new Region(2));
         listRegion.add(new Region(3));
@@ -39,6 +41,15 @@ public class Sudoku {
             }
         }
     }
+
+    public void changeGrid(int[][] grid){
+        for(int i=0; i < grid.length; i++){
+            for(int j=0; j < grid[i].length; j++){
+                this.SudokuGrid[i][j].changeBox(grid[i][j]);
+            }
+        }
+    }
+
     public int[][] convertGrid(Box[][] grid){
         int[][] resGrid= new int[9][9];
         for(int i=0; i < 9; i++) {
@@ -74,9 +85,8 @@ public class Sudoku {
         }
 
         if( this.isResolvedCorrectly() ){
+            this.firstSudoku.changeGrid(this.convertGrid(this.SudokuGrid));
             this.showGrid();
-            ///this. = new Sudoku(this.convertGrid(this.SudokuGrid));
-           // this.showGrid();
         }
         else{
             if(this.isEqualToGrid(saveGrid)){
@@ -96,6 +106,8 @@ public class Sudoku {
         if(choiceBox.getSizePossibleNumbers() == 2){
             // Créate new sudoku
             Sudoku newSudoku = new Sudoku(this.convertGrid(this.SudokuGrid));
+            newSudoku.setFirstSudoku(this.firstSudoku);
+
 
             //
             this.SudokuGrid[choiceBox.line][choiceBox.column].changeBox(choiceBox.getNumberPossibleNumbers(0));
@@ -290,6 +302,10 @@ public class Sudoku {
 
     public Box[][] getSudokuGrid(){
         return this.SudokuGrid;
+    }
+
+    public void setFirstSudoku(Sudoku sudo){
+        this.firstSudoku = sudo;
     }
 
 }
