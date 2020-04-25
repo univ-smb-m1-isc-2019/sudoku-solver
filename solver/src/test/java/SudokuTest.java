@@ -33,13 +33,14 @@ public class SudokuTest {
 
     @Test
     public void everyNumberInLine(){
-
+        for(int i = 0 ; i <Sudoku.SIZE; i ++) {
+            for (int j = 0; j < Sudoku.SIZE; j++) {
+                assertTrue(this.sudoku.isInRow(i,this.possibilities[j]));
+            }
+        }
     }
 
-    @Test
-    public void everyNumberInColumn(){
 
-    }
 
     @AfterEach
     public void displayGrid(){

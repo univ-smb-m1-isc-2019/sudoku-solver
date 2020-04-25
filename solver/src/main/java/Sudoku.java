@@ -36,7 +36,7 @@ public class Sudoku {
      * @param number
      * @return un booléen
      */
-    private boolean isInRow(int row, int number) {
+    public boolean isInRow(int row, int number) {
         for (int i = 0; i < SIZE; i++) {
             if (this.grid[row][i].getValue() == number) {
                 return true;
@@ -51,7 +51,7 @@ public class Sudoku {
      * @param number
      * @return un booléen
      */
-    private boolean isInCol(int col, int number) {
+    public boolean isInCol(int col, int number) {
         for (int i = 0; i < SIZE; i++){
             if (this.grid[i][col].getValue() == number) {
                 return true;
@@ -66,7 +66,7 @@ public class Sudoku {
      * @param number
      * @return un booléen
      */
-    private boolean isInSubgrid(int row, int col, int number) {
+    public boolean isInSubgrid(int row, int col, int number) {
         int r = row - row % 3;
         int c = col - col % 3;
         for (int i = r; i < r + 3; i++) {
