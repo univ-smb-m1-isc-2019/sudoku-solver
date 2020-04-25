@@ -1,9 +1,11 @@
 package Sudoku;
 
-public class Matrice {
-    public Cell[] matrix;
+import java.util.ArrayList;
 
-    public Matrice(Cell[] matrix) {
-        this.matrix = new Cell[9];
+public class Matrice {
+    public ArrayList<Cell> matrix;
+
+    public Matrice() {
+        this.matrix = new ArrayList<>();
     }
 }

@@ -1,9 +1,11 @@
 package Sudoku;
 
-public class Column {
-    public Cell[] column;
+import java.util.ArrayList;
 
-    public Column(Cell[] column) {
-        this.column = new Cell[9];
+public class Column {
+    ArrayList<Cell> column;
+
+    public Column() {
+        this.column = new ArrayList<>();
     }
 }
