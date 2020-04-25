@@ -8,7 +8,7 @@ public class Sudoku {
     public static final int SUDOKU_SIZE = 9;
     public Box[][] SudokuGrid = new Box[9][9];
     public List<Region> listRegion = new ArrayList<Region>();
-    public List<SaveChoice> saveGridBeforeRandom = new ArrayList<SaveChoice>();
+    public List<SaveChoice> saveGrid = new ArrayList<SaveChoice>();
 
     public Sudoku(int[][] grid){
 
@@ -41,10 +41,19 @@ public class Sudoku {
             }
         }
     }
+    public int[][] convertGrid(Box[][] grid){
+        int[][] resGrid= new int[9][9];
+        for(int i=0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                resGrid[i][j] = grid[i][j].number;
+            }
+        }
+        return resGrid;
+    }
 
     public void solve() {
         boolean fini = false;
-        this.showGrid();
+        //this.showGrid();
         int[][] saveGrid = this.convertGrid(this.SudokuGrid);
 
         for(int i=0; i < this.SudokuGrid.length; i++){
@@ -75,8 +84,8 @@ public class Sudoku {
         else{
             if(this.isEqualToGrid(saveGrid)){
                 System.out.println(" Rentre dans sauvgarde ");
-                this.SudokuGrid = this.randomNumber();
-                this.solve();
+                //this.randomNumber();
+                //this.solve();
             }
             else {
                 this.solve();
@@ -187,15 +196,6 @@ public class Sudoku {
             return 9;
     }
 
-    public int[][] convertGrid(Box[][] grid){
-        int[][] resGrid= new int[9][9];
-        for(int i=0; i < SUDOKU_SIZE; i++) {
-            for (int j = 0; j < SUDOKU_SIZE; j++) {
-                resGrid[i][j] = grid[i][j].number;
-            }
-        }
-        return resGrid;
-    }
 
     public boolean isEqualToGrid(int[][] grid){
         int[][] newGrid = this.convertGrid(this.SudokuGrid);
@@ -255,8 +255,41 @@ public class Sudoku {
             }
         }
     }
+    public void randomNumber(){
+        Box choiceBox = boxLeastChoice();
+        int newNumber;
+        if(choiceBox.getSizePossibleNumbers() == 2){
+            this.saveGrid.add(new SaveChoice(this.getSudokuGrid(),choiceBox));
+            newNumber = this.saveGrid.get(this.saveGrid.size()-1).getNumber();
+            this.SudokuGrid[choiceBox.line][choiceBox.column].changeBox(newNumber);
+        }
+        else{
+            boolean find = false;
+            while(!find){
+                int nbTarget = this.saveGrid.get(this.saveGrid.size()-1).getChoice();
+                if(nbTarget == 0){
+                    System.out.println(" CHOIX 2 !!!");
+                    this.saveGrid.get(this.saveGrid.size()-1).setChoice(1);
+                    this.SudokuGrid = this.saveGrid.get(this.saveGrid.size()-1).retrunOldBackup(this.getSudokuGrid());
+                    for(int i=0; i < this.SudokuGrid.length; i++){
+                        for(int j=0; j < this.SudokuGrid[i].length; j++){
+                            if(!(this.SudokuGrid[i][j].valid)){
+                                this.SudokuGrid[i][j].updateListPossibleNumbers(SudokuGrid);
+                                // this.SudokuGrid[i][j].updateNumber();
+                            }
+                        }
+                    }
+                    find = true;
+                }
+                else{
+                    System.out.println(" SUPP DERNIER ");
+                    this.saveGrid.remove(this.saveGrid.size()-1);
+                }
+            }
+        }
+    }
 
-    public Box[][] randomNumber(){
+  /*  public Box[][] randomNumber(){
         Box choiceBox = boxLeastChoice();
         System.out.println(choiceBox.line + " " + choiceBox.column);
         int random;
@@ -306,7 +339,7 @@ public class Sudoku {
 
             }
         }
-    }
+    }*/
 
     public Box boxLeastChoice(){
         boolean passInLoop = false;
