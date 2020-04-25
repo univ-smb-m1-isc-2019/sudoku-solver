@@ -7,5 +7,11 @@ public class Sudoku {
         this.board = new Grid(board);
     }
 
+    @Override
+    public String toString() {
+        return board.toString();
+    }
 
+    public void solver() {
+    }
 }
