@@ -1,34 +1,18 @@
 package Sudoku;
 
 public class Grid {
-    private Cell[][] grid;
+    public Cell[][] grid;
+    public Line[] lines;
+    public Column[] columns;
+    public Matrice[] matrix;
 
-    public Grid(Cell[][] grid) {
-        this.grid = grid;
+
+    public Grid(int[][] grid) {
+        initGrid(grid);
     }
 
-    public Grid() {
+    private void initGrid(int[][] grid) {
     }
 
-    public Cell[][] getGrid() {
-        return grid;
-    }
 
-    public void setGrid(Cell[][] grid) {
-        this.grid = grid;
-    }
-
-    public void setFirstCase(int nLine, int nCol){
-        grid = new Cell[nLine][nCol];
-    }
-
-    public void initGrid(int nbLine, int nbCol){
-        setFirstCase(nbLine,nbCol);
-        for(int i = 0; i < nbLine; i++) {
-            for (int j = 0; j < nbCol; j++) {
-                grid[i][j] = new Cell(i,j);
-            }
-        }
-
-    }
 }

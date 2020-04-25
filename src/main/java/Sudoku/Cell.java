@@ -1,27 +1,17 @@
 package Sudoku;
 
 public class Cell {
-    private int nLine;
-    private int nCol;
+    public int value;
 
-    public Cell(int nLine, int nCol) {
-        this.nLine = nLine;
-        this.nCol = nCol;
+    public Cell(int value) {
+        this.value = value;
     }
 
-    public int getnLine() {
-        return nLine;
+    public int getValue() {
+        return value;
     }
 
-    public void setnLine(int nLine) {
-        this.nLine = nLine;
-    }
-
-    public int getnCol() {
-        return nCol;
-    }
-
-    public void setnCol(int nCol) {
-        this.nCol = nCol;
+    public void setValue(int value) {
+        this.value = value;
     }
 }
