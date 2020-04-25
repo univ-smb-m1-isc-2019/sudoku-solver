@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="Sudoku.SudokuSolverTest" time="0.442" tests="3" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="sun.desktop" value="windows"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.specification.version" value="11"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="D:\COURS_MASTER\SEMESTRE2\INFO806\SudokuSolver\target\test-classes;D:\COURS_MASTER\SEMESTRE2\INFO806\SudokuSolver\target\classes;C:\Users\utilisateur\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\utilisateur\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\utilisateur\.m2\repository\org\assertj\assertj-core\3.11.1\assertj-core-3.11.1.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="user.timezone" value="Europe/Paris"/>
+    <property name="java.vm.specification.version" value="11"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="FR"/>
+    <property name="sun.boot.library.path" value="C:\dev\Java\Java\jdk-11.0.5\bin"/>
+    <property name="sun.java.command" value="C:\Users\UTILIS~1\AppData\Local\Temp\surefire10842342011290267870\surefirebooter857833220219285850.jar C:\Users\utilisateur\AppData\Local\Temp\surefire10842342011290267870 2020-04-25T22-10-16_154-jvmRun1 surefire14194085853604383146tmp surefire_07671684126053009079tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="D:\COURS_MASTER\SEMESTRE2\INFO806\SudokuSolver\target\test-classes;D:\COURS_MASTER\SEMESTRE2\INFO806\SudokuSolver\target\classes;C:\Users\utilisateur\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\utilisateur\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\utilisateur\.m2\repository\org\assertj\assertj-core\3.11.1\assertj-core-3.11.1.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\utilisateur"/>
+    <property name="user.language" value="fr"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2019-10-15"/>
+    <property name="java.home" value="C:\dev\Java\Java\jdk-11.0.5"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="D:\COURS_MASTER\SEMESTRE2\INFO806\SudokuSolver"/>
+    <property name="java.vm.compressedOopsMode" value="32-bit"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="C:\Users\UTILIS~1\AppData\Local\Temp\surefire10842342011290267870\surefirebooter857833220219285850.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="11.0.5+10-LTS"/>
+    <property name="user.name" value="utilisateur"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="18.9"/>
+    <property name="localRepository" value="C:\Users\utilisateur\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\UTILIS~1\AppData\Local\Temp\"/>
+    <property name="java.version" value="11.0.5"/>
+    <property name="user.dir" value="D:\COURS_MASTER\SEMESTRE2\INFO806\SudokuSolver"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.library.path" value="C:\dev\Java\Java\jdk-11.0.5\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\dev\Java\java_ex\jdk1.8.0_66;C:\dev\Java\jdk-11.0.5\bin;C:\dev\apache-maven-3.6.3\bin;C:\Program Files (x86)\Razer\ChromaBroadcast\bin;C:\Program Files\Razer\ChromaBroadcast\bin;C:\Program Files (x86)\Razer Chroma SDK\bin;C:\Program Files\Razer Chroma SDK\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\WINDOWS\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\COURS_MASTER\INFO705\TP5\node.exe;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Dart\dart-sdk\bin;C:\dev\Java\java_ex\jdk1.8.0_66;C:\dev\Java\jdk-11.0.5\bin;C:\Users\utilisateur\flutter\bin;C:\Users\utilisateur\AppData\Local\GitHubDesktop\bin;C:\Users\utilisateur\AppData\Local\Microsoft\WindowsApps;C:\Users\utilisateur\AppData\Local\atom\bin;C:\Users\utilisateur\AppData\Roaming\npm;C:\dev\google-cloud-sdk\bin;."/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vm.version" value="11.0.5+10-LTS"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="55.0"/>
+  </properties>
+  <testcase name="validLine" classname="Sudoku.SudokuSolverTest" time="0.24"/>
+  <testcase name="validMatrice" classname="Sudoku.SudokuSolverTest" time="0.083"/>
+  <testcase name="validColumn" classname="Sudoku.SudokuSolverTest" time="0.055"/>
+</testsuite>
