@@ -1,5 +1,7 @@
 package sudoku_solver.grid
 
+import sudoku_solver.grid.constants.CellConstants
+
 class Grid(val grid: Array<Array<Int>>) {
     private val gridState: List<List<Square>>
     private val verifier: GridVerifier
@@ -30,5 +32,32 @@ class Grid(val grid: Array<Array<Int>>) {
 
     fun get(column: Int, line: Int): Int {
         return gridState[column][line].value
+    }
+
+    fun solve(): Boolean {
+        for (row in 0 until 9) {
+            for (column in 0 until 9) {
+                val square = gridState[row][column]
+
+                if (square.isNotSet()) {
+                    val choices = verifier.getChoices(row, column)
+
+                    for (choice in choices) {
+                        square.set(choice)
+                        if (solve())
+                            return true
+                        else {
+                            // for the recursive call
+                            square.set(CellConstants.EMPTY)
+                        }
+                    }
+                }
+            }
+        }
+        return true
+    }
+
+    override fun toString(): String {
+        return "$gridState".replace("],", "],\n")
     }
 }

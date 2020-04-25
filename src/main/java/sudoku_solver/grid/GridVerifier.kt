@@ -54,4 +54,17 @@ class GridVerifier(private val gridState: List<List<Square>>) {
     private fun subGridNumber(row: Int, column: Int): Int {
         return (row / 3) * 3 + column / 3
     }
+
+    fun getChoices(row: Int, column: Int): Array<Int> {
+        val rowChoices = rows[row].getChoices()
+        val columnChoices = columns[column].getChoices()
+        val subGridChoices = subGrids[subGridNumber(row, column)].getChoices()
+
+        // returns all choices that are not used in the actual row, column, subGrid
+        return rowChoices.intersect(
+                columnChoices.intersect(
+                        subGridChoices.toList()
+                ).toList()
+        ).toTypedArray()
+    }
 }

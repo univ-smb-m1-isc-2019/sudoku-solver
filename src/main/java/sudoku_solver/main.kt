@@ -2,7 +2,7 @@ package sudoku_solver
 
 import sudoku_solver.grid.Grid
 
-fun main(args: Array<String>) {
+fun main() {
     val notCompletedGrid = Grid(arrayOf(
             arrayOf(2, 8, 3, 1, 5, 7, 6, 9, 4),
             arrayOf(1, 7, 4, 2, 6, 9, 3, 5, 8),
@@ -14,5 +14,7 @@ fun main(args: Array<String>) {
             arrayOf(7, 6, 8, 4, 2, 5, 1, 3, 9),
             arrayOf(3, 1, 5, 9, 8, 6, 4, 2, 7)
     ))
-    println(notCompletedGrid.get(2, 2))
+    notCompletedGrid.solve()
+
+    println(notCompletedGrid)
 }

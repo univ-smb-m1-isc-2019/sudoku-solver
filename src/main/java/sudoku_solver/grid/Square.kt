@@ -17,4 +17,8 @@ data class Square(var value: Int) {
     fun set(newValue: Int) {
         state.set(newValue)
     }
+
+    override fun toString(): String {
+        return "$value"
+    }
 }
