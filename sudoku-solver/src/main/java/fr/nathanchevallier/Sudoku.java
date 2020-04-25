@@ -73,8 +73,11 @@ public class Sudoku {
             this.listRegion.get(elem).doubleInRegion(SudokuGrid, this);
         }
 
-        if( this.isResolvedCorrectly() )
+        if( this.isResolvedCorrectly() ){
             this.showGrid();
+            ///this. = new Sudoku(this.convertGrid(this.SudokuGrid));
+           // this.showGrid();
+        }
         else{
             if(this.isEqualToGrid(saveGrid)){
 
