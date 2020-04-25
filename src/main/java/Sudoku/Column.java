@@ -4,28 +4,25 @@ import java.util.ArrayList;
 
 public class Column {
     public ArrayList<Cell> column;
-    //public ArrayList<Integer> values;
+
+    public Column() {
+        this.column = new ArrayList<>();
+    }
 
     public ArrayList<Cell> getColumn() {
         return column;
     }
 
-    public Column() {
-        this.column = new ArrayList<>();
-        getValues();
-    }
-
-    public ArrayList<Integer> getValues() {
+    public Integer[] getValues(){
         ArrayList<Integer> values = new ArrayList<>();
-
         for (int i = 1; i < 10; i++){
             values.add(i);
         }
 
-        for (int j = 0; j < column.size(); j++){
-            values.remove(column.get(j).getValue());
+        for(Cell cell: column){
+            values.remove(Integer.valueOf(cell.getValue()));
         }
 
-        return values;
+        return values.toArray(new Integer[0]);
     }
 }
