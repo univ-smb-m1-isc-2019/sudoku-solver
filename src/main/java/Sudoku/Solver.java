@@ -1,46 +1,42 @@
 package Sudoku;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.stream.Stream;
 
 public class Solver {
 
-    public ArrayList<Integer> linePossibleValues(Grid grid, int i){
+    public static Integer[] linePossibleValues(Grid grid, int i){
         Line line = grid.getLines(i);
-        ArrayList<Integer> lineValues = line.getValues();
+        Integer[] lineValues = line.getValues();
         return lineValues;
     }
 
-    public ArrayList<Integer> colPossibleValues(Grid grid, int j){
+    public static Integer[] colPossibleValues(Grid grid, int j){
         Column col = grid.getColumns(j);
-        ArrayList<Integer> colValues = col.getValues();
+        Integer[] colValues = col.getValues();
         return colValues;
     }
 
-    public ArrayList<Integer> matPossibleValues(Grid grid, int i, int j){
+    public static Integer[] matPossibleValues(Grid grid, int i, int j){
         Matrice mat = grid.getMatrix(i , j);
-        ArrayList<Integer> matValues = mat.getValues();
+        Integer[] matValues = mat.getValues();
         return matValues;
     }
 
+    public static Integer[] getPossibleValues(Grid grid, int i, int j){
+        Integer[] l = linePossibleValues(grid, i);
+        Integer[] c = colPossibleValues(grid, j);
+        Integer[] m = matPossibleValues(grid, i , j);
 
-    public ArrayList<Integer> getPossibleValues(Grid grid, int i, int j){
-        ArrayList<Integer> l = linePossibleValues(grid, i);
-        ArrayList<Integer> c = colPossibleValues(grid, j);
-        ArrayList<Integer> m = matPossibleValues(grid, i , j);
-
-        return possibleValues(l, c, m);
+        Integer[] res = possibleValues(l, m, c);
+        return res;
     }
 
-    private ArrayList<Integer> possibleValues(ArrayList<Integer> l, ArrayList<Integer> c, ArrayList<Integer> m) {
-        ArrayList<Integer> tmp = (ArrayList<Integer>) c.stream()
-                .filter(Arrays.asList(m)::contains);
-
-        return (ArrayList<Integer>) l.stream()
-                .filter(Arrays.asList(tmp)::contains);
-
-
+    public static Integer[] possibleValues(Integer[] l, Integer[] m, Integer[] c){
+        return Stream.of(l)
+                .filter(Arrays.asList(m)::contains)
+                .filter(Arrays.asList(c)::contains)
+                .toArray(Integer[]::new);
 
     }
 }
