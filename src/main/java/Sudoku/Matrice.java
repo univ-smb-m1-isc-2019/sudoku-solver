@@ -11,7 +11,7 @@ public class Matrice {
         getValues();
     }
 
-    private void getValues() {
+    public ArrayList<Integer> getValues() {
         this.values = new ArrayList<>();
 
         for (int i = 1; i < 10; i++){
@@ -21,5 +21,6 @@ public class Matrice {
         for (int j = 0; j < matrix.size(); j++){
             values.remove(matrix.get(j).getValue());
         }
+        return values;
     }
 }

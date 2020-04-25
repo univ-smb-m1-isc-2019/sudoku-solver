@@ -11,7 +11,7 @@ public class Line {
         getValues();
     }
 
-    private void getValues() {
+    public ArrayList<Integer> getValues() {
         this.values = new ArrayList<>();
 
         for (int i = 1; i < 10; i++){
@@ -21,6 +21,7 @@ public class Line {
         for (int j = 0; j < line.size(); j++){
             values.remove(line.get(j).getValue());
         }
+        return values;
     }
 
 }

@@ -8,6 +8,21 @@ public class Grid {
     public Column[] columns;
     public Matrice[] matrix;
 
+    public Cell getCell(int i, int j ) {
+        return grid[i][j];
+    }
+
+    public Line getLines(int i) {
+        return lines[i];
+    }
+
+    public Column getColumns(int j) {
+        return columns[j];
+    }
+
+    public Matrice getMatrix(int i, int j) {
+        return matrix[(i/3)*3 + (j/3)];
+    }
 
     public Grid(int[][] grid) {
         initGrid(grid);

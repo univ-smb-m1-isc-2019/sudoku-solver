@@ -11,7 +11,7 @@ public class Column {
         getValues();
     }
 
-    private void getValues() {
+    public ArrayList<Integer> getValues() {
         this.values = new ArrayList<>();
 
         for (int i = 1; i < 10; i++){
@@ -21,5 +21,6 @@ public class Column {
         for (int j = 0; j < column.size(); j++){
             values.remove(column.get(j).getValue());
         }
+        return values;
     }
 }
