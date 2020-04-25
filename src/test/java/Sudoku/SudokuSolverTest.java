@@ -1,38 +1,28 @@
 package Sudoku;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Unit test for simple App.
  */
-public class SudokuSolverTest
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public SudokuSolverTest(String testName )
-    {
-        super( testName );
+public class SudokuSolverTest{
+
+    @Test
+    public void validColumn() {
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( SudokuSolverTest.class );
+    @Test
+    public void validLine() {
     }
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+    @Test
+    public void validMatrice() {
     }
+
+
 }
+

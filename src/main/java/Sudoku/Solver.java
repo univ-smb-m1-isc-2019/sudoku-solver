@@ -31,10 +31,6 @@ public class Solver {
         ArrayList<Integer> m = matPossibleValues(grid, i , j);
 
         return possibleValues(l, c, m);
-
-
-
-
     }
 
     private ArrayList<Integer> possibleValues(ArrayList<Integer> l, ArrayList<Integer> c, ArrayList<Integer> m) {

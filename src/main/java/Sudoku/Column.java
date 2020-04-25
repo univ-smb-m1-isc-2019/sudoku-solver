@@ -4,7 +4,11 @@ import java.util.ArrayList;
 
 public class Column {
     public ArrayList<Cell> column;
-    public ArrayList<Integer> values;
+    //public ArrayList<Integer> values;
+
+    public ArrayList<Cell> getColumn() {
+        return column;
+    }
 
     public Column() {
         this.column = new ArrayList<>();
@@ -12,15 +16,16 @@ public class Column {
     }
 
     public ArrayList<Integer> getValues() {
-        this.values = new ArrayList<>();
+        ArrayList<Integer> values = new ArrayList<>();
 
         for (int i = 1; i < 10; i++){
-            this.values.add(i);
+            values.add(i);
         }
 
         for (int j = 0; j < column.size(); j++){
             values.remove(column.get(j).getValue());
         }
+
         return values;
     }
 }

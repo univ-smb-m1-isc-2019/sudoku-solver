@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="SudokuSolve" target="1.8" />
+      <module name="SudokuSolve" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

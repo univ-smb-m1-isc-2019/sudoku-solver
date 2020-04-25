@@ -1,1 +1,8 @@
-Sudoku/App.class
+Sudoku\Matrice.class
+Sudoku\Sudoku.class
+Sudoku\Solver.class
+Sudoku\Column.class
+Sudoku\Main.class
+Sudoku\Grid.class
+Sudoku\Cell.class
+Sudoku\Line.class

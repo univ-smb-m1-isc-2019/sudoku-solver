@@ -4,7 +4,11 @@ import java.util.ArrayList;
 
 public class Matrice {
     public ArrayList<Cell> matrix;
-    public ArrayList<Integer> values;
+    //public ArrayList<Integer> values;
+
+    public ArrayList<Cell> getMatrix() {
+        return matrix;
+    }
 
     public Matrice() {
         this.matrix = new ArrayList<>();
@@ -12,10 +16,10 @@ public class Matrice {
     }
 
     public ArrayList<Integer> getValues() {
-        this.values = new ArrayList<>();
+        ArrayList<Integer> values = new ArrayList<>();
 
         for (int i = 1; i < 10; i++){
-            this.values.add(i);
+            values.add(i);
         }
 
         for (int j = 0; j < matrix.size(); j++){
