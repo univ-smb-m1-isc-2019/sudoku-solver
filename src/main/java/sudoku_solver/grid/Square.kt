@@ -1,4 +1,7 @@
-package sudoku_solver
+package sudoku_solver.grid
+
+import sudoku_solver.grid.SquareFixed
+import sudoku_solver.grid.SquareNotSet
 
 data class Square(var value: Int) {
     var state = when (value) {

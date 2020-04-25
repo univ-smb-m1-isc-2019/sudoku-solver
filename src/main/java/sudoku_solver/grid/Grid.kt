@@ -1,4 +1,4 @@
-package sudoku_solver
+package sudoku_solver.grid
 
 class Grid(grid: Array<Array<Int>>) {
     private val gridState = GridTranscriber.translate(grid)

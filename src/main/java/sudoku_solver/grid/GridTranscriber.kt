@@ -1,4 +1,4 @@
-package sudoku_solver
+package sudoku_solver.grid
 
 class GridTranscriber() {
     companion object {
