@@ -12,6 +12,7 @@ public class Box {
     boolean valid;
     public List<Integer> possibleNumbers = new ArrayList<Integer>();
 
+    // BUILDER
     public Box(int number, int line, int column, Region region){
         this.number = number;
         this.line = line;

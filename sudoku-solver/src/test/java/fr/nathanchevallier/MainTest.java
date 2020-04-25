@@ -1,12 +1,7 @@
 package fr.nathanchevallier;
-
 import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
 
-/**
- * Unit test for simple Main.
- */
 public class MainTest
 {
     /**
@@ -32,6 +27,7 @@ public class MainTest
         assertTrue( sudoku.isValid() );
     }
 
+
     /**
      * Test 2.
      * Test : check a full grid.
@@ -55,6 +51,7 @@ public class MainTest
         assertTrue( sudoku.isResolvedCorrectly() );
 
     }
+
 
     /**
      * Test 3.
@@ -81,6 +78,7 @@ public class MainTest
         assertTrue( sudoku.isResolvedCorrectly() );
     }
 
+
     /**
      * Test 4.
      * Test that solves a easy grid
@@ -106,6 +104,7 @@ public class MainTest
         assertTrue( sudoku.isResolvedCorrectly() );
     }
 
+
     /**
      * Test 5.
      * Last test and grid give in the exercise
@@ -125,7 +124,6 @@ public class MainTest
                 { 0, 0, 8, 5, 0, 0, 0, 1, 0 },
                 { 0, 9, 0, 0, 0, 0, 4, 0, 0 }
         };
-
 
         Sudoku sudoku = new Sudoku(grid);
         sudoku.solve();

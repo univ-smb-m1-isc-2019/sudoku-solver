@@ -11,6 +11,7 @@ public class Region {
     public int maxColumne;
 
 
+    // BUILDER
     public Region(int id){
         this.id = id;
         int[] tab = addPosition(id);

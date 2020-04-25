@@ -23,8 +23,6 @@ public class Main
 
         Sudoku sudoku = new Sudoku(grid);
         sudoku.solve();
-
-        sudoku.showGrid();
     }
 
 }

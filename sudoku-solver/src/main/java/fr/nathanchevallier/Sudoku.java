@@ -10,6 +10,7 @@ public class Sudoku {
     public List<Region> listRegion = new ArrayList<Region>();
     public Sudoku firstSudoku;
 
+    // BUILDER
     public Sudoku(int[][] grid){
 
         this.firstSudoku = this;
@@ -108,12 +109,9 @@ public class Sudoku {
             Sudoku newSudoku = new Sudoku(this.convertGrid(this.SudokuGrid));
             newSudoku.setFirstSudoku(this.firstSudoku);
 
-
-            //
             this.SudokuGrid[choiceBox.line][choiceBox.column].changeBox(choiceBox.getNumberPossibleNumbers(0));
             newSudoku.SudokuGrid[choiceBox.line][choiceBox.column].changeBox(choiceBox.getNumberPossibleNumbers(1));
 
-            //
             this.solve();
             newSudoku.solve();
 
