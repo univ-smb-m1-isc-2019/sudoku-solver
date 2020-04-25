@@ -66,7 +66,11 @@ class Grid(grid: Array<Array<Int>>) {
     }
 
     fun set(column: Int, line : Int, newValue: Int) {
-        val squareToChange = gridState[column][line];
+        val squareToChange = gridState[column][line]
         squareToChange.set(newValue)
+    }
+
+    fun get(column: Int, line: Int): Int {
+        return gridState[column][line].value
     }
 }
