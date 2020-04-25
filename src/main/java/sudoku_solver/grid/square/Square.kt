@@ -1,4 +1,4 @@
-package sudoku_solver.grid.squares
+package grid.square
 
 import sudoku_solver.grid.constants.CellConstants
 

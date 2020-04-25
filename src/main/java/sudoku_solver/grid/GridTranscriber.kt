@@ -1,6 +1,6 @@
 package sudoku_solver.grid
 
-import sudoku_solver.grid.squares.Square
+import grid.square.Square
 
 class GridTranscriber() {
     companion object {

@@ -2,7 +2,7 @@ package sudoku_solver.grid
 
 import sudoku_solver.grid.constants.CellConstants
 import sudoku_solver.grid.constants.GridConstants
-import sudoku_solver.grid.squares.Square
+import grid.square.Square
 
 class Grid(val grid: Array<Array<Int>>) {
     private val gridState: List<List<Square>>

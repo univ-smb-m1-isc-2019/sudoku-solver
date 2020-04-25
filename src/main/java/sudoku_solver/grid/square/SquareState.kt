@@ -1,6 +1,4 @@
-package sudoku_solver.grid.squares
-
-import sudoku_solver.grid.squares.Square
+package grid.square
 
 abstract class SquareState {
     abstract fun isNotSet(): Boolean

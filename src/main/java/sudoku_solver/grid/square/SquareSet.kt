@@ -1,4 +1,4 @@
-package sudoku_solver.grid.squares
+package grid.square
 
 class SquareSet(private val square: Square): SquareState() {
     override fun isNotSet(): Boolean {
