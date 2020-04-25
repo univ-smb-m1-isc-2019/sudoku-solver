@@ -11,56 +11,50 @@ public class SudokuGrid {
 
 
     public SudokuGrid(int[][] grid) {
+        initRows();
+        initColumns();
+        initSquares();
         initGrid(grid);
-        initRows(grid);
-        initColumns(grid);
-        initSquares(grid);
     }
 
     private void initGrid(int[][] grid) {
+
         for (int row = 0; row < GRID_SIZE; ++row) {
             for (int column = 0; column < GRID_SIZE; ++column) {
                 Cell cell = new Cell(grid[row][column]);
                 this.grid[row][column] = cell;
+                this.rows[row].updateCell(column, cell);
+                this.columns[column].updateCell(row, cell);
+                int squaresIndex = getSquaresIndex(row, column);
+                this.squares[squaresIndex].updateCell(column, cell);
             }
         }
+
     }
 
-    private void initRows(int[][] grid) {
+    private void initRows() {
         for (int column = 0; column < GRID_SIZE; ++column) {
             this.rows[column] = new SubGrid();
-            for (int row = 0; row < GRID_SIZE; ++row) {
-                this.rows[column].updateCell(row, grid[column][row]);
-            }
         }
     }
 
-    private void initColumns(int[][] grid) {
+    private void initColumns() {
         for (int row = 0; row < GRID_SIZE; ++row) {
             this.columns[row] = new SubGrid();
-            for (int column = 0; column < GRID_SIZE; ++column) {
-                this.columns[row].updateCell(column, grid[column][row]);
-            }
         }
     }
 
-    private void initSquares(int[][] grid) {
-        ArrayList<Cell>[] squaresArray = new ArrayList[GRID_SIZE];
-        for(int i = 0; i < GRID_SIZE; ++i) squaresArray[i] = new ArrayList<>();
-        for(int row = 0; row < GRID_SIZE; ++row){
-            for(int column = 0; column < GRID_SIZE; ++column){
-                int squareIndex = getSquareIndex(row, column);
-                squaresArray[squareIndex].add(new Cell(grid[row][column]));
-            }
-        }
-        for(int i = 0; i < GRID_SIZE; ++i){
-            this.squares[i] = new SubGrid(squaresArray[i]);
+    private void initSquares() {
+        for(int square = 0; square < GRID_SIZE; ++square){
+            this.squares[square] = new SubGrid();
         }
     }
 
-    private int getSquareIndex(int row, int column) {
+    private int getSquaresIndex(int row, int column) {
         return (row / 3) * 3 + (column / 3);
     }
+
+
 
     public int getCellValue(int row, int column){
         return this.grid[row][column].getNumber();
@@ -77,7 +71,7 @@ public class SudokuGrid {
     }
 
     public SubGrid getSquare(int row, int column){
-        int index = getSquareIndex(row, column);
+        int index = getSquaresIndex(row, column);
         return squares[index];
     }
 
@@ -93,5 +87,7 @@ public class SudokuGrid {
         }
         return sBuilder.toString();
     }
+
+
 
 }

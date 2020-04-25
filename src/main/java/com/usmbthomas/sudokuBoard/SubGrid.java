@@ -12,20 +12,9 @@ public class SubGrid {
         initSubGrid();
     }
 
-    public SubGrid(ArrayList<Cell> squares) {
-        initSubGrid(squares);
-    }
-
     private void initSubGrid() {
         for (int i = 0; i < GRID_SIZE; ++i) {
             Cell cell = new Cell();
-            this.subGridCells[i] = cell;
-        }
-    }
-
-    private void initSubGrid(ArrayList<Cell> squares) {
-        for (int i = 0; i < GRID_SIZE; ++i) {
-            Cell cell = new Cell(squares.get(i).getNumber());
             this.subGridCells[i] = cell;
         }
     }
@@ -39,8 +28,8 @@ public class SubGrid {
         return numbersAvailable.toArray(new Integer[0]);
     }
 
-    public void updateCell(int cellIndex, int cellValue){
-        subGridCells[cellIndex].setNumber(cellValue);
+    public void updateCell(int cellIndex, Cell cell){
+        subGridCells[cellIndex] = cell;
     }
 
     public String toString(){
