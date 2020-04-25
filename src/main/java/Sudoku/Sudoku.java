@@ -1,6 +1,7 @@
 package Sudoku;
 
 public class Sudoku {
+    public static final int SIZE = 9;
     private Grid board;
 
     /*    CONSTRUCTOR */
@@ -19,8 +20,8 @@ public class Sudoku {
 
 
     public boolean solver(){
-        for(int i = 0; i < 9; ++i) {
-            for (int j = 0; j < 9; ++j) {
+        for(int i = 0; i < SIZE; ++i) {
+            for (int j = 0; j < SIZE; ++j) {
                 Cell cell = board.getCell(i, j);
                 if(cell.emptyCell()) {
                     Integer[] validValues = Solver.getPossibleValues(board, i, j);

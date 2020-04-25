@@ -43,25 +43,25 @@ public class Grid {
     }
 
     private void initLines(){
-        this.lines = new Line[9];
+        this.lines = new Line[Sudoku.SIZE];
 
-        for(int i = 0; i < 9; ++i){
+        for(int i = 0; i < Sudoku.SIZE; ++i){
             lines[i] = new Line();
         }
     }
 
     private void initColumns(){
-        this.columns = new Column[9];
+        this.columns = new Column[Sudoku.SIZE];
 
-        for(int j = 0; j < 9; ++j){
+        for(int j = 0; j < Sudoku.SIZE; ++j){
             columns[j] = new Column();
         }
     }
 
     private void initMatrice(){
-        this.matrix = new Matrice[9];
+        this.matrix = new Matrice[Sudoku.SIZE];
 
-        for(int k = 0; k < 9; ++k){
+        for(int k = 0; k < Sudoku.SIZE; ++k){
             matrix[k] = new Matrice();
         }
     }
@@ -70,8 +70,8 @@ public class Grid {
     public String toString(){
         StringBuilder s = new StringBuilder();
 
-        for(int i = 0; i < 9; ++i) {
-            for (int j = 0; j < 9; ++j) {
+        for(int i = 0; i < Sudoku.SIZE; ++i) {
+            for (int j = 0; j < Sudoku.SIZE; ++j) {
                 s.append(grid[i][j]);
                 s.append("  ");
             }
@@ -82,10 +82,10 @@ public class Grid {
     }
 
     private void createGrid(int[][] board){
-        this.grid = new Cell[9][9];
+        this.grid = new Cell[Sudoku.SIZE][Sudoku.SIZE];
 
-        for(int i = 0; i < 9; ++i){
-            for(int j = 0; j < 9; ++j){
+        for(int i = 0; i < Sudoku.SIZE; ++i){
+            for(int j = 0; j < Sudoku.SIZE; ++j){
                 Cell cell = new Cell(board[i][j]);
 
                 this.grid[i][j] = cell;
