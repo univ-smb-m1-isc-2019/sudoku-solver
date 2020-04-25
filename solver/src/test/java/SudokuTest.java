@@ -16,6 +16,9 @@ public class SudokuTest {
     };
     private Sudoku sudoku;
 
+    public static final int[] possibilities = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+
 
     @BeforeEach
     public void createAndResolve(){
@@ -26,6 +29,16 @@ public class SudokuTest {
    @Test
     public void gridIsComplete(){
         assertTrue(this.sudoku.isComplete());
+    }
+
+    @Test
+    public void everyNumberInLine(){
+
+    }
+
+    @Test
+    public void everyNumberInColumn(){
+
     }
 
     @AfterEach
