@@ -1,5 +1,7 @@
 package sudoku_solver.grid
 
+import sudoku_solver.grid.squares.Square
+
 class GridTranscriber() {
     companion object {
         fun translate(originGrid: Array<Array<Int>>): List<List<Square>> {

@@ -2,6 +2,8 @@ package sudoku_solver.grid
 
 import sudoku_solver.grid.constants.CellConstants
 import sudoku_solver.grid.constants.GridConstants
+import sudoku_solver.grid.squares.Square
+import sudoku_solver.grid.squares.SquareContainer
 
 class GridVerifier(private val gridState: List<List<Square>>) {
     private var rows = Array(GridConstants.NB_ROWS) { SquareContainer() }

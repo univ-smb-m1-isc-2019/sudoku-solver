@@ -1,7 +1,5 @@
-package sudoku_solver.grid
+package sudoku_solver.grid.squares
 
-import sudoku_solver.grid.SquareFixed
-import sudoku_solver.grid.SquareNotSet
 import sudoku_solver.grid.constants.CellConstants
 
 data class Square(var value: Int) {
