@@ -49,7 +49,7 @@ class Grid(val grid: Array<Array<Int>>) {
                         if (solve())
                             return true
                         else {
-                            // for the recursive call
+                            // when there is no answer, we need to make sure the square will be considered later as well
                             square.set(CellConstants.EMPTY)
                         }
                     }
