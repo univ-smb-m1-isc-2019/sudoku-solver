@@ -4,6 +4,7 @@ import org.junit.Test
 import sudoku_solver.grid.Grid
 import sudoku_solver.grid.GridTranscriber
 import sudoku_solver.grid.constants.CellConstants
+import sudoku_solver.grid.constants.GridConstants
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
@@ -28,7 +29,9 @@ class GridTest {
 
     @Test
     fun anEmptyGridShouldAlwaysBeConsideredAsNotCompleted() {
-        val emptyGrid = Grid(Array(9) { Array(9) { CellConstants.EMPTY } })
+        val emptyGrid = Grid(Array(GridConstants.NB_ROWS) {
+            Array(GridConstants.NB_COLUMNS) { CellConstants.EMPTY }
+        })
         assertFalse { emptyGrid.isCompleted() }
     }
 
@@ -66,7 +69,9 @@ class GridTest {
 
     @Test
     fun aGridOnlyWithSameValuesShouldAlwaysBeConsideredAsInvalid() {
-        val invalidGrid = Grid(Array(9) { Array(9) { 1 } })
+        val invalidGrid = Grid(Array(GridConstants.NB_ROWS) {
+            Array(GridConstants.NB_COLUMNS) { 1 }
+        })
         assertFalse { invalidGrid.isValid() }
     }
 

@@ -1,6 +1,7 @@
 package sudoku_solver.grid
 
 import sudoku_solver.grid.constants.CellConstants
+import sudoku_solver.grid.constants.GridConstants
 
 class Grid(val grid: Array<Array<Int>>) {
     private val gridState: List<List<Square>>
@@ -13,7 +14,7 @@ class Grid(val grid: Array<Array<Int>>) {
     }
 
     private fun checkGridFormat() {
-        if (grid.size != 9 || grid[0].size != 9)
+        if (grid.size != GridConstants.NB_ROWS || grid[0].size != GridConstants.NB_COLUMNS)
             throw Error("La grille doit contenir 9 lignes et 9 colonnes!")
     }
 
@@ -35,8 +36,8 @@ class Grid(val grid: Array<Array<Int>>) {
     }
 
     fun solve(): Boolean {
-        for (row in 0 until 9) {
-            for (column in 0 until 9) {
+        for (row in 0 until GridConstants.NB_ROWS) {
+            for (column in 0 until GridConstants.NB_COLUMNS) {
                 val square = gridState[row][column]
 
                 if (square.isNotSet()) {

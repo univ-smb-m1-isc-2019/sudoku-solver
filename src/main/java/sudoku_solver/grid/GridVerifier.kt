@@ -1,19 +1,20 @@
 package sudoku_solver.grid
 
 import sudoku_solver.grid.constants.CellConstants
+import sudoku_solver.grid.constants.GridConstants
 
 class GridVerifier(private val gridState: List<List<Square>>) {
-    private var rows = Array(9) { SquareContainer() }
-    private var columns = Array(9) { SquareContainer() }
-    private var subGrids = Array(9) { SquareContainer() }
+    private var rows = Array(GridConstants.NB_ROWS) { SquareContainer() }
+    private var columns = Array(GridConstants.NB_COLUMNS) { SquareContainer() }
+    private var subGrids = Array(GridConstants.NB_ROWS) { SquareContainer() }
 
     init {
         generateContainers()
     }
 
     private fun generateContainers() {
-        for (row in 0 until 9) {
-            for (column in 0 until 9) {
+        for (row in 0 until GridConstants.NB_ROWS) {
+            for (column in 0 until GridConstants.NB_COLUMNS) {
                 val square = gridState[row][column]
                 rows[row].add(square)
                 columns[column].add(square)
