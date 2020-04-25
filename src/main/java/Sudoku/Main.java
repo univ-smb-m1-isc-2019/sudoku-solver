@@ -17,7 +17,8 @@ public class Main
 
     public static void main( String[] args )
     {
-       Grid grille = new Grid(board);
+       Grid sudoku = new Grid(board);
+
 
     }
 }

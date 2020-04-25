@@ -6,4 +6,6 @@ public class Sudoku {
     public Sudoku(int[][] board){
         this.board = new Grid(board);
     }
+
+
 }
