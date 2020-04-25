@@ -17,10 +17,7 @@ public class Main
 
     public static void main( String[] args )
     {
-
        Grid sudoku = new Grid(board);
-       sudoku.solver();
-
 
 
     }

@@ -6,6 +6,7 @@ public class Grid {
     public Column[] columns;
     public Matrice[] matrix;
 
+
     public Grid(int[][] grid) {
         initGrid(grid);
     }
@@ -14,6 +15,4 @@ public class Grid {
     }
 
 
-    public void solver() {
-    }
 }
