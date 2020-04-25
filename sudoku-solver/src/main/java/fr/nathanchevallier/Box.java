@@ -108,8 +108,13 @@ public class Box {
     }
 
     public void displays_possibleNumbers(){
-        for(int element : this.possibleNumbers){
-            System.out.print(element);
+        if(this.possibleNumbers.isEmpty() || this.possibleNumbers == null){
+            System.out.print("");
+        }
+        else{
+            for(int element : this.possibleNumbers){
+                System.out.print(element);
+            }
         }
     }
 

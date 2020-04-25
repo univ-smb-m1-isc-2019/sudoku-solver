@@ -51,6 +51,7 @@ public class Sudoku {
         return resGrid;
     }
 
+    // Main method of resolve
     public void solve() {
         boolean fini = false;
         //this.showGrid();
@@ -75,23 +76,43 @@ public class Sudoku {
         }
 
         // affichage
-        this.showGrid();
-        this.show_possibleNumbers_Grid();
+//        this.showGrid();
+//        this.show_possibleNumbers_Grid();
 
 
         if( this.isResolvedCorrectly() )
             this.showGrid();
         else{
             if(this.isEqualToGrid(saveGrid)){
-                System.out.println(" Rentre dans sauvgarde ");
-                //this.randomNumber();
-                //this.solve();
+               // System.out.println(" Rentre dans sauvgarde ");
+                this.randomNumber2();
+
+               // this.randomNumber();
+               // this.solve();
             }
             else {
                 this.solve();
             }
         }
 
+    }
+
+    public void randomNumber2(){
+        Box choiceBox = boxLeastChoice();
+
+        if(choiceBox.getSizePossibleNumbers() == 2){
+            // Créate new sudoku
+            Sudoku newSudoku = new Sudoku(this.convertGrid(this.SudokuGrid));
+
+            //
+            this.SudokuGrid[choiceBox.line][choiceBox.column].changeBox(choiceBox.getNumberPossibleNumbers(0));
+            newSudoku.SudokuGrid[choiceBox.line][choiceBox.column].changeBox(choiceBox.getNumberPossibleNumbers(1));
+
+            //
+            this.solve();
+            newSudoku.solve();
+
+        }
     }
 
     public boolean isValid() {
