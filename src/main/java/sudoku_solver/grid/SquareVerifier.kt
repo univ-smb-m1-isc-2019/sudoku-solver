@@ -1,7 +1,5 @@
 package sudoku_solver.grid
 
-import sudoku_solver.grid.constants.CellConstants
-
 class SquareVerifier(private val gridState: List<List<Square>>) {
     fun isCompleted(): Boolean {
         for(line in gridState) {
@@ -58,7 +56,7 @@ class SquareVerifier(private val gridState: List<List<Square>>) {
 
         for (square in listSquares) {
             if (buffer.contains(square)) return false
-            if (square.value != CellConstants.EMPTY) buffer.add(square)
+            if (!square.isNotSet()) buffer.add(square)
         }
         return true
     }
