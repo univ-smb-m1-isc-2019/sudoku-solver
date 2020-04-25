@@ -1,6 +1,6 @@
 package sudoku_solver.grid.squares
 
-class SquareFixed(private val square: Square): SquareState(square) {
+class SquareFixed(private val square: Square): SquareState() {
     override fun isNotSet(): Boolean {
         return false
     }
