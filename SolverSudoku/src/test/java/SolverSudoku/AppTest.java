@@ -106,5 +106,29 @@ public class AppTest
         assertTrue( sudoku.isResolvedCorrectly() );
     }
 
-   
+    /**
+     * Test 5.
+     * Last test and grid give in the exercise
+     * Test that solves a difficult grid
+     */
+    @Test
+    public void solveGrid()
+    {
+        int[][] grid = {
+                { 8, 0, 0, 0, 0, 0, 0, 0, 0 },
+                { 0, 0, 3, 6, 0, 0, 0, 0, 0 },
+                { 0, 7, 0, 0, 9, 0, 2, 0, 0 },
+                { 0, 5, 0, 0, 0, 7, 0, 0, 0 },
+                { 0, 0, 0, 0, 4, 5, 7, 0, 0 },
+                { 0, 0, 0, 1, 0, 0, 0, 3, 0 },
+                { 0, 0, 1, 0, 0, 0, 0, 6, 8 },
+                { 0, 0, 8, 5, 0, 0, 0, 1, 0 },
+                { 0, 9, 0, 0, 0, 0, 4, 0, 0 }
+        };
+
+
+        Sudoku sudoku = new Sudoku(grid);
+        sudoku.solve();
+        assertTrue( sudoku.isResolvedCorrectly() );
+    }
 }
