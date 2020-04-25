@@ -4,7 +4,7 @@ import org.junit.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-class SudokuSolverTest {
+class GridTest {
     @Test
     fun aConvertedGridShouldAlwaysComeBackToAnArray() {
         val notConvertedGrid = arrayOf(
