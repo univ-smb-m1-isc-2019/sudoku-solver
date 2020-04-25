@@ -1,8 +1,19 @@
 package sudoku_solver.grid
 
-class Grid(grid: Array<Array<Int>>) {
-    private val gridState = GridTranscriber.translate(grid)
-    private val verifier = GridVerifier(gridState)
+class Grid(val grid: Array<Array<Int>>) {
+    private val gridState: List<List<Square>>
+    private val verifier: GridVerifier
+
+    init {
+        checkGridFormat()
+        gridState = GridTranscriber.translate(grid)
+        verifier = GridVerifier(gridState)
+    }
+
+    private fun checkGridFormat() {
+        if (grid.size != 9 || grid[0].size != 9)
+            throw Error("La grille doit contenir 9 lignes et 9 colonnes!")
+    }
 
     fun isCompleted(): Boolean {
         return verifier.isCompleted()
