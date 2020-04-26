@@ -1,5 +1,6 @@
 public class Main {
 
+        //Our sudoku grid
         public static int[][] board = {
                 { 8, 0, 0, 0, 0, 0, 0, 0, 0 },
                 { 0, 0, 3, 6, 0, 0, 0, 0, 0 },
@@ -15,7 +16,7 @@ public class Main {
         public static void main( String[] args )
         {
             Sudoku sudoku = new Sudoku(board);
-            //sudoku.solve();
+            sudoku.solve();
 
         }
 }

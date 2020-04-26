@@ -9,6 +9,8 @@ public class Sudoku {
     //Our sudoku constructor
     public Sudoku(int[][] board){
     }
+
+
     //The method which permit to know of the sudoku has solution or not
     public boolean solve(){
         return true;
