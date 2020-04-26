@@ -1,3 +1,5 @@
+package pack;
+
 public class Cell {
 
     private int value;

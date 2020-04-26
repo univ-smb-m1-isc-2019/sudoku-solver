@@ -1,3 +1,5 @@
+package pack;
+
 public class Main {
 
         //Our sudoku grid

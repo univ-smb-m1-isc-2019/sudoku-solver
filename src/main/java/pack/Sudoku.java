@@ -1,3 +1,5 @@
+package pack;
+
 public class Sudoku {
 
     //Some global variables about our sudoku
