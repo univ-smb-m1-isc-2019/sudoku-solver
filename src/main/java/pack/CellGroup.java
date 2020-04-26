@@ -2,7 +2,7 @@ package pack;
 import java.util.ArrayList;
 
 //Instead of doing 3 classes ( square, row, column ) this class permit to regroup them into one.
-//For those 3 classe we had 9 cells and for each cell in a column or row or square we had a number of possibilities, depending
+//For those 3 classes we had 9 cells and for each cell in a column or row or square we had a number of possibilities, depending
 //on row, column and square which contains the cell.
 public class CellGroup {
 
@@ -35,8 +35,5 @@ public class CellGroup {
     public void add(Cell cell) {
         cellGroup.add(cell);
     }
-    //Getter
-    public ArrayList<Cell> getCellGroup() {
-        return cellGroup;
-    }
+
 }

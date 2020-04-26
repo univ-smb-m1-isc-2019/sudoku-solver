@@ -1,7 +1,9 @@
 package pack;
 
+//This class contains all the rows, columns, square, cells that we need to know to solve the Sudoku. And the methods associated
+//to initialisations and manipulations of theses data
 public class SudokuGrid {
-    //All the datas about the sudoku to work on it easily
+    //All the data about the Sudoku to work on it easily
     private Cell[][] grid;
     private CellGroup[] rows;
     private CellGroup[] columns;

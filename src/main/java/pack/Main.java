@@ -18,7 +18,11 @@ public class Main {
         public static void main( String[] args )
         {
             Sudoku sudoku = new Sudoku(board);
+            System.out.println(sudoku);
+
             sudoku.solve();
+
+            System.out.println(sudoku);
 
         }
 }
