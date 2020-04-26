@@ -96,4 +96,17 @@ public class SudokuGrid {
         return grid[row][column];
     }
 
+    //ToString method to get a simple display
+    //For each column of each raw, we add the cell value into a var . with spaces and \n . At the end we return that var.
+    public String toString(){
+        StringBuilder s = new StringBuilder();
+        for(int row = 0; row < Sudoku.ROW_SIZE; ++row) {
+            for (int column = 0; column < Sudoku.COLUMN_SIZE; ++column) {
+                s.append(grid[row][column]);
+                s.append("  ");
+            }
+            s.append("\n");
+        }
+        return s.toString();
+    }
 }

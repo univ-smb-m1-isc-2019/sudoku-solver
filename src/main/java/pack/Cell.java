@@ -13,11 +13,6 @@ public class Cell {
         return value == 0;
     }
 
-    public String toString(){
-        return String.valueOf(value);
-    }
-
-
     //Getters and setters
     public int getValue(){
         return value;
@@ -25,6 +20,11 @@ public class Cell {
 
     public void setValue(int value){
         this.value = value;
+    }
+
+    //ToString method, to get a simple display
+    public String toString(){
+        return String.valueOf(value);
     }
 
 }
